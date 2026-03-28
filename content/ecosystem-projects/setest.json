@@ -1,0 +1,12 @@
+{
+  "id": "testest",
+  "slug": "setest",
+  "title": "setest",
+  "tag": "setset",
+  "summary": "asfasfasf",
+  "logo": "/images/ecosystem/setest/logo.PNG",
+  "website": "setest",
+  "status": "sync_ok",
+  "categoryId": "cat-defi",
+  "isFeatured": false
+}

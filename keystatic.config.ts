@@ -1,4 +1,4 @@
-import { config, fields, collection, singleton } from '@keystatic/core';
+import { config, fields, collection } from '@keystatic/core';
 
 // Reusable field schemas
 const linkActionFields = {
@@ -29,14 +29,25 @@ const bodySectionFields = {
   body: fields.text({ label: 'Body content', multiline: true }),
 };
 
+function resolveStorageKind(): 'local' | 'github' {
+  const configuredMode = process.env.KEYSTATIC_STORAGE_MODE;
+
+  if (configuredMode === 'local' || configuredMode === 'github') {
+    return configuredMode;
+  }
+
+  return process.env.NODE_ENV === 'production' && process.env.KEYSTATIC_GITHUB_CLIENT_ID
+    ? 'github'
+    : 'local';
+}
+
 export default config({
   storage: {
-    kind: (process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE_MODE as any) || (process.env.NODE_ENV === 'production' && (process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_CLIENT_ID || process.env.KEYSTATIC_GITHUB_CLIENT_ID) ? 'github' : 'local'),
+    kind: resolveStorageKind(),
     repo: {
       owner: process.env.NEXT_PUBLIC_GITHUB_OWNER || 'd3gentleman',
       name: process.env.NEXT_PUBLIC_GITHUB_REPO || 'arcium-atlas',
     },
-    branch: 'main',
   },
   collections: {
     knowledgeCategories: collection({
