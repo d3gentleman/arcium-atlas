@@ -30,7 +30,12 @@ const bodySectionFields = {
 };
 
 function resolveStorageKind(): 'local' | 'github' {
+  const publicConfiguredMode = process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE_MODE;
   const configuredMode = process.env.KEYSTATIC_STORAGE_MODE;
+
+  if (publicConfiguredMode === 'local' || publicConfiguredMode === 'github') {
+    return publicConfiguredMode;
+  }
 
   if (configuredMode === 'local' || configuredMode === 'github') {
     return configuredMode;
