@@ -31,10 +31,10 @@ const bodySectionFields = {
 
 export default config({
   storage: {
-    kind: (process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE_MODE as any) || 'local',
+    kind: (process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE_MODE as any) || (process.env.NODE_ENV === 'production' ? 'github' : 'local'),
     repo: {
       owner: process.env.NEXT_PUBLIC_GITHUB_OWNER || 'd3gentleman',
-      name: process.env.NEXT_PUBLIC_GITHUB_REPO || 'learnarcium',
+      name: process.env.NEXT_PUBLIC_GITHUB_REPO || 'arcium-atlas',
     },
   },
   collections: {
