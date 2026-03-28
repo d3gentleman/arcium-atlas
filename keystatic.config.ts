@@ -31,11 +31,12 @@ const bodySectionFields = {
 
 export default config({
   storage: {
-    kind: (process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE_MODE as any) || (process.env.NODE_ENV === 'production' && process.env.KEYSTATIC_GITHUB_CLIENT_ID ? 'github' : 'local'),
+    kind: (process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE_MODE as any) || (process.env.NODE_ENV === 'production' && (process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_CLIENT_ID || process.env.KEYSTATIC_GITHUB_CLIENT_ID) ? 'github' : 'local'),
     repo: {
       owner: process.env.NEXT_PUBLIC_GITHUB_OWNER || 'd3gentleman',
       name: process.env.NEXT_PUBLIC_GITHUB_REPO || 'arcium-atlas',
     },
+    branch: 'main',
   },
   collections: {
     knowledgeCategories: collection({
