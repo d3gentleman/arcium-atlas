@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARCIUM_ATLAS_V3 // MOBILE_DASHBOARD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#323539",
+                        "secondary-container": "#026be0",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#adc7ff",
+                        "on-tertiary-fixed": "#231b00",
+                        "on-primary-fixed-variant": "#004f54",
+                        "tertiary-fixed-dim": "#eac324",
+                        "surface": "#111417",
+                        "inverse-primary": "#006970",
+                        "on-secondary-container": "#f2f4ff",
+                        "surface-container-low": "#191c1f",
+                        "secondary": "#adc7ff",
+                        "on-tertiary": "#3b2f00",
+                        "on-primary": "#00363a",
+                        "error": "#ffb4ab",
+                        "primary-container": "#00f0ff",
+                        "outline-variant": "#3b494b",
+                        "on-secondary-fixed-variant": "#004493",
+                        "on-secondary-fixed": "#001a41",
+                        "outline": "#849495",
+                        "background": "#111417",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "error-container": "#93000a",
+                        "on-background": "#e1e2e7",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-fixed": "#002022",
+                        "inverse-on-surface": "#2e3134",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#7df4ff",
+                        "surface-container": "#1d2023",
+                        "tertiary": "#fff5de",
+                        "surface-variant": "#323539",
+                        "surface-tint": "#00dbe9",
+                        "on-tertiary-container": "#715d00",
+                        "tertiary-fixed": "#ffe179",
+                        "tertiary-container": "#fed639",
+                        "inverse-surface": "#e1e2e7",
+                        "surface-container-high": "#282a2e",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-secondary": "#002e68",
+                        "surface-bright": "#37393d",
+                        "on-primary-container": "#006970",
+                        "primary": "#dbfcff",
+                        "on-surface": "#e1e2e7",
+                        "surface-dim": "#111417",
+                        "secondary-fixed": "#d8e2ff",
+                        "primary-fixed-dim": "#00dbe9"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["JetBrains Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .atlas-grid {
+            background-image: radial-gradient(circle at 2px 2px, rgba(59, 73, 75, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #00f0ff, transparent);
+            opacity: 0.1;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container atlas-grid">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-[#111417] transition-colors duration-300">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#00f0ff]">menu</span>
+<h1 class="font-['Space_Grotesk'] tracking-tight font-bold uppercase text-lg text-[#00f0ff]">ARCIUM_ATLAS_V3</h1>
+</div>
+<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">person</span>
+</div>
+</header>
+<main class="pt-20 pb-28 px-6 space-y-12">
+<!-- Hero Section -->
+<section class="space-y-6">
+<div class="space-y-2">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-[#00f0ff]">OPERATIONAL_STATUS: ACTIVE</span>
+<h2 class="font-headline text-4xl font-bold uppercase leading-tight tracking-tighter">
+                    NAVIGATE THE<br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-secondary-container">ECOSYSTEM_ATLAS</span>
+</h2>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-[#00f0ff] text-[#00363a] py-4 font-headline font-bold uppercase tracking-widest active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+                    LAUNCH ATLAS MATRIX
+                    <span class="material-symbols-outlined text-sm">rocket_launch</span>
+</button>
+<button class="w-full border border-outline-variant/30 text-[#00f0ff] py-4 font-headline font-bold uppercase tracking-widest active:scale-[0.98] transition-transform">
+                    QUICK_DIRECTORY
+                </button>
+</div>
+</section>
+<!-- Live Status Feed (Horizontal Scroll) -->
+<section class="space-y-4">
+<div class="flex justify-between items-end border-b border-outline-variant/10 pb-2">
+<h3 class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest">LIVE_STATUS_FEED</h3>
+<span class="font-label text-[10px] text-primary-fixed-dim">UPDATED 0.2s AGO</span>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-4 no-scrollbar">
+<div class="min-w-[160px] bg-surface-container-low p-4 space-y-2">
+<span class="font-label text-[10px] text-slate-500 uppercase">Latency</span>
+<div class="text-xl font-headline font-bold text-[#00f0ff]">14ms</div>
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-full bg-[#00f0ff] w-3/4"></div>
+</div>
+</div>
+<div class="min-w-[160px] bg-surface-container-low p-4 space-y-2">
+<span class="font-label text-[10px] text-slate-500 uppercase">Uptime</span>
+<div class="text-xl font-headline font-bold text-[#00f0ff]">99.98%</div>
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-full bg-[#00f0ff] w-[99%]"></div>
+</div>
+</div>
+<div class="min-w-[160px] bg-surface-container-low p-4 space-y-2">
+<span class="font-label text-[10px] text-slate-500 uppercase">Nodes</span>
+<div class="text-xl font-headline font-bold text-[#00f0ff]">4,821</div>
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-full bg-secondary w-1/2"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Infrastructure Specifications -->
+<section class="space-y-6">
+<div class="flex justify-between items-center">
+<h3 class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest">INFRASTRUCTURE_SPEC</h3>
+<span class="material-symbols-outlined text-slate-600">settings_input_component</span>
+</div>
+<div class="space-y-4">
+<!-- MPC Card -->
+<div class="group bg-surface-container-low p-6 border-l-2 border-transparent hover:border-[#00f0ff] transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-surface-container-highest">
+<span class="material-symbols-outlined text-[#00f0ff]" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+</div>
+<span class="font-label text-[10px] px-2 py-1 bg-primary-container/10 text-[#00f0ff]">V.3.1.2</span>
+</div>
+<h4 class="font-headline text-xl font-bold mb-2">MPC_ORCHESTRATOR</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Multi-party computation engine for decentralized key generation and distributed signing.</p>
+<div class="flex gap-4">
+<span class="font-label text-[10px] text-slate-500 uppercase">Load: 42%</span>
+<span class="font-label text-[10px] text-slate-500 uppercase">Threads: 512</span>
+</div>
+</div>
+<!-- MXE Card -->
+<div class="group bg-surface-container-low p-6 border-l-2 border-transparent hover:border-[#00f0ff] transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-surface-container-highest">
+<span class="material-symbols-outlined text-[#00f0ff]" style="font-variation-settings: 'FILL' 1;">memory</span>
+</div>
+<span class="font-label text-[10px] px-2 py-1 bg-primary-container/10 text-[#00f0ff]">ACTIVE</span>
+</div>
+<h4 class="font-headline text-xl font-bold mb-2">MXE_RUNTIME</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Maximum Execution Environment for high-throughput confidential compute clusters.</p>
+<div class="flex gap-4">
+<span class="font-label text-[10px] text-slate-500 uppercase">TPS: 12.5K</span>
+<span class="font-label text-[10px] text-slate-500 uppercase">Memory: 64GB</span>
+</div>
+</div>
+<!-- Grid Sharding Card -->
+<div class="group bg-surface-container-low p-6 border-l-2 border-transparent hover:border-[#00f0ff] transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-surface-container-highest">
+<span class="material-symbols-outlined text-[#00f0ff]" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+</div>
+<span class="font-label text-[10px] px-2 py-1 bg-primary-container/10 text-[#00f0ff]">SYNCED</span>
+</div>
+<h4 class="font-headline text-xl font-bold mb-2">GRID_SHARDING</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Asynchronous data sharding architecture for global state synchronization.</p>
+<div class="flex gap-4">
+<span class="font-label text-[10px] text-slate-500 uppercase">Shards: 128</span>
+<span class="font-label text-[10px] text-slate-500 uppercase">Latency: 2ms</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Knowledge Repositories -->
+<section class="space-y-6">
+<h3 class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest">KNOWLEDGE_REPOS</h3>
+<div class="grid grid-cols-1 gap-4">
+<div class="relative bg-surface-container-low p-8 overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-[#00f0ff]/5 rotate-45 translate-x-16 -translate-y-16"></div>
+<span class="material-symbols-outlined text-4xl text-[#00f0ff] mb-4">menu_book</span>
+<h4 class="font-headline text-2xl font-bold uppercase mb-2">ENCYCLOPEDIA</h4>
+<p class="font-label text-xs text-slate-500 uppercase tracking-wider">Historical records &amp; whitepapers</p>
+<div class="mt-8 flex items-center text-[#00f0ff] gap-2 font-label text-xs font-bold">
+                        ACCESS_ARCHIVE <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<div class="relative bg-surface-container-low p-8 overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rotate-45 translate-x-16 -translate-y-16"></div>
+<span class="material-symbols-outlined text-4xl text-secondary mb-4">dictionary</span>
+<h4 class="font-headline text-2xl font-bold uppercase mb-2">GLOSSARY</h4>
+<p class="font-label text-xs text-slate-500 uppercase tracking-wider">Technical lexicon &amp; protocol terms</p>
+<div class="mt-8 flex items-center text-secondary gap-2 font-label text-xs font-bold">
+                        OPEN_LEXICON <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Terminal Footer -->
+<footer class="pt-8 pb-12 border-t border-outline-variant/10 space-y-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-[#00f0ff] animate-pulse"></div>
+<span class="font-label text-[10px] text-[#00f0ff] uppercase tracking-widest">ARCIUM ATLAS // THE_CENTRAL_MAINFRAME</span>
+</div>
+<p class="font-label text-[8px] text-slate-600 leading-relaxed uppercase">
+                COORDINATES: 40.7128° N, 74.0060° W<br/>
+                SYSTEM_AUTH: LEVEL_05_ROOT<br/>
+                ENCRYPTION: AES_256_QUANTUM_RESISTANT
+            </p>
+<div class="text-[8px] font-label text-slate-700">© 2024 ARCIUM_PROTOCOL. ALL RIGHTS RESERVED.</div>
+</footer>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe h-20 bg-[#111417]/90 backdrop-blur-xl border-t border-[#00f0ff]/10 z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-[#00f0ff] font-bold border-t-2 border-[#00f0ff] pt-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest mt-1">ATLAS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 pt-2 hover:bg-[#1d2023] transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest mt-1">ENCYCLOPEDIA</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 pt-2 hover:bg-[#1d2023] transition-colors" href="#">
+<span class="material-symbols-outlined">dictionary</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest mt-1">GLOSSARY</span>
+</a>
+</nav>
+<!-- Contextual FAB (Only on Home) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-[#00f0ff] text-[#00363a] flex items-center justify-center shadow-lg active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+</button>
+<div class="scanline"></div>
+</body></html>

@@ -1,0 +1,11 @@
+{
+  "id": "proj-ionet",
+  "slug": "io-net",
+  "title": "io.net",
+  "tag": "DEPIN",
+  "summary": "A decentralized cloud computing network.",
+  "website": "https://io.net",
+  "status": "sync_ok",
+  "categoryId": "cat-ai",
+  "isFeatured": false
+}

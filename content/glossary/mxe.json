@@ -1,0 +1,15 @@
+{
+  "id": "glossary-mxe",
+  "slug": "mxe",
+  "term": "MXE",
+  "tag": "RUNTIME",
+  "summary": "MXE stands for MPC eXecution Environment, the execution surface where Arcium runs confidential workloads through distributed computation.",
+  "aliases": ["MXEs", "MPC eXecution Environment"],
+  "keywords": ["execution environment", "distributed compute", "runtime"],
+  "priority": "high",
+  "source": {
+    "label": "Arcium Docs: Clusters and MXEs",
+    "href": "https://docs.arcium.com/introduction/basic-conceptsclusters-and-mxes-mpc-execution-environments"
+  },
+  "relatedCategoryIds": ["enc-infra"]
+}

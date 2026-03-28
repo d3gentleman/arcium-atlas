@@ -1,0 +1,11 @@
+{
+  "id": "proj-undesk",
+  "slug": "undesk",
+  "title": "Undesk Trade",
+  "tag": "OTC_DESK",
+  "summary": "A private trading desk for large transactions.",
+  "website": "https://twitter.com/undesktrade",
+  "status": "sync_ok",
+  "categoryId": "cat-defi",
+  "isFeatured": false
+}

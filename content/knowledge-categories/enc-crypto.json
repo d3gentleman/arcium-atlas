@@ -1,0 +1,16 @@
+{
+  "id": "enc-crypto",
+  "slug": "enc-crypto",
+  "title": "Cryptography",
+  "tag": "/KNOWLEDGE_BASE/CRY_V1.2",
+  "summary": "The protocol vocabulary for understanding how confidential execution protects data while still producing usable outputs.",
+  "bodySections": [
+    {
+      "title": "Mathematical Foundation",
+      "body": "Cryptography content translates the protocol layer into product consequences. It frames how Multi-Party Computation, verification, and encrypted coordination let Arcium expose useful application behavior without exposing the inputs that produced it."
+    }
+  ],
+  "prefix": "CR",
+  "description": "The mathematical foundation of Arcium.",
+  "group": "knowledge"
+}

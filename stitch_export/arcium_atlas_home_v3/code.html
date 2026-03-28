@@ -1,0 +1,333 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ARCIUM ATLAS | ECOSYSTEM_CORE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#323539",
+                        "surface-tint": "#00f0ff",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-low": "#191c1f",
+                        "inverse-surface": "#e1e2e7",
+                        "secondary-container": "#026be0",
+                        "on-primary-container": "#006970",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-primary": "#00363a",
+                        "background": "#111417",
+                        "on-secondary-container": "#f2f4ff",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-tertiary-container": "#715d00",
+                        "on-tertiary-fixed": "#231b00",
+                        "inverse-primary": "#006970",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffe179",
+                        "surface-container-high": "#282a2e",
+                        "surface-bright": "#37393d",
+                        "on-secondary": "#002e68",
+                        "inverse-on-surface": "#2e3134",
+                        "surface-dim": "#111417",
+                        "tertiary": "#fff5de",
+                        "surface-container": "#1d2023",
+                        "on-tertiary": "#3b2f00",
+                        "tertiary-fixed-dim": "#eac324",
+                        "tertiary-container": "#fed639",
+                        "on-surface": "#e1e2e7",
+                        "outline": "#849495",
+                        "on-background": "#e1e2e7",
+                        "primary": "#00f0ff",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "on-primary-fixed-variant": "#004f54",
+                        "secondary": "#adc7ff",
+                        "primary-container": "#00f0ff",
+                        "surface-container-highest": "#323539",
+                        "on-secondary-fixed-variant": "#004493",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#3b494b",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#adc7ff",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-error": "#690005",
+                        "surface": "#111417",
+                        "on-surface-variant": "#b9cacb",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary-fixed": "#001a41"
+                    },
+                    fontFamily: {
+                        "headline": ["'Space Grotesk'", "sans-serif"],
+                        "body": ["'JetBrains Mono'", "monospace"],
+                        "label": ["'JetBrains Mono'", "monospace"]
+                    },
+                    borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "0px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-body bg-background text-on-background;
+                background-image: 
+                    linear-gradient(rgba(59, 73, 75, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(59, 73, 75, 0.1) 1px, transparent 1px);
+                background-size: 20px 20px;
+            }
+            h1, h2, h3, h4 { @apply font-headline; }
+        }
+        .console-window {
+            @apply border-2 border-outline-variant/30 bg-surface-container-lowest relative;
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+        }
+        .console-header {
+            @apply border-b-2 border-outline-variant/30 bg-surface-container-high px-3 py-1 text-[10px] flex justify-between items-center font-label;
+        }
+        .scanline-effect {
+            pointer-events: none;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 2px, 3px 100%;
+        }
+        .glitch-hover:hover {
+            text-shadow: 2px 0 #ff00ea, -2px 0 #00f0ff;
+        }
+    </style>
+</head>
+<body class="selection:bg-primary-container selection:text-on-primary min-h-screen p-4 md:p-8">
+<div class="fixed inset-0 scanline-effect z-[100]"></div>
+<div class="max-w-[1400px] mx-auto grid grid-cols-12 gap-4">
+<!-- Navigation Module -->
+<header class="console-window col-span-12 flex flex-col">
+<div class="console-header">
+<span class="" style="">SYSTEM_ROOT/NAV_MODULE</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 bg-outline-variant"></div>
+<div class="w-2 h-2 bg-primary"></div>
+</div>
+</div>
+<div class="p-4 flex flex-wrap justify-between items-center gap-6">
+<div class="text-xl font-black tracking-tighter text-primary uppercase font-headline" style="">
+                    [ARCIUM_ATLAS.V3]
+                </div>
+<nav class="flex flex-wrap gap-6 text-xs uppercase font-bold tracking-widest">
+<a class="text-primary border-b-2 border-primary pb-1" href="#" style="">/ATLAS</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#" style="">/ENCYCLOPEDIA</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#" style="">/GLOSSARY</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#" style="">/INFRASTRUCTURE</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#" style="">/ABOUT</a>
+</nav>
+<div class="hidden md:flex gap-4 font-mono text-[10px] text-primary">
+<span class="bg-primary/10 px-2 py-1" style="">SYS_SYNC: OK</span>
+<span class="bg-primary/10 px-2 py-1" style="">COORD: 37.77N_122.41W</span>
+</div>
+</div>
+</header>
+<!-- Sidebar: Control Unit -->
+<div class="console-window col-span-12 lg:col-span-3 flex flex-col h-full">
+<div class="console-header">
+<span class="" style="">CONTROL_UNIT.EXE</span>
+<span class="" style="">ID: ARCHIVIST_01</span>
+</div>
+<div class="p-4 flex-1 flex flex-col gap-4">
+<div class="bg-surface-container p-3 border border-outline-variant/30">
+<div class="text-[10px] text-primary mb-3 font-bold uppercase tracking-widest" style="">Navigation_Shortcuts</div>
+<div class="flex flex-col gap-2">
+<button class="bg-primary text-on-primary p-2 text-[10px] font-bold text-left uppercase flex justify-between items-center group" style="">
+<span class="" style="">Open Ecosystem Atlas</span>
+<span class="group-hover:translate-x-1 transition-transform" style="">→</span>
+</button>
+<button class="bg-surface-container-high text-slate-300 p-2 text-[10px] font-bold text-left uppercase hover:bg-surface-variant transition-colors border border-outline-variant/20" style="">
+                            Search Encyclopedia
+                        </button>
+<button class="bg-surface-container-high text-slate-300 p-2 text-[10px] font-bold text-left uppercase hover:bg-surface-variant transition-colors border border-outline-variant/20" style="">
+                            View MPC Node Specs
+                        </button>
+</div>
+</div>
+<div class="flex-1 bg-black/40 border border-outline-variant/20 p-3 overflow-hidden font-mono text-[10px] leading-relaxed">
+<div class="text-outline mb-2" style="">LIVE_STATUS_FEED:</div>
+<div class="space-y-1 text-on-surface-variant">
+<div class="flex gap-2"><span class="text-primary" style="">[OK]</span> <span class="" style="">Atlas_Sync: Complete</span></div>
+<div class="flex gap-2"><span class="text-primary" style="">[OK]</span> <span class="" style="">MXE_Engines: Active</span></div>
+<div class="flex gap-2"><span class="text-primary" style="">[OK]</span> <span class="" style="">MPC_Nodes: 4,092 Online</span></div>
+<div class="mt-4 text-primary animate-pulse" style="">_WAITING_FOR_QUERY...</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 pt-4">
+<div class="text-[10px] text-outline mb-2 font-bold uppercase" style="">System_Tools:</div>
+<button class="w-full border-2 border-outline-variant text-[10px] p-2 hover:bg-primary/10 hover:border-primary hover:text-primary transition-all text-center font-bold uppercase" style="">
+                        Generate_System_Report
+                    </button>
+</div>
+</div>
+</div>
+<!-- Main Hero: The Ecosystem Atlas -->
+<div class="console-window col-span-12 lg:col-span-9 overflow-hidden">
+<div class="console-header">
+<span class="" style="">VIEWPORT_PRIMARY: ECOSYSTEM_ATLAS_V3</span>
+<span class="" style="">MODE: INTERACTIVE_MAPPING</span>
+</div>
+<div class="p-8 md:p-12 relative min-h-[500px] flex flex-col justify-center bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent">
+<!-- Abstract Map Graphic -->
+<div class="absolute inset-0 opacity-15 pointer-events-none select-none">
+<svg class="stroke-primary" height="100%" viewBox="0 0 1000 1000" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid" patternUnits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke-opacity="0.2" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+<circle cx="500" cy="500" fill="none" r="350" stroke-dasharray="10 20" stroke-width="1"></circle>
+<circle cx="500" cy="500" fill="none" r="200" stroke-width="1"></circle>
+<path d="M 500 150 L 500 850 M 150 500 L 850 500" fill="none" stroke-opacity="0.3" stroke-width="0.5"></path>
+<g class="animate-pulse">
+<rect fill="currentColor" height="4" width="4" x="498" y="148"></rect>
+<rect fill="currentColor" height="4" width="4" x="498" y="848"></rect>
+<rect fill="currentColor" height="4" width="4" x="148" y="498"></rect>
+<rect fill="currentColor" height="4" width="4" x="848" y="498"></rect>
+</g>
+</svg>
+</div>
+<div class="relative z-10 max-w-2xl">
+<div class="text-primary text-xs font-bold mb-6 flex items-center gap-3">
+<span class="w-12 h-0.5 bg-primary"></span>
+<span class="tracking-[0.2em] uppercase" style="">Core Functionality: Exploration</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.9] mb-6 uppercase" style="">
+                        NAVIGATE THE<br>
+<span class="text-primary glitch-hover" style="">ECOSYSTEM_ATLAS</span>
+</h1>
+<p class="text-base md:text-lg mb-10 leading-relaxed text-on-surface-variant font-medium" style="">Mapping out the Arcium ecosystem.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 text-xs font-black uppercase tracking-widest hover:bg-white hover:scale-[1.02] transition-all flex items-center gap-2" style="">
+<span class="" style="">Launch Atlas Matrix</span>
+<span class="text-lg" style="">▶</span>
+</button>
+<button class="border-2 border-primary text-primary px-8 py-4 text-xs font-black uppercase tracking-widest hover:bg-primary/10 transition-all" style="">
+                            Quick_Directory
+                        </button>
+</div>
+</div>
+<div class="absolute bottom-6 right-8 text-[10px] text-outline font-mono flex gap-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-ping"></div>
+<span class="" style="">REALTIME_RENDER_ACTIVE</span>
+</div>
+<span class="" style="">ZOOM: 1.0X</span>
+</div>
+</div>
+</div>
+<!-- Infrastructure Section -->
+<section class="console-window col-span-12">
+<div class="console-header">
+<span class="" style="">MODULE_02: INFRASTRUCTURE_SPECIFICATIONS</span>
+<span class="text-primary" style="">CORE_SYSTEMS: MPC // MXE</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+<!-- MPC Card -->
+<div class="p-8 border-r-2 border-outline-variant/30 hover:bg-primary/5 transition-all group relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-primary/5 text-8xl font-black select-none group-hover:text-primary/10 transition-colors" style="">MPC</div>
+<div class="text-[10px] text-primary mb-4 font-bold tracking-widest uppercase" style="">Subsystem_A</div>
+<h3 class="text-2xl font-black mb-4 uppercase" style="">Multi-Party Computation</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed" style="">
+                        The privacy layer of Arcium. Secure, decentralized computation where no single party sees the full data set.
+                    </p>
+<a class="inline-flex items-center gap-2 text-[10px] font-black uppercase text-primary hover:underline" href="#" style="">
+                        Examine Architecture <span class="group-hover:translate-x-1 transition-transform" style="">&gt;&gt;</span>
+</a>
+</div>
+<!-- MXE Card -->
+<div class="p-8 border-r-2 border-outline-variant/30 hover:bg-primary/5 transition-all group relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-primary/5 text-8xl font-black select-none group-hover:text-primary/10 transition-colors" style="">MXE</div>
+<div class="text-[10px] text-primary mb-4 font-bold tracking-widest uppercase" style="">Subsystem_B</div>
+<h3 class="text-2xl font-black mb-4 uppercase" style="">Message eXchange Engine</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed" style="">
+                        High-throughput data routing. The high-speed interconnect fabric ensuring zero-latency communication across the Atlas.
+                    </p>
+<a class="inline-flex items-center gap-2 text-[10px] font-black uppercase text-primary hover:underline" href="#" style="">
+                        View Network Map <span class="group-hover:translate-x-1 transition-transform" style="">&gt;&gt;</span>
+</a>
+</div>
+<!-- Scaling Card -->
+<div class="p-8 hover:bg-primary/5 transition-all group relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-primary/5 text-8xl font-black select-none group-hover:text-primary/10 transition-colors" style="">GRID</div>
+<div class="text-[10px] text-primary mb-4 font-bold tracking-widest uppercase" style="">Optimization</div>
+<h3 class="text-2xl font-black mb-4 uppercase" style="">Grid Sharding</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed" style="">
+                        Dynamic scaling protocols that allow the Arcium network to expand infinitely without compromising security or speed.
+                    </p>
+<a class="inline-flex items-center gap-2 text-[10px] font-black uppercase text-primary hover:underline" href="#" style="">
+                        Technical Specs <span class="group-hover:translate-x-1 transition-transform" style="">&gt;&gt;</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Learning Resources Section -->
+<div class="console-window col-span-12">
+<div class="console-header">
+<span class="" style="">MODULE_03: KNOWLEDGE_REPOSITORIES</span>
+<span class="" style="">TOTAL_RECORDS: 12,482</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-outline-variant/30">
+<div class="bg-surface-container-lowest p-8 hover:bg-surface-container transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 border-2 border-primary flex items-center justify-center">
+<span class="font-black text-xl text-primary" style="">EN</span>
+</div>
+<span class="text-[10px] text-outline font-mono" style="">/KNOWLEDGE_BASE/ENC_V1.0</span>
+</div>
+<h4 class="text-2xl font-black mb-2 uppercase group-hover:text-primary transition-colors" style="">Encyclopedia</h4>
+<p class="text-sm text-on-surface-variant mb-6 max-w-md" style="">
+                        In-depth articles covering the history, development, and technical breakthroughs of the Arcium Protocol.
+                    </p>
+<div class="flex gap-4">
+<button class="bg-primary/10 border border-primary text-primary px-4 py-2 text-[10px] font-bold uppercase hover:bg-primary hover:text-on-primary transition-all" style="">Browse Articles</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 hover:bg-surface-container transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 border-2 border-primary flex items-center justify-center">
+<span class="font-black text-xl text-primary" style="">GL</span>
+</div>
+<span class="text-[10px] text-outline font-mono" style="">/KNOWLEDGE_BASE/GLO_V2.1</span>
+</div>
+<h4 class="text-2xl font-black mb-2 uppercase group-hover:text-primary transition-colors" style="">Glossary</h4>
+<p class="text-sm text-on-surface-variant mb-6 max-w-md" style="">
+                        Master the terminology. From 'Confidential Computing' to 'Zero-Knowledge Attestations', define the future.
+                    </p>
+<div class="flex gap-4">
+<button class="bg-primary/10 border border-primary text-primary px-4 py-2 text-[10px] font-bold uppercase hover:bg-primary hover:text-on-primary transition-all" style="">Open Glossary</button>
+</div>
+</div>
+</div>
+</div>
+<!-- System Footer -->
+<footer class="console-window col-span-12 flex flex-col items-center py-10 relative">
+<div class="console-header w-full absolute top-0">
+<span class="" style="">TERMINAL_EXIT</span>
+<span class="" style="">STATUS_STABLE</span>
+</div>
+<div class="text-2xl font-black text-primary mb-6 mt-4 tracking-tighter uppercase font-headline" style="">
+                ARCIUM ATLAS // THE_CENTRAL_MAINFRAME
+            </div>
+<div class="flex flex-wrap justify-center gap-8 text-[10px] uppercase font-bold text-slate-500 mb-8 tracking-widest">
+<a class="hover:text-primary transition-colors" href="#" style="">TERMS_OF_SERVICE</a>
+<a class="hover:text-primary transition-colors" href="#" style="">PRIVACY_DATA_SECURITY</a>
+<a class="hover:text-primary transition-colors" href="#" style="">OPERATOR_MANIFESTO</a>
+<a class="hover:text-primary transition-colors" href="#" style="">API_DOCUMENTATION</a>
+</div>
+<div class="text-[9px] text-center text-outline/40 uppercase leading-loose font-mono" style="">
+                (C) 2024 ARCIUM PROTOCOL_GROUP <br>
+                LAT: 37.7749 // LONG: -122.4194 // CRC_HASH: 0x8842A_V3 <br>
+<span class="text-primary/40" style="">--- MISSION_OBJECTIVE: DECENTRALIZE_THE_GRID ---</span>
+</div>
+</footer>
+</div>
+<!-- Floating Action Terminal -->
+<button class="fixed bottom-6 right-6 w-14 h-14 bg-primary border-4 border-black flex items-center justify-center shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 transition-all z-[110] group" style="">
+<div class="font-black text-black text-xl group-hover:scale-110 transition-transform" style="">&gt;_</div>
+</button>
+</body></html>

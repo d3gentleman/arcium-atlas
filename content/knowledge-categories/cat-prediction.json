@@ -1,0 +1,16 @@
+{
+  "id": "cat-prediction",
+  "slug": "cat-prediction",
+  "title": "Prediction Markets",
+  "tag": "INFORMATION_LAYER",
+  "summary": "Platforms to bet on future events without revealing your positions to the public.",
+  "bodySections": [
+    {
+      "title": "Why It Matters",
+      "body": "Prediction markets become more credible when traders can commit capital without leaking their thesis to the rest of the market."
+    }
+  ],
+  "prefix": "PM",
+  "description": "Platforms to bet on future events without revealing your positions to the public.",
+  "group": "ecosystem"
+}

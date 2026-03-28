@@ -1,0 +1,28 @@
+
+> tmpproject@0.1.0 build
+> next build
+
+  Γû▓ Next.js 14.2.35
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./app/page.tsx:43:11
+Type error: Type '{ subtitle: string; titleLine1: string; titleLine2: string; description: string; primaryCta: { type: string; label: string; href: string; }; secondaryCta: { type: string; command: string; label: string; }; }' is not assignable to type '{ subtitle: string; titleLine1: string; titleLine2: string; description: string; primaryCta: LinkAction; secondaryCta: LinkAction; }'.
+  Types of property 'primaryCta' are incompatible.
+    Type '{ type: string; label: string; href: string; }' is not assignable to type 'LinkAction'.
+      Type '{ type: string; label: string; href: string; }' is not assignable to type '{ type: "external"; label: string; href: string; }'.
+        Types of property 'type' are incompatible.
+          Type 'string' is not assignable to type '"external"'.
+
+  41 |       <main className="col-span-12 space-y-12">
+  42 |         <Hero
+> 43 |           hero={homepage.hero}
+     |           ^
+  44 |           quickLinks={homepage.quickLinks}
+  45 |           liveStatusFeed={homepage.liveStatusFeed}
+  46 |         />
+Next.js build worker exited with code: 1 and signal: null

@@ -1,0 +1,16 @@
+{
+  "id": "cat-defi",
+  "slug": "cat-defi",
+  "title": "DeFi & Trading",
+  "tag": "FINANCE_LAYER",
+  "summary": "Financial apps that protect your trading strategies and transaction history.",
+  "bodySections": [
+    {
+      "title": "Why It Matters",
+      "body": "Arcium lets trading systems hide order flow, execution intent, and position data without leaving public liquidity behind."
+    }
+  ],
+  "prefix": "DF",
+  "description": "Financial apps that protect your trading strategies and transaction history.",
+  "group": "ecosystem"
+}

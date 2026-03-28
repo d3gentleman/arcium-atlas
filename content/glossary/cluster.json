@@ -1,0 +1,15 @@
+{
+  "id": "glossary-cluster",
+  "slug": "cluster",
+  "term": "Cluster",
+  "tag": "NETWORK_STRUCTURE",
+  "summary": "A cluster is the working group of nodes assigned to coordinate and execute a computation under a shared readiness and security model.",
+  "aliases": [],
+  "keywords": ["node group", "coordination"],
+  "priority": "high",
+  "source": {
+    "label": "Arcium Docs: Clusters and MXEs",
+    "href": "https://docs.arcium.com/introduction/basic-conceptsclusters-and-mxes-mpc-execution-environments"
+  },
+  "relatedCategoryIds": ["enc-infra"]
+}

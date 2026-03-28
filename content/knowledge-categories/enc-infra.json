@@ -1,0 +1,16 @@
+{
+  "id": "enc-infra",
+  "slug": "enc-infra",
+  "title": "Infrastructure",
+  "tag": "/KNOWLEDGE_BASE/ENC_V1.0",
+  "summary": "The runtime layer behind confidential execution: nodes, routing, orchestration, and the operational surfaces the network depends on.",
+  "bodySections": [
+    {
+      "title": "Deep Dive",
+      "body": "Infrastructure content explains how Arcium moves from abstract privacy guarantees to an actual operating network. It covers the execution surfaces, the movement of encrypted work across the system, and the components that let applications rely on confidential compute as a service."
+    }
+  ],
+  "prefix": "IN",
+  "description": "The runtime layer behind confidential execution.",
+  "group": "knowledge"
+}

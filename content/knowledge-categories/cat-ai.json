@@ -1,0 +1,16 @@
+{
+  "id": "cat-ai",
+  "slug": "cat-ai",
+  "title": "Artificial Intelligence",
+  "tag": "COMPUTE_LAYER",
+  "summary": "AI bots and models that can process sensitive information without exposing the raw data.",
+  "bodySections": [
+    {
+      "title": "Why It Matters",
+      "body": "Confidential AI is one of the clearest proofs of utility for Arcium: private prompts, secure inference, and encrypted model execution."
+    }
+  ],
+  "prefix": "AI",
+  "description": "AI bots and models that can process sensitive information without exposing the raw data.",
+  "group": "ecosystem"
+}

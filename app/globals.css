@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body bg-background text-on-background;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(0, 240, 255, 0.08), transparent 28%),
+      radial-gradient(circle at 82% 18%, rgba(255, 200, 87, 0.06), transparent 24%),
+      linear-gradient(rgba(59, 73, 75, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 73, 75, 0.08) 1px, transparent 1px);
+    background-size: auto, auto, 24px 24px, 24px 24px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-headline;
+  }
+}
+
+.console-window {
+  @apply border-2 border-outline-variant/30 bg-surface-container-lowest relative;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+.console-header {
+  @apply border-b-2 border-outline-variant/30 bg-surface-container-high px-3 py-1 text-[10px] flex justify-between items-center font-label;
+}
+
+.scanline-effect {
+  pointer-events: none;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 2px, 3px 100%;
+}
+
+.glitch-hover:hover {
+  text-shadow: 2px 0 #ff00ea, -2px 0 #00f0ff;
+}
+
+.atlas-flow {
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(0, 240, 255, 0.08), transparent 22%),
+    radial-gradient(circle at 80% 18%, rgba(47, 230, 166, 0.08), transparent 18%),
+    radial-gradient(circle at 75% 75%, rgba(255, 200, 87, 0.05), transparent 20%);
+  background-color: #080a0d;
+}
+
+.atlas-preview-mask {
+  background:
+    radial-gradient(circle at center, rgba(8, 10, 13, 0.04) 0%, rgba(8, 10, 13, 0.22) 48%, rgba(8, 10, 13, 0.82) 100%),
+    linear-gradient(90deg, rgba(8, 10, 13, 0.92) 0%, rgba(8, 10, 13, 0.15) 28%, rgba(8, 10, 13, 0.15) 72%, rgba(8, 10, 13, 0.92) 100%);
+}
+
+.atlas-search-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.atlas-search-results::-webkit-scrollbar-thumb {
+  background: rgba(132, 148, 149, 0.45);
+  border-radius: 999px;
+}
+
+.region-group {
+  pointer-events: none;
+}
+
+.animated-flow-primary path {
+  stroke-dasharray: 10 10;
+  animation: flowData 1.6s linear infinite reverse;
+}
+
+.animated-flow-secondary path {
+  stroke-dasharray: 6 8;
+  animation: flowData 2.8s linear infinite reverse;
+}
+
+@keyframes flowData {
+  from {
+    stroke-dashoffset: 32;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}

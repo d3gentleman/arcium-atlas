@@ -1,0 +1,16 @@
+{
+  "id": "cat-consumer",
+  "slug": "cat-consumer",
+  "title": "Consumer Apps",
+  "tag": "UX_LAYER",
+  "summary": "Everyday applications offering private identities and secure interactions.",
+  "bodySections": [
+    {
+      "title": "Why It Matters",
+      "body": "Consumer apps need privacy that feels invisible. Arcium turns sensitive user flows into secure background infrastructure."
+    }
+  ],
+  "prefix": "CA",
+  "description": "Everyday applications offering private identities and secure interactions.",
+  "group": "ecosystem"
+}

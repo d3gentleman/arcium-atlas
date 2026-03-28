@@ -1,0 +1,24 @@
+
+> tmpproject@0.1.0 build
+> next build
+
+  Γû▓ Next.js 14.2.35
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./app/page.tsx:46:11
+Type error: Type '{ hero: { subtitle: string; titleLine1: string; titleLine2: string; description: string; primaryCta: { type: string; label: string; href: string; }; secondaryCta: { type: string; command: string; label: string; }; }; quickLinks: ({ ...; } | ... 1 more ... | { ...; })[]; liveStatusFeed: { ...; }[]; ui: UIConfig; }' is not assignable to type 'IntrinsicAttributes & Omit<HeroProps, "ui">'.
+  Property 'ui' does not exist on type 'IntrinsicAttributes & Omit<HeroProps, "ui">'.
+
+  44 |           quickLinks={homepage.quickLinks}
+  45 |           liveStatusFeed={homepage.liveStatusFeed}
+> 46 |           ui={ui}
+     |           ^
+  47 |         />
+  48 |         
+  49 |         <StartHereSection cards={homepage.startHereCards} />
+Next.js build worker exited with code: 1 and signal: null

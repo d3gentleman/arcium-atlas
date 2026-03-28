@@ -1,0 +1,16 @@
+{
+  "id": "guide-what-are-mxes",
+  "slug": "what-are-mxes",
+  "title": "What are MXEs?",
+  "tag": "START_HERE",
+  "summary": "An introductory framing for the execution environments that power Arcium across the network.",
+  "kind": "guide",
+  "date": "2024-10-01",
+  "relatedCategoryId": "enc-infra",
+  "bodySections": [
+    {
+      "title": "Execution Layer",
+      "body": "MXEs are the execution surfaces referenced across the atlas when confidential logic needs to run somewhere concrete."
+    }
+  ]
+}

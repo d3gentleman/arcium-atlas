@@ -1,0 +1,20 @@
+components/EcosystemMap.tsx(54,72): error TS2304: Cannot find name 'EcosystemNodeData'.
+data/ecosystem-content.ts(22,3): error TS2322: Type '{ id: string; kind: "category"; label: string; tag: string; beginnerDescription: string; technicalDescription: string; action: { type: string; href: string; label: string; }; }' is not assignable to type 'MapNodeDefinition'.
+  Types of property 'action' are incompatible.
+    Type '{ type: string; href: string; label: string; }' is not assignable to type 'LinkAction | undefined'.
+      Type '{ type: string; href: string; label: string; }' is not assignable to type '{ type: "internal"; href: string; label: string; } | { type: "external"; href: string; label: string; } | { type: "unavailable"; label: string; reason?: string | undefined; }'.
+        Type '{ type: string; href: string; label: string; }' is not assignable to type '{ type: "external"; href: string; label: string; }'.
+          Types of property 'type' are incompatible.
+            Type 'string' is not assignable to type '"external"'.
+data/ecosystem-content.ts(32,307): error TS2322: Type 'string' is not assignable to type '"unavailable"'.
+data/ecosystem-content.ts(33,296): error TS2322: Type 'string' is not assignable to type '"unavailable"'.
+data/ecosystem-content.ts(34,320): error TS2322: Type 'string' is not assignable to type '"unavailable"'.
+data/ecosystem-content.ts(35,332): error TS2322: Type 'string' is not assignable to type '"unavailable"'.
+data/ecosystem-content.ts(36,310): error TS2322: Type 'string' is not assignable to type '"unavailable"'.
+data/ecosystem-content.ts(37,316): error TS2322: Type 'string' is not assignable to type '"unavailable"'.
+data/ecosystem-content.ts(38,291): error TS2322: Type 'string' is not assignable to type '"unavailable"'.
+data/ecosystem-content.ts(39,320): error TS2322: Type 'string' is not assignable to type '"unavailable"'.
+data/ecosystem-content.ts(40,325): error TS2322: Type 'string' is not assignable to type '"unavailable"'.
+data/ecosystem-content.ts(41,359): error TS2322: Type 'string' is not assignable to type '"unavailable"'.
+data/ecosystem-content.ts(42,305): error TS2322: Type 'string' is not assignable to type '"unavailable"'.
+data/home.ts(1,68): error TS2305: Module '"../types/domain"' has no exported member 'NavItem'.

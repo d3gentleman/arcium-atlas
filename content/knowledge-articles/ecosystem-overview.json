@@ -1,0 +1,16 @@
+{
+  "id": "guide-ecosystem-overview",
+  "slug": "ecosystem-overview",
+  "title": "Ecosystem Overview",
+  "tag": "START_HERE",
+  "summary": "A quick orientation to the major territories on the Arcium map and how to read them.",
+  "kind": "guide",
+  "date": "2024-10-01",
+  "relatedCategoryId": "enc-eco",
+  "bodySections": [
+    {
+      "title": "Reading the Territories",
+      "body": "The atlas is organized around product territories rather than protocol modules."
+    }
+  ]
+}

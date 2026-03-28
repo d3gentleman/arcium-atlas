@@ -1,0 +1,6 @@
+
+E:\Dev\learnarc\learnarcium\components\SlideInPanel.tsx
+  60:12  error  Parsing error: Expected corresponding JSX closing tag for 'motion.div'
+
+Γ£û 1 problem (1 error, 0 warnings)
+

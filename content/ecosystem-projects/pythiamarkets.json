@@ -1,0 +1,11 @@
+{
+  "id": "proj-pythia",
+  "slug": "pythiamarkets",
+  "title": "Pythiamarkets",
+  "tag": "INFO_MARKET",
+  "summary": "An encrypted information market for predictions.",
+  "website": "https://twitter.com/pythiamarkets",
+  "status": "sync_ok",
+  "categoryId": "cat-prediction",
+  "isFeatured": true
+}

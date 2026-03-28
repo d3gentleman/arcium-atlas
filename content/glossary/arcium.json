@@ -1,0 +1,15 @@
+{
+  "id": "glossary-arcium",
+  "slug": "arcium",
+  "term": "Arcium",
+  "tag": "CORE_CONCEPT",
+  "summary": "Arcium is the decentralized confidential compute network this atlas is built around, designed to process encrypted data without relying on a single operator to see every input.",
+  "aliases": ["Arcium Network"],
+  "keywords": ["confidential computing", "private computation", "encrypted data"],
+  "priority": "high",
+  "source": {
+    "label": "Arcium Docs: Intro to Arcium",
+    "href": "https://docs.arcium.com/developersintro-to-arcium"
+  },
+  "relatedCategoryIds": ["enc-eco", "enc-infra"]
+}

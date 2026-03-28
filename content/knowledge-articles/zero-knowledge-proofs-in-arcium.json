@@ -1,0 +1,16 @@
+{
+  "id": "art-2",
+  "slug": "zero-knowledge-proofs-in-arcium",
+  "title": "Understanding Zero-Knowledge Proofs in Arcium",
+  "tag": "DEEP_DIVE",
+  "summary": "A concise cryptography-oriented explanation of how proof systems fit into the broader confidentiality story.",
+  "kind": "guide",
+  "date": "2024-10-20",
+  "relatedCategoryId": "enc-crypto",
+  "bodySections": [
+    {
+      "title": "Proofs in Context",
+      "body": "Zero-knowledge language appears in the Arcium conversation because readers need a way to separate private execution from blind trust."
+    }
+  ]
+}

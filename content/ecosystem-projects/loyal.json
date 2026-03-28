@@ -1,0 +1,11 @@
+{
+  "id": "proj-loyal",
+  "slug": "loyal",
+  "title": "Loyal",
+  "tag": "AI_AGENT",
+  "summary": "An AI assistant that protects your daily life and crypto data.",
+  "website": "https://twitter.com/loyal",
+  "status": "sync_ok",
+  "categoryId": "cat-ai",
+  "isFeatured": false
+}
