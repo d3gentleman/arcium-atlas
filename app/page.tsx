@@ -9,7 +9,6 @@ import {
   getHomepageConfig,
   getNavigation,
   getRecentArticles,
-  getUIConfig,
   getKnowledgeCategories,
   getKnowledgeCategoryPath,
 } from '@/lib/content';
@@ -20,14 +19,12 @@ export default async function Home() {
     homepage,
     recentArticles,
     footerConfig,
-    ui,
     categories
   ] = await Promise.all([
     getNavigation(),
     getHomepageConfig(),
     getRecentArticles(),
     getFooterConfig(),
-    getUIConfig(),
     getKnowledgeCategories()
   ]);
 

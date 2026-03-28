@@ -11,7 +11,7 @@ interface HeroProps {
     secondaryCta: LinkAction;
   };
   quickLinks: LinkAction[];
-  liveStatusFeed: unknown[];
+  liveStatusFeed: { status: string; text: string }[];
 }
 
 export default function Hero({ hero, quickLinks, liveStatusFeed }: HeroProps) {
@@ -63,7 +63,7 @@ export default function Hero({ hero, quickLinks, liveStatusFeed }: HeroProps) {
               Live_Status_Feed
             </div>
             <div className="space-y-3 font-mono text-[10px]">
-              {liveStatusFeed.map((item: any, i) => (
+              {liveStatusFeed.map((item, i) => (
                 <div key={i} className="flex justify-between items-center border-b border-outline-variant/10 pb-2 last:border-0 last:pb-0">
                   <span className="text-on-surface-variant/60">[{item.status}]</span>
                   <span className="text-on-surface-variant truncate ml-2">{'//'} {item.text}</span>

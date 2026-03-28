@@ -15,7 +15,7 @@ export default function ProjectCard({ project, color = '#00FFA3' }: ProjectCardP
       style={{ 
         '--card-glow-rgb': hexToRgb(color),
         borderColor: `rgba(${hexToRgb(color)}, 0.1)` 
-      } as any}
+      } as React.CSSProperties}
     >
       {/* Decorative colored corner */}
       <div 

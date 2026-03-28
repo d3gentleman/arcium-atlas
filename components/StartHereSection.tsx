@@ -1,11 +1,12 @@
 import ActionLink from './ActionLink';
+import { LinkAction } from '../types/domain';
 
 interface StartHereCard {
   prefix: string;
   tag: string;
   title: string;
   description: string;
-  action: any;
+  action: LinkAction;
 }
 
 export default function StartHereSection({ cards }: { cards: StartHereCard[] }) {

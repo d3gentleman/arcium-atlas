@@ -80,7 +80,7 @@ export default function EcosystemDirectory({ categories, projects, categoryColor
                   <h2 className="font-space text-xl font-black uppercase tracking-widest text-white">
                     {category.title}
                     <span className="ml-4 text-[10px] font-mono tracking-normal opacity-40 lowercase" style={{ color: color }}>
-                       // {category.tag}
+                     {"//"} {category.tag}
                     </span>
                   </h2>
                 </div>

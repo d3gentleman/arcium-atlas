@@ -67,7 +67,7 @@ export default async function GlossaryPage() {
         </>
       }
     >
-      <GlossaryExplorer terms={enrichedTerms as any} />
+      <GlossaryExplorer terms={enrichedTerms} />
     </KnowledgePageFrame>
   );
 }
