@@ -1,0 +1,12 @@
+{
+  "id": "vanish",
+  "slug": "proj-vanish",
+  "title": "Vanish",
+  "tag": "Private Trading",
+  "summary": "Compliant, private trading.",
+  "logo": "/images/ecosystem/proj-vanish/logo.jpg",
+  "website": "https://vanish.trade",
+  "status": "sync_ok",
+  "categoryId": "defi",
+  "isFeatured": false
+}
