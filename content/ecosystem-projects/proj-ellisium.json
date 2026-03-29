@@ -1,0 +1,12 @@
+{
+  "id": "ellisium",
+  "slug": "proj-ellisium",
+  "title": "Ellisium",
+  "tag": "Dark Pool",
+  "summary": "Ellisium showcases dark pools by utilizing Arcium's Multiparty Computations.",
+  "logo": "/images/ecosystem/proj-ellisium/logo.png",
+  "website": "https://ellisium.trade",
+  "status": "sync_ok",
+  "categoryId": "defi",
+  "isFeatured": false
+}
