@@ -1,11 +1,11 @@
 {
   "id": "alphaneural",
+  "slug": "",
   "title": "AlphaNeural AI",
   "tag": "AI_DATA",
   "summary": "Decentralized AI Data Infrastructure",
   "website": "https://alphaneural.io/",
   "status": "sync_ok",
-  "categoryId": "ai",
-  "isFeatured": false,
-  "logo": null
+  "categoryId": "consumer",
+  "isFeatured": false
 }
