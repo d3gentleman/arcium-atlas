@@ -1,0 +1,12 @@
+{
+  "id": "darklake",
+  "slug": "proj-darklake",
+  "title": "Darklake",
+  "tag": "Confidential Finance",
+  "summary": "Partnered with Arcium, Darklake is a private trading platform that leverages ZK proofs to ensure privacy and safety. Darklake's privacy tooling stops MEV sandwhich attacks in their tracks.",
+  "logo": "/images/ecosystem/proj-darklake/logo.jpg",
+  "website": "https://darklake.fi",
+  "status": "sync_ok",
+  "categoryId": "defi",
+  "isFeatured": false
+}
