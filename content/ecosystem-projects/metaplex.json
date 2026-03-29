@@ -1,0 +1,11 @@
+{
+  "id": "metaplex",
+  "title": "Metaplex",
+  "tag": "PROTOCOL",
+  "summary": "Digital asset protocol",
+  "website": "https://metaplex.com/",
+  "status": "sync_ok",
+  "categoryId": "nfts",
+  "isFeatured": false,
+  "logo": null
+}

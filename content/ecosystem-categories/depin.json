@@ -1,0 +1,9 @@
+{
+  "id": "depin",
+  "title": "DePIN",
+  "tag": "INFRA",
+  "summary": "DePIN projects integrate with Arcium's network to securely store and process sensitive operational data (such as geographical locations, user nodes, or telemetrics). This ensures user privacy while enabling decentralized hardware systems to scale securely.",
+  "prefix": "05.",
+  "description": "The DePIN ecosystem built on Arcium.",
+  "bodySections": []
+}

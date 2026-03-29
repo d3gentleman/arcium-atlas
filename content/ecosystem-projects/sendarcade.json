@@ -1,0 +1,11 @@
+{
+  "id": "sendarcade",
+  "title": "Send Arcade",
+  "tag": "ARCADE",
+  "summary": "On-chain gaming experiences",
+  "website": "https://sendarcade.io/",
+  "status": "sync_ok",
+  "categoryId": "gaming",
+  "isFeatured": false,
+  "logo": null
+}

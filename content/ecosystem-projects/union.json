@@ -1,0 +1,11 @@
+{
+  "id": "union",
+  "title": "Union",
+  "tag": "ZKBIP",
+  "summary": "Zero-knowledge interoperability",
+  "website": "https://union.build/",
+  "status": "sync_ok",
+  "categoryId": "interoperability",
+  "isFeatured": false,
+  "logo": null
+}

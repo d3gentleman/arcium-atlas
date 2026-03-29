@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { KnowledgeCategoryRecord, EcosystemProjectRecord } from '../types/domain';
+import { EcosystemCategoryRecord, EcosystemProjectRecord } from '../types/domain';
 import ProjectCard from './ProjectCard';
 
 interface EcosystemDirectoryProps {
-  categories: KnowledgeCategoryRecord[];
+  categories: EcosystemCategoryRecord[];
   projects: EcosystemProjectRecord[];
   categoryColors: Record<string, string>;
 }

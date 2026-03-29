@@ -1,0 +1,9 @@
+{
+  "id": "consumer",
+  "title": "Consumer Apps",
+  "tag": "SOCIAL",
+  "summary": "Arcium enables consumer-facing applications to integrate privacy-preserving functionalities inherently, protecting user identity, reading habits, interactions, and sign-on processes from public scraping.",
+  "prefix": "07.",
+  "description": "The Consumer Apps ecosystem built on Arcium.",
+  "bodySections": []
+}

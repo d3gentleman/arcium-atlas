@@ -1,0 +1,11 @@
+{
+  "id": "dreader",
+  "title": "dReader",
+  "tag": "COMICS",
+  "summary": "Decentralized comic platform",
+  "website": "https://dreader.app/",
+  "status": "sync_ok",
+  "categoryId": "consumer",
+  "isFeatured": false,
+  "logo": null
+}

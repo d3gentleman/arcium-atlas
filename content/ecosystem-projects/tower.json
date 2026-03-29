@@ -1,0 +1,11 @@
+{
+  "id": "tower",
+  "title": "Tower",
+  "tag": "APP",
+  "summary": "DeFi Application",
+  "website": "",
+  "status": "sync_ok",
+  "categoryId": "defi",
+  "isFeatured": false,
+  "logo": null
+}

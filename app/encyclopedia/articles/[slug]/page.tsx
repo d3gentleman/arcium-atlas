@@ -39,6 +39,10 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   };
 }
 
+function slugify(text: string) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+}
+
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const article = await getKnowledgeArticleBySlug(params.slug);
 
@@ -85,17 +89,18 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <span>MODULE_12: ARTICLE_BODY</span>
           <span className="text-primary">{article.kind.toUpperCase()}_ACTIVE</span>
         </div>
-        <div className="grid gap-6 p-6 lg:grid-cols-[minmax(0,1fr)_18rem]">
-          <div className="space-y-4">
+        <div className="grid gap-8 p-6 lg:p-12 lg:grid-cols-[minmax(0,1fr)_18rem]">
+          <div className="space-y-12 max-w-4xl w-full mx-auto md:mx-0">
             {article.bodySections.map((section) => (
               <article
                 key={section.title}
-                className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5"
+                id={slugify(section.title)}
+                className="scroll-mt-24"
               >
-                <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+                <h2 className="mb-6 text-[10px] sm:text-lg font-black uppercase tracking-widest text-white border-b border-outline-variant/25 pb-4 inline-block">
                   {section.title}
-                </div>
-                <div className="space-y-4 text-sm leading-7 text-on-surface-variant">
+                </h2>
+                <div className="space-y-6 text-base leading-8 text-on-surface-variant font-medium">
                   {section.body.split('\n\n').map((paragraph, i) => (
                     <p key={i}>{paragraph}</p>
                   ))}
@@ -103,45 +108,64 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               </article>
             ))}
           </div>
-          <aside className="space-y-4">
-            <div className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
-              <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
-                Quick Paths
+          <aside className="relative">
+            <div className="sticky top-8 space-y-4">
+              <div className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+                  Table of Contents
+                </div>
+                <nav className="space-y-3 text-xs uppercase tracking-[0.16em] text-outline font-bold">
+                  {article.bodySections.map((section) => (
+                    <Link
+                      key={section.title}
+                      href={`#${slugify(section.title)}`}
+                      className="block transition-colors hover:text-white"
+                    >
+                      {section.title}
+                    </Link>
+                  ))}
+                </nav>
               </div>
-              <div className="space-y-3 text-[10px] font-bold uppercase tracking-[0.18em]">
-                <Link
-                  href="/encyclopedia"
-                  className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-primary"
-                >
-                  Back to Encyclopedia
-                </Link>
-                <Link
-                  href="/ecosystem"
-                  className="block rounded-[1rem] border border-primary/30 bg-primary/10 px-4 py-3 text-primary transition-colors hover:bg-primary/20"
-                >
-                  Open Ecosystem
-                </Link>
-                {relatedCategory ? (
-                  <Link
-                    href={getKnowledgeCategoryPath(relatedCategory.slug)}
-                    className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-primary"
-                  >
-                    Open Related Category
-                  </Link>
-                ) : null}
-              </div>
-            </div>
-            {relatedCategory ? (
+
               <div className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
                 <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
-                  Related Category
+                  Quick Paths
                 </div>
-                <div className="space-y-2">
-                  <div className="text-sm font-black uppercase text-white">{relatedCategory.title}</div>
-                  <p className="text-sm leading-7 text-on-surface-variant">{relatedCategory.summary}</p>
+                <div className="space-y-3 text-[10px] font-bold uppercase tracking-[0.18em]">
+                  <Link
+                    href="/encyclopedia"
+                    className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-white hover:bg-surface-container-high"
+                  >
+                    Back to Encyclopedia
+                  </Link>
+                  <Link
+                    href="/ecosystem"
+                    className="block rounded-[1rem] border border-primary/30 bg-primary/5 px-4 py-3 text-primary transition-colors hover:bg-primary/20 hover:text-white"
+                  >
+                    Open Ecosystem
+                  </Link>
+                  {relatedCategory ? (
+                    <Link
+                      href={getKnowledgeCategoryPath(relatedCategory.slug)}
+                      className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-white hover:bg-surface-container-high"
+                    >
+                      Open Related Category
+                    </Link>
+                  ) : null}
                 </div>
               </div>
-            ) : null}
+              {relatedCategory ? (
+                <div className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                  <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+                    Related Category
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-sm font-black uppercase text-white">{relatedCategory.title}</div>
+                    <p className="text-sm leading-7 text-on-surface-variant line-clamp-3">{relatedCategory.summary}</p>
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </aside>
         </div>
       </section>

@@ -1,0 +1,9 @@
+{
+  "id": "defi",
+  "title": "DeFi",
+  "tag": "FINANCE",
+  "summary": "Arcium enables the creation of trustless, decentralized dark pools that provide privacy for large trades while minimizing market manipulation risks. By encrypting trade states, it mitigates MEV, frontrunning, and quote fading, ensuring much fairer execution and on-chain transactional privacy.",
+  "prefix": "02.",
+  "description": "The DeFi ecosystem built on Arcium.",
+  "bodySections": []
+}

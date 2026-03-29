@@ -1,0 +1,9 @@
+{
+  "id": "gaming",
+  "title": "Gaming",
+  "tag": "PLAY",
+  "summary": "Arcium brings \"hidden-information\" mechanics natively on-chain. Games that rely on concealed states (like poker hands, blackjack, or fog-of-war strategy games) can now be played fully decentralized without other players being able to peek at the raw blockchain state to cheat.",
+  "prefix": "06.",
+  "description": "The Gaming ecosystem built on Arcium.",
+  "bodySections": []
+}

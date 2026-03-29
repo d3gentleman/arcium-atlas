@@ -1,0 +1,9 @@
+{
+  "id": "payments",
+  "title": "Payments",
+  "tag": "PAY",
+  "summary": "Utilizing Arcium's encrypted stack allows for confidential payments and highly secure thresholds/key management for wallets. This protects user balances and prevents the public tracing of sensitive financial transfers.",
+  "prefix": "03.",
+  "description": "The Payments ecosystem built on Arcium.",
+  "bodySections": []
+}

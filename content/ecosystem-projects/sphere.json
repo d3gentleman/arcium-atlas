@@ -1,0 +1,11 @@
+{
+  "id": "sphere",
+  "title": "Sphere",
+  "tag": "PAYMENTS",
+  "summary": "Web3 payment rails",
+  "website": "https://spherepay.co/",
+  "status": "sync_ok",
+  "categoryId": "payments",
+  "isFeatured": false,
+  "logo": null
+}

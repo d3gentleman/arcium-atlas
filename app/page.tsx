@@ -29,7 +29,7 @@ export default async function Home() {
   ]);
 
   // Filter for knowledge areas to show on homepage
-  const knowledgeCategories = categories.filter(c => c.group !== 'ecosystem').slice(0, 4);
+  const knowledgeCategories = categories.slice(0, 4);
 
   return (
     <>

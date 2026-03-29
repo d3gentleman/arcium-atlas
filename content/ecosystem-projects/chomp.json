@@ -1,0 +1,11 @@
+{
+  "id": "chomp",
+  "title": "Chomp",
+  "tag": "SOCIAL",
+  "summary": "Consumer social app",
+  "website": "https://chomp.games/",
+  "status": "sync_ok",
+  "categoryId": "consumer",
+  "isFeatured": false,
+  "logo": null
+}

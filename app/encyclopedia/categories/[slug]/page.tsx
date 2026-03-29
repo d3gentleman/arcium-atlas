@@ -40,6 +40,10 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   };
 }
 
+function slugify(text: string) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+}
+
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const [category, allArticles] = await Promise.all([
     getKnowledgeCategoryBySlug(params.slug),
@@ -59,10 +63,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <KnowledgePageFrame
-      eyebrow={`CATEGORY // ${(category.group || 'atlas').toUpperCase()}`}
+      eyebrow={`CATEGORY // ATLAS`}
       title={category.title}
       summary={category.summary}
-      statusLabel={category.group === 'ecosystem' ? 'TERRITORY_GUIDE_READY' : 'REFERENCE_GUIDE_READY'}
+      statusLabel={'REFERENCE_GUIDE_READY'}
       breadcrumbs={[
         { label: 'Home', href: '/' },
         { label: 'Encyclopedia', href: '/encyclopedia' },
@@ -87,17 +91,18 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <span>MODULE_09: CATEGORY_BRIEFING</span>
           <span className="text-primary">{(category.prefix || 'CAT').toUpperCase()}_ACTIVE</span>
         </div>
-        <div className="grid gap-6 p-6 lg:grid-cols-[minmax(0,1fr)_18rem]">
-          <div className="space-y-4">
+        <div className="grid gap-8 p-6 lg:p-12 lg:grid-cols-[minmax(0,1fr)_18rem]">
+          <div className="space-y-12 max-w-4xl w-full mx-auto md:mx-0">
             {(category.bodySections || []).map((section) => (
               <article
                 key={section.title}
-                className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5"
+                id={slugify(section.title)}
+                className="scroll-mt-24"
               >
-                <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+                <h2 className="mb-6 text-[10px] sm:text-lg font-black uppercase tracking-widest text-white border-b border-outline-variant/25 pb-4 inline-block">
                   {section.title}
-                </div>
-                <div className="space-y-4 text-sm leading-7 text-on-surface-variant">
+                </h2>
+                <div className="space-y-6 text-base leading-8 text-on-surface-variant font-medium">
                   {(section.body || '').split('\n\n').map((paragraph, i) => (
                     <p key={i}>{paragraph}</p>
                   ))}
@@ -105,41 +110,62 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </article>
             ))}
           </div>
-          <aside className="space-y-4">
-            <div className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
-              <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
-                Quick Paths
-              </div>
-              <div className="space-y-3 text-[10px] font-bold uppercase tracking-[0.18em]">
-                <Link
-                  href="/encyclopedia"
-                  className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-primary"
-                >
-                  Back to Encyclopedia
-                </Link>
-                <Link
-                  href="/ecosystem"
-                  className="block rounded-[1rem] border border-primary/30 bg-primary/10 px-4 py-3 text-primary transition-colors hover:bg-primary/20"
-                >
-                  Explore Ecosystem
-                </Link>
-                {overviewArticle ? (
+          <aside className="relative">
+            <div className="sticky top-8 space-y-4">
+              {category.bodySections && category.bodySections.length > 0 && (
+                <div className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                  <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+                    Table of Contents
+                  </div>
+                  <nav className="space-y-3 text-xs uppercase tracking-[0.16em] text-outline font-bold">
+                    {category.bodySections.map((section) => (
+                      <Link
+                        key={section.title}
+                        href={`#${slugify(section.title)}`}
+                        className="block transition-colors hover:text-white"
+                      >
+                        {section.title}
+                      </Link>
+                    ))}
+                  </nav>
+                </div>
+              )}
+
+              <div className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+                  Quick Paths
+                </div>
+                <div className="space-y-3 text-[10px] font-bold uppercase tracking-[0.18em]">
                   <Link
-                    href={getKnowledgeArticlePath(overviewArticle.slug)}
-                    className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-primary"
+                    href="/encyclopedia"
+                    className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-white hover:bg-surface-container-high"
                   >
-                    Read Ecosystem Overview
+                    Back to Encyclopedia
                   </Link>
-                ) : null}
+                  <Link
+                    href="/ecosystem"
+                    className="block rounded-[1rem] border border-primary/30 bg-primary/5 px-4 py-3 text-primary transition-colors hover:bg-primary/20 hover:text-white"
+                  >
+                    Explore Ecosystem
+                  </Link>
+                  {overviewArticle ? (
+                    <Link
+                      href={getKnowledgeArticlePath(overviewArticle.slug)}
+                      className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-white hover:bg-surface-container-high"
+                    >
+                      Read Ecosystem Overview
+                    </Link>
+                  ) : null}
+                </div>
               </div>
-            </div>
-            <div className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
-              <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
-                Scope
+              <div className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+                  Scope
+                </div>
+                <p className="text-sm leading-7 text-on-surface-variant line-clamp-4">
+                  {category.summary}
+                </p>
               </div>
-              <p className="text-sm leading-7 text-on-surface-variant">
-                {category.summary}
-              </p>
             </div>
           </aside>
         </div>

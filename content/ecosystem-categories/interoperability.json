@@ -1,0 +1,9 @@
+{
+  "id": "interoperability",
+  "title": "Interoperability",
+  "tag": "BRIDGE",
+  "summary": "Arcium enables \"Private Interoperability\" architectures. Users and smart contracts can have secure, private interactions across different blockchains without publicly exposing the sensitive data contained within the cross-chain messages or payloads.",
+  "prefix": "04.",
+  "description": "The Interoperability ecosystem built on Arcium.",
+  "bodySections": []
+}

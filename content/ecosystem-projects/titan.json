@@ -1,0 +1,11 @@
+{
+  "id": "titan",
+  "title": "Titan",
+  "tag": "DEFI",
+  "summary": "DeFi protocol",
+  "website": "",
+  "status": "sync_ok",
+  "categoryId": "defi",
+  "isFeatured": false,
+  "logo": null
+}

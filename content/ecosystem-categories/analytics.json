@@ -1,0 +1,9 @@
+{
+  "id": "analytics",
+  "title": "Analytics",
+  "tag": "DATA",
+  "summary": "Arcium empowers Web3 analytics platforms to securely aggregate and analyze sensitive demographic or financial data off-chain/on-chain. They can generate high-value, macro-level insights and graphs without compromising individual user privacy or exposing granular tracking.",
+  "prefix": "09.",
+  "description": "The Analytics ecosystem built on Arcium.",
+  "bodySections": []
+}

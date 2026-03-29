@@ -1,0 +1,11 @@
+{
+  "id": "solanasign",
+  "title": "Solana Sign",
+  "tag": "SIGN",
+  "summary": "Signatory tools",
+  "website": "",
+  "status": "sync_ok",
+  "categoryId": "consumer",
+  "isFeatured": false,
+  "logo": null
+}

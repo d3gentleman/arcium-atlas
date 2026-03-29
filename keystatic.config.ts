@@ -72,14 +72,25 @@ export default config({
         }),
         prefix: fields.text({ label: 'Prefix (e.g. 01.)' }),
         description: fields.text({ label: 'Short Description' }),
-        group: fields.select({
-          label: 'Group',
-          options: [
-            { label: 'Knowledge', value: 'knowledge' as const },
-            { label: 'Ecosystem', value: 'ecosystem' as const },
-          ],
-          defaultValue: 'knowledge',
+      },
+    }),
+    ecosystemCategories: collection({
+      label: 'Ecosystem Categories',
+      slugField: 'slug',
+      path: 'content/ecosystem-categories/*',
+      format: { data: 'json' },
+      schema: {
+        id: fields.text({ label: 'ID' }),
+        slug: fields.slug({ name: { label: 'Slug' } }),
+        title: fields.text({ label: 'Title' }),
+        tag: fields.text({ label: 'Tag' }),
+        summary: fields.text({ label: 'Summary', multiline: true }),
+        bodySections: fields.array(fields.object(bodySectionFields), {
+          label: 'Body Sections',
+          itemLabel: (props) => props.fields.title.value,
         }),
+        prefix: fields.text({ label: 'Prefix (e.g. 01.)' }),
+        description: fields.text({ label: 'Short Description' }),
       },
     }),
     knowledgeArticles: collection({
@@ -164,7 +175,7 @@ export default config({
         }),
         categoryId: fields.relationship({
           label: 'Category',
-          collection: 'knowledgeCategories',
+          collection: 'ecosystemCategories',
           validation: { isRequired: true },
         }),
         isFeatured: fields.checkbox({ label: 'Featured (Large Card)', defaultValue: false }),

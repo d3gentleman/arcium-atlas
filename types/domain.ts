@@ -33,7 +33,17 @@ export interface KnowledgeCategoryRecord {
   bodySections: BodySection[];
   prefix?: string;
   description?: string;
-  group?: 'knowledge' | 'ecosystem';
+}
+
+export interface EcosystemCategoryRecord {
+  id: string;
+  slug: string;
+  title: string;
+  tag: string;
+  summary: string;
+  bodySections: BodySection[];
+  prefix?: string;
+  description?: string;
 }
 
 export interface KnowledgeArticleRecord {

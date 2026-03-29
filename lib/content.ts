@@ -1,7 +1,8 @@
 import { createReader } from '@keystatic/core/reader';
 import keystaticConfig from '@/keystatic.config';
-import { 
+import {
   KnowledgeCategoryRecord, 
+  EcosystemCategoryRecord,
   KnowledgeArticleRecord, 
   GlossaryTermRecord,
   EcosystemProjectRecord,
@@ -87,6 +88,20 @@ export async function getGlossaryTermBySlug(slug: string): Promise<GlossaryTermR
 
 // --- ECOSYSTEM ---
 
+export async function getEcosystemCategories(): Promise<EcosystemCategoryRecord[]> {
+  const categories = await reader.collections.ecosystemCategories.all();
+  return categories.map(cat => ({
+    ...cat.entry,
+    slug: cat.slug,
+  })) as EcosystemCategoryRecord[];
+}
+
+export async function getEcosystemCategoryBySlug(slug: string): Promise<EcosystemCategoryRecord | null> {
+  const category = await reader.collections.ecosystemCategories.read(slug);
+  if (!category) return null;
+  return { ...category, slug } as EcosystemCategoryRecord;
+}
+
 export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> {
   const projects = await reader.collections.ecosystemProjects.all();
   return projects.map(p => ({
@@ -104,8 +119,9 @@ export async function getEcosystemProjectBySlug(slug: string): Promise<Ecosystem
 // --- AGGREGATORS & SEARCH ---
 
 export async function getDiscoveryIndex(): Promise<DiscoveryItem[]> {
-  const [categories, articles, terms, projects] = await Promise.all([
+  const [categories, ecoCategories, articles, terms, projects] = await Promise.all([
     getKnowledgeCategories(),
+    getEcosystemCategories(),
     getKnowledgeArticles(),
     getGlossaryTerms(),
     getEcosystemProjects()
@@ -121,6 +137,20 @@ export async function getDiscoveryIndex(): Promise<DiscoveryItem[]> {
     eyebrow: c.prefix || 'KNOWLEDGE',
     kind: 'category',
     priority: 'medium',
+    featured: false,
+    keywords: []
+  }));
+
+  const mappedEcoCategories: DiscoveryItem[] = ecoCategories.map(c => ({
+    id: c.id || c.slug,
+    slug: c.slug,
+    title: c.title,
+    href: getEcosystemCategoryPath(c.slug),
+    summary: c.summary || '',
+    tag: c.tag || 'ECOSYSTEM',
+    eyebrow: c.prefix || 'TERRITORY',
+    kind: 'category',
+    priority: 'high',
     featured: false,
     keywords: []
   }));
@@ -169,6 +199,7 @@ export async function getDiscoveryIndex(): Promise<DiscoveryItem[]> {
 
   return [
     ...mappedCategories,
+    ...mappedEcoCategories,
     ...mappedArticles,
     ...mappedTerms,
     ...mappedProjects
@@ -210,4 +241,8 @@ export function getKnowledgeArticlePath(slug: string): string {
 
 export function getKnowledgeCategoryPath(slug: string): string {
   return `/encyclopedia/categories/${slug}`;
+}
+
+export function getEcosystemCategoryPath(slug: string): string {
+  return `/ecosystem/categories/${slug}`;
 }

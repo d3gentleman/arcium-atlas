@@ -1,11 +1,11 @@
 {
-  "id": "proj-nosana",
-  "slug": "nosana",
+  "id": "nosana",
   "title": "Nosana",
-  "tag": "COMPUTE_GRID",
-  "summary": "A network providing computing power for AI tasks.",
-  "website": "https://nosana.io",
+  "tag": "COMPUTE",
+  "summary": "AI Inference Network",
+  "website": "https://nosana.io/",
   "status": "sync_ok",
-  "categoryId": "cat-ai",
-  "isFeatured": true
+  "categoryId": "ai",
+  "isFeatured": false,
+  "logo": null
 }

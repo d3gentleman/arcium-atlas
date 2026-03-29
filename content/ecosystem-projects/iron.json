@@ -1,0 +1,11 @@
+{
+  "id": "iron",
+  "title": "Iron",
+  "tag": "WALLET",
+  "summary": "Secure transacting tools",
+  "website": "",
+  "status": "sync_ok",
+  "categoryId": "payments",
+  "isFeatured": false,
+  "logo": null
+}

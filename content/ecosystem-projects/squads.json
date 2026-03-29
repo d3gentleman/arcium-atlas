@@ -1,11 +1,11 @@
 {
-  "id": "proj-squads",
-  "slug": "squads",
+  "id": "squads",
   "title": "Squads",
   "tag": "MULTISIG",
-  "summary": "A platform for teams to manage their crypto assets together.",
-  "website": "https://squads.so",
+  "summary": "Smart contract wallet infrastructure",
+  "website": "https://squads.so/",
   "status": "sync_ok",
-  "categoryId": "cat-payments",
-  "isFeatured": true
+  "categoryId": "payments",
+  "isFeatured": false,
+  "logo": null
 }

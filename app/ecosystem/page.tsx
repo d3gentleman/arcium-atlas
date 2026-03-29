@@ -1,5 +1,5 @@
 import { 
-  getKnowledgeCategories, 
+  getEcosystemCategories, 
   getEcosystemProjects, 
   getNavigation, 
   getFooterConfig,
@@ -10,14 +10,11 @@ import Footer from '@/components/Footer';
 import EcosystemDirectory from '@/components/EcosystemDirectory';
 
 export default async function EcosystemPage() {
-  const categories = await getKnowledgeCategories();
+  const ecosystemCategories = await getEcosystemCategories();
   const projects = await getEcosystemProjects();
   const navLinks = await getNavigation();
   const footerConfig = await getFooterConfig();
   const categoryColors = await getCategoryColors();
-  
-  // Filter for categories that belong to the ecosystem group
-  const ecosystemCategories = categories.filter(c => c.group === 'ecosystem');
 
   return (
     <div className="col-span-12 flex min-h-screen flex-col bg-background text-on-surface">

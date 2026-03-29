@@ -1,0 +1,9 @@
+{
+  "id": "ai",
+  "title": "Artificial Intelligence",
+  "tag": "AI",
+  "summary": "Arcium supports AI systems that process sensitive data in encrypted form without exposing it. This enables private AI training and inference, ensuring that proprietary datasets and models remain completely confidential during computation.",
+  "prefix": "01.",
+  "description": "The Artificial Intelligence ecosystem built on Arcium.",
+  "bodySections": []
+}

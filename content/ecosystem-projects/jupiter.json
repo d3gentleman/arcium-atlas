@@ -1,12 +1,11 @@
 {
-  "id": "proj-jupiter",
-  "slug": "jupiter",
+  "id": "jupiter",
   "title": "Jupiter",
-  "tag": "DEX_AGGREGATOR",
-  "summary": "A popular trading platform minimizing price impact.",
-  "logo": "/images/ecosystem/jupiter/logo.svg",
-  "website": "https://jup.ag",
+  "tag": "DEX_AGG",
+  "summary": "Premier DEX aggregator on Solana",
+  "website": "https://jup.ag/",
   "status": "sync_ok",
-  "categoryId": "cat-defi",
-  "isFeatured": true
+  "categoryId": "defi",
+  "isFeatured": false,
+  "logo": null
 }
