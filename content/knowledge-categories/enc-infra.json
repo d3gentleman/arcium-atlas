@@ -11,6 +11,5 @@
     }
   ],
   "prefix": "IN",
-  "description": "The runtime layer behind confidential execution.",
-  "group": "knowledge"
+  "description": "The runtime layer behind confidential execution."
 }
