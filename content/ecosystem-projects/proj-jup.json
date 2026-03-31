@@ -1,0 +1,12 @@
+{
+  "id": "jup",
+  "slug": "proj-jup",
+  "title": "Jupiter",
+  "tag": "DEX AGGREGATOR",
+  "summary": "Jupiter is a dex aggregator on Solana.",
+  "logo": "/images/ecosystem/proj-jup/logo.svg",
+  "website": "https://jup.ag",
+  "status": "sync_ok",
+  "categoryId": "defi",
+  "isFeatured": false
+}

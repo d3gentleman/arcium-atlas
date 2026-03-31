@@ -1,0 +1,12 @@
+{
+  "id": "melee-markets",
+  "slug": "proj-melee",
+  "title": "Melee Markets",
+  "tag": "PREDICTION MARKET",
+  "summary": "Melee Markets is a prediction market, built using Arcium. The privacy that Arcium offers allows Melee to implement features never before seen by any of its competitors.",
+  "logo": "/images/ecosystem/proj-melee/logo.jpg",
+  "website": "https://alpha.melee.markets",
+  "status": "sync_ok",
+  "categoryId": "consumer",
+  "isFeatured": false
+}

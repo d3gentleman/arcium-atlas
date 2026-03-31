@@ -1,0 +1,12 @@
+{
+  "id": "crunchdao",
+  "slug": "proj-crunchdao",
+  "title": "Crunch DAO",
+  "tag": "Confidential Machine Learning",
+  "summary": "Crunch DAO leverages Multiparty Computations to enable confidential model training and secure prediction execution.",
+  "logo": "/images/ecosystem/proj-crunchdao/logo.png",
+  "website": "https://crunchdao.com/",
+  "status": "sync_ok",
+  "categoryId": "ai",
+  "isFeatured": false
+}
