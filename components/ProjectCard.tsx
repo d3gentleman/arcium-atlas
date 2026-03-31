@@ -11,7 +11,7 @@ export default function ProjectCard({ project, color = '#00FFA3' }: ProjectCardP
 
   return (
     <div 
-      className="group relative border border-outline-variant/30 bg-surface-container-high/40 p-6 transition-all duration-300 hover:bg-surface-container-high shadow-[4px_4px_0px_rgba(0,0,0,0.4)] hover:shadow-[0_0_20px_rgba(var(--card-glow-rgb),0.15)] overflow-hidden"
+      className="group relative flex flex-col h-full border border-outline-variant/30 bg-surface-container-high/40 p-6 transition-all duration-300 hover:bg-surface-container-high shadow-[4px_4px_0px_rgba(0,0,0,0.4)] hover:shadow-[0_0_20px_rgba(var(--card-glow-rgb),0.15)] overflow-hidden"
       style={{ 
         '--card-glow-rgb': hexToRgb(color),
         borderColor: `rgba(${hexToRgb(color)}, 0.1)` 
@@ -23,10 +23,10 @@ export default function ProjectCard({ project, color = '#00FFA3' }: ProjectCardP
         style={{ backgroundColor: color }}
       />
 
-      <div className="flex items-start justify-between gap-4 mb-6">
+      <div className="flex items-start justify-between gap-4 mb-6 relative z-10">
         <div className="flex flex-col gap-1">
           <div 
-            className="text-[10px] font-bold uppercase tracking-[0.2em]"
+            className="text-xs font-bold uppercase tracking-[0.2em]"
             style={{ color: color }}
           >
             {project.tag}
@@ -37,7 +37,7 @@ export default function ProjectCard({ project, color = '#00FFA3' }: ProjectCardP
         </div>
         
         {project.logo && (
-          <div className="relative h-10 w-10 flex-shrink-0 transition-transform duration-500 group-hover:scale-110">
+          <div className="relative h-12 w-12 flex-shrink-0 transition-transform duration-500 group-hover:scale-110">
             <Image
               src={project.logo}
               alt={`${project.title} logo`}
@@ -48,13 +48,13 @@ export default function ProjectCard({ project, color = '#00FFA3' }: ProjectCardP
         )}
       </div>
 
-      <p className="font-jetbrains text-sm leading-6 text-on-surface-variant/80 mb-8 line-clamp-3">
+      <p className="font-jetbrains text-sm leading-6 text-on-surface-variant/80 mb-8 line-clamp-3 relative z-10 flex-grow">
         {project.summary}
       </p>
 
-      <div className="flex items-center justify-between mt-auto">
+      <div className="flex items-center justify-between mt-auto relative z-10">
         {isComingSoon ? (
-          <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant/40">
+          <span className="inline-flex items-center px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] text-on-surface-variant/40 border border-outline-variant/20 bg-surface-container-low/50">
             Coming Soon _
           </span>
         ) : (
@@ -62,19 +62,19 @@ export default function ProjectCard({ project, color = '#00FFA3' }: ProjectCardP
             href={project.website || '#'}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[10px] font-bold uppercase tracking-[0.2em] transition-colors flex items-center gap-1"
+            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] transition-all bg-surface-container-low/50 hover:bg-primary/10 border border-outline-variant/20 hover:border-primary/50"
             style={{ color: color }}
           >
-            Visit Project <span>↗</span>
+            Visit Project <span className="text-sm">↗</span>
           </a>
         )}
         
         <div className="flex items-center gap-2">
             <div 
-              className={`h-1.5 w-1.5 rounded-full ${project.status === 'sync_ok' ? '' : 'bg-on-surface-variant/30'}`} 
-              style={project.status === 'sync_ok' ? { backgroundColor: color, boxShadow: `0 0 8px ${color}99` } : {}}
+              className={`h-2 w-2 rounded-full ${project.status === 'sync_ok' ? '' : 'bg-on-surface-variant/30'}`} 
+              style={project.status === 'sync_ok' ? { backgroundColor: color, boxShadow: `0 0 10px ${color}99` } : {}}
             />
-            <span className="text-[8px] font-mono text-on-surface-variant/60 uppercase">
+            <span className="text-[10px] font-mono text-on-surface-variant/60 uppercase tracking-wider">
                 {project.status === 'sync_ok' ? 'SYNC_OK' : project.status.toUpperCase()}
             </span>
         </div>
