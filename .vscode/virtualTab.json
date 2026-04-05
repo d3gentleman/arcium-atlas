@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "id": "builtin_group_id",
+    "name": "Currently Open Files",
+    "files": [
+      "components/NavBar.tsx",
+      "components/EcosystemDirectory.tsx",
+      "app/about/page.tsx",
+      "components/DiscoveryShell.tsx",
+      "app/ecosystem/categories/[slug]/page.tsx",
+      "app/sitemap.ts",
+      "app/ecosystem/[slug]/page.tsx",
+      "app/page.tsx",
+      "components/ProjectCard.tsx",
+      "lib/config.ts",
+      "lib/content.ts",
+      "keystatic.config.ts",
+      "types/domain.ts"
+    ],
+    "builtIn": true
+  }
+]

@@ -52,7 +52,7 @@ export default async function ProjectPage({
                 )}
                 <div>
                   <div className="text-xs font-bold uppercase tracking-[0.2em] mb-2" style={{ color }}>
-                    // {project.tag}
+                    {"//"} {project.tag}
                   </div>
                   <h1 className="font-space text-4xl md:text-5xl font-black uppercase tracking-tight text-white">
                     {project.title}
