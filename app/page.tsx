@@ -59,7 +59,7 @@ export default async function Home() {
                {marqueeProjects.map((project, idx) => (
                  <div key={project.id + idx} className="mx-12 flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity">
                    <div className="relative h-10 w-10">
-                     <Image src={project.logo!} alt={project.title} fill className="object-contain filter grayscale invert" />
+                     <Image src={project.logo!} alt={project.title} fill className="object-contain" />
                    </div>
                    <span className="font-space font-bold uppercase tracking-widest text-sm text-white">{project.title}</span>
                  </div>

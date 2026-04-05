@@ -47,7 +47,7 @@ export default async function ProjectPage({
               <div className="flex items-center gap-6">
                 {project.logo && (
                   <div className="relative h-20 w-20 md:h-24 md:w-24 shrink-0 bg-black p-4 border border-outline-variant/30">
-                    <Image src={project.logo} alt={project.title} fill className="object-contain p-2 filter grayscale invert" />
+                    <Image src={project.logo} alt={project.title} fill className="object-contain p-2" />
                   </div>
                 )}
                 <div>

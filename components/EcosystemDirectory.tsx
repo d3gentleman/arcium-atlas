@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { EcosystemCategoryRecord, EcosystemProjectRecord } from '../types/domain';
-import ProjectCard from './ProjectCard';
+import ProjectRow from './ProjectRow';
 
 interface EcosystemDirectoryProps {
   categories: EcosystemCategoryRecord[];
@@ -104,12 +104,18 @@ export default function EcosystemDirectory({ categories, projects, categoryColor
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="flex flex-col border border-outline-variant/30 bg-[#06080a]/50">
+                      <div className="hidden md:grid md:grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant/30 bg-surface-container/30 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50">
+                        <div className="col-span-4">Project_Identifier</div>
+                        <div className="col-span-5">Summary_Log</div>
+                        <div className="col-span-2">Sys_Status</div>
+                        <div className="col-span-1 text-right">Action</div>
+                      </div>
                       {featuredProjects.map((project) => {
                         const category = categories.find(c => c.id === project.categoryId || c.slug === project.categoryId);
                         const color = category ? (categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3') : '#00FFA3';
                         return (
-                          <ProjectCard key={project.id} project={project} color={color} />
+                          <ProjectRow key={project.id} project={project} color={color} />
                         );
                       })}
                     </div>
@@ -150,9 +156,15 @@ export default function EcosystemDirectory({ categories, projects, categoryColor
                         </p>
                       </div>
 
-                      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                      <div className="flex flex-col border border-outline-variant/30 bg-[#06080a]/50">
+                        <div className="hidden md:grid md:grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant/30 bg-surface-container/30 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50">
+                          <div className="col-span-4">Project_Identifier</div>
+                          <div className="col-span-5">Summary_Log</div>
+                          <div className="col-span-2">Sys_Status</div>
+                          <div className="col-span-1 text-right">Action</div>
+                        </div>
                         {categoryProjects.map((project) => (
-                          <ProjectCard key={project.id} project={project} color={color} />
+                          <ProjectRow key={project.id} project={project} color={color} />
                         ))}
                       </div>
                     </section>
@@ -199,9 +211,15 @@ export default function EcosystemDirectory({ categories, projects, categoryColor
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="flex flex-col border border-outline-variant/30 bg-[#06080a]/50">
+                  <div className="hidden md:grid md:grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant/30 bg-surface-container/30 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50">
+                    <div className="col-span-4">Project_Identifier</div>
+                    <div className="col-span-5">Summary_Log</div>
+                    <div className="col-span-2">Sys_Status</div>
+                    <div className="col-span-1 text-right">Action</div>
+                  </div>
                   {categoryProjects.map((project) => (
-                    <ProjectCard key={project.id} project={project} color={color} />
+                    <ProjectRow key={project.id} project={project} color={color} />
                   ))}
                 </div>
               </section>

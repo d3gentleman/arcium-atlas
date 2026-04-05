@@ -106,11 +106,15 @@ export const UI_STRINGS: UIConfig = {
 };
 
 export const CATEGORY_COLORS: Record<string, string> = {
-  "cat-defi": "#00FFA3",
-  "cat-ai": "#00E0FF",
-  "cat-payments": "#FFC700",
-  "cat-consumer": "#FF00E5",
-  "cat-prediction": "#B200FF"
+  "ai": "#00E0FF",
+  "analytics": "#4DFFD4",
+  "consumer": "#FF00E5",
+  "defi": "#00FFA3",
+  "depin": "#B200FF",
+  "gaming": "#FF3366",
+  "interoperability": "#FF6B00",
+  "nfts": "#FF00AA",
+  "payments": "#FFC700"
 };
 
 export const HOMEPAGE_CONFIG = {

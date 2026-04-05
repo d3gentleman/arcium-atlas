@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import KnowledgePageFrame from '@/components/KnowledgePageFrame';
-import ProjectCard from '@/components/ProjectCard';
+import ProjectRow from '@/components/ProjectRow';
 import {
   getEcosystemCategoryBySlug,
   getEcosystemCategories,
@@ -183,9 +183,15 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                 <span>MODULE_10: TERRITORY_PROJECTS</span>
                 <span className="text-primary">ENTITIES_DETECTED</span>
               </div>
-              <div className="grid gap-6 p-6 lg:p-12 lg:grid-cols-2 lg:grid-cols-3">
+              <div className="flex flex-col border border-outline-variant/30 bg-[#06080a]/50 m-6 lg:m-12">
+                <div className="hidden md:grid md:grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant/30 bg-surface-container/30 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50">
+                  <div className="col-span-4">Project_Identifier</div>
+                  <div className="col-span-5">Summary_Log</div>
+                  <div className="col-span-2">Sys_Status</div>
+                  <div className="col-span-1 text-right">Action</div>
+                </div>
                 {projects.map((project) => (
-                  <ProjectCard
+                  <ProjectRow
                     key={project.id}
                     project={project}
                     color={color}

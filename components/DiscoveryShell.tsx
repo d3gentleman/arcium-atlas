@@ -430,12 +430,8 @@ export default function DiscoveryShell({ children, items, ui }: DiscoveryShellPr
   }, [isOpen]);
 
   useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
     setIsOpen(false);
-  }, [isOpen, pathname]);
+  }, [pathname]);
 
   return (
     <DiscoveryContext.Provider value={value}>
