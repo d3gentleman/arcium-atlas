@@ -10,14 +10,13 @@
    Linting and checking validity of types ...
 Failed to compile.
 
-./components/EncyclopediaSearch.tsx:4:10
+./components/RecentlyUpdated.tsx:2:10
 Type error: Module '"../types/domain"' has no exported member 'KnowledgeArticleRecord'.
 
-  2 |
-  3 | import { useState, useMemo } from 'react';
-> 4 | import { KnowledgeArticleRecord, KnowledgeCategoryRecord } from '../types/domain';
+  1 | import Link from 'next/link';
+> 2 | import { KnowledgeArticleRecord } from '../types/domain';
     |          ^
-  5 | import KnowledgeRecordCard from './KnowledgeRecordCard';
-  6 |
-  7 | interface EncyclopediaSearchProps {
+  3 | import { getKnowledgeArticlePath } from '@/lib/content';
+  4 |
+  5 | export default function RecentlyUpdated({ articles }: { articles: KnowledgeArticleRecord[] }) {
 Next.js build worker exited with code: 1 and signal: null
