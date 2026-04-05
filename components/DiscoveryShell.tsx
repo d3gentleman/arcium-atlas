@@ -32,7 +32,7 @@ interface DiscoveryContextValue {
 }
 
 const MAX_RESULTS = 8;
-const GROUP_ORDER: DiscoveryItemKind[] = ['core', 'project', 'category', 'glossary', 'article'];
+const GROUP_ORDER: DiscoveryItemKind[] = ['core', 'project', 'category'];
 
 const DiscoveryContext = createContext<DiscoveryContextValue | null>(null);
 
@@ -121,10 +121,6 @@ function groupLabel(kind: DiscoveryItemKind, ui: UIConfig): string {
       return ui.discoveryGroupProjects;
     case 'category':
       return ui.discoveryGroupCategories;
-    case 'glossary':
-      return ui.discoveryGroupGlossary;
-    case 'article':
-      return ui.discoveryGroupArticles;
     default:
       return 'Results';
   }

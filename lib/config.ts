@@ -3,23 +3,13 @@ import { FooterConfig, LinkAction, UIConfig } from "@/types/domain";
 export const NAVIGATION_CONFIG: LinkAction[] = [
   {
     type: "internal" as const,
-    label: "Ecosystem",
+    label: "Ecosystem Hub",
+    href: "/"
+  },
+  {
+    type: "internal" as const,
+    label: "Directory",
     href: "/ecosystem"
-  },
-  {
-    type: "internal" as const,
-    label: "Encyclopedia",
-    href: "/encyclopedia"
-  },
-  {
-    type: "internal" as const,
-    label: "Glossary",
-    href: "/glossary"
-  },
-  {
-    type: "internal" as const,
-    label: "Infrastructure",
-    href: "/encyclopedia/categories/enc-infra"
   },
   {
     type: "internal" as const,
@@ -48,8 +38,8 @@ export const FOOTER_CONFIG: FooterConfig = {
   ],
   metadata: {
     copyright: "(C) 2026 ARCIUM ATLAS",
-    coords: "CURATED_GUIDES // ECOSYSTEM_DIRECTORY // SOURCE_LINKS",
-    mission: "A clearer map of Arcium for newcomers, builders, and researchers."
+    coords: "ECOSYSTEM_HUB // BUILDER_DIRECTORY // SOURCE_LINKS",
+    mission: "A comprehensive directory of the Arcium ecosystem."
   }
 };
 
@@ -58,7 +48,7 @@ export const UI_STRINGS: UIConfig = {
   mapBeginnerToggle: "Beginner",
   mapTechnicalToggle: "Technical",
   mapClose: "Close Panel",
-  mapReadArticle: "Read Full Article →",
+  mapReadArticle: "View Project Details →",
   mapSpecTechnical: "Technical_Spec",
   mapSpecOverview: "Overview",
   mapPanelOverviewTitle: "Overview",
@@ -78,7 +68,7 @@ export const UI_STRINGS: UIConfig = {
   heroRenderActive: "REALTIME_RENDER_ACTIVE",
   heroZoom: "ZOOM: 1.0X",
   heroAtlasTerritories: "Territories",
-  heroFeaturedSystems: "Featured Systems",
+  heroFeaturedSystems: "Featured Builders",
   filterLegendDesc: "ACTIVE_FILTERS",
   filterAllStr: "View All",
   legendHeader: "SYSTEM_LEGEND",
@@ -90,14 +80,14 @@ export const UI_STRINGS: UIConfig = {
   backToAtlas: "← Back to Hub",
   discoveryOpen: "Open Atlas Search",
   discoveryClose: "Close Search",
-  discoverySearchPlaceholder: "Search builders, glossary terms, MXEs, and guides...",
+  discoverySearchPlaceholder: "Search builders and ecosystem categories...",
   discoverySearchHint: "CTRL/CMD + K // ESC to close",
-  discoveryInitialState: "Search Arcium builders, glossary terms, developer guides, and category pages.",
+  discoveryInitialState: "Search Arcium builders and category territories.",
   discoveryNoResultsTitle: "No atlas records matched this query.",
-  discoveryNoResultsBody: "Try a glossary term, builder, MXE topic, or category name.",
+  discoveryNoResultsBody: "Try a builder name or a category name.",
   discoveryGroupCore: "Core Network",
   discoveryGroupProjects: "Builders",
-  discoveryGroupCategories: "Knowledge Areas",
+  discoveryGroupCategories: "Territories",
   discoveryGroupGlossary: "Glossary Terms",
   discoveryGroupArticles: "Guides & Articles",
   discoveryOpenResult: "Open Record",
@@ -125,13 +115,13 @@ export const CATEGORY_COLORS: Record<string, string> = {
 
 export const HOMEPAGE_CONFIG = {
   hero: {
-    subtitle: "Curated guide to Arcium",
-    titleLine1: "UNDERSTAND THE",
-    titleLine2: "ARCIUM LANDSCAPE",
-    description: "Browse a clearer map of Arcium: what the network is, where confidential compute fits, and which builders are already putting it to work.",
+    subtitle: "The Arcium Ecosystem",
+    titleLine1: "DISCOVER THE",
+    titleLine2: "BUILDER NETWORK",
+    description: "Explore the decentralized applications, protocols, and infrastructure leveraging Arcium for confidential computing.",
     primaryCta: {
       type: "internal" as const,
-      label: "View Ecosystem",
+      label: "View Directory",
       href: "/ecosystem"
     },
     secondaryCta: {
@@ -140,51 +130,16 @@ export const HOMEPAGE_CONFIG = {
       label: "What Is Arcium?"
     }
   },
-  startHereCards: [
-    {
-      prefix: "SYS_A",
-      tag: "Subsystem_A",
-      title: "Understanding Arcium",
-      description: "A concise overview of Arcium as a confidential execution layer and why it matters across the rest of the atlas.",
-      action: {
-        type: "internal" as const,
-        label: "Read Guide",
-        href: "/encyclopedia/articles/understanding-arcium"
-      }
-    },
-    {
-      prefix: "SYS_B",
-      tag: "Subsystem_B",
-      title: "What are MXEs?",
-      description: "An introductory framing for the execution environments that power Arcium across the network.",
-      action: {
-        type: "internal" as const,
-        label: "Read Guide",
-        href: "/encyclopedia/articles/what-are-mxes"
-      }
-    },
-    {
-      prefix: "GRID",
-      tag: "ORIENTATION",
-      title: "Ecosystem Overview",
-      description: "See how Arcium shows up across trading, AI, payments, analytics, and other product territories.",
-      action: {
-        type: "internal" as const,
-        label: "Read Overview",
-        href: "/encyclopedia/articles/ecosystem-overview"
-      }
-    }
-  ],
   quickLinks: [
     {
       type: "internal" as const,
-      label: "Browse Encyclopedia",
-      href: "/encyclopedia"
+      label: "Browse Directory",
+      href: "/ecosystem"
     },
     {
       type: "command" as const,
       command: "open-discovery",
-      label: "Search Builders & Guides"
+      label: "Search Builders"
     },
     {
       type: "external" as const,
@@ -195,15 +150,15 @@ export const HOMEPAGE_CONFIG = {
   liveStatusFeed: [
     {
       status: "LIVE",
-      text: "Curated guides, glossary terms, and ecosystem records"
+      text: "Explore live projects and featured builders"
     },
     {
       status: "SOURCE",
-      text: "Atlas entries link back to official Arcium references where possible"
+      text: "Every builder leverages confidential compute"
     },
     {
-      status: "START",
-      text: "Use About, Start Here, and the glossary to orient quickly"
+      status: "BUILD",
+      text: "Start building on Arcium today"
     }
   ]
 };

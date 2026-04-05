@@ -24,16 +24,6 @@ export interface BodySection {
   body: string;
 }
 
-export interface KnowledgeCategoryRecord {
-  id: string;
-  slug: string;
-  title: string;
-  tag: string;
-  summary: string;
-  bodySections: BodySection[];
-  prefix?: string;
-  description?: string;
-}
 
 export interface EcosystemCategoryRecord {
   id: string;
@@ -46,33 +36,6 @@ export interface EcosystemCategoryRecord {
   description?: string;
 }
 
-export interface KnowledgeArticleRecord {
-  id: string;
-  slug: string;
-  title: string;
-  tag: string;
-  summary: string;
-  bodySections: BodySection[];
-  kind: 'guide' | 'update' | 'article';
-  date?: string;
-  relatedCategoryId: string;
-}
-
-export interface GlossaryTermRecord {
-  id: string;
-  slug: string;
-  term: string;
-  tag: string;
-  summary: string;
-  aliases?: string[];
-  keywords?: string[];
-  priority: 'high' | 'medium' | 'low';
-  source?: {
-    label: string;
-    href: string;
-  };
-  relatedCategoryIds: string[];
-}
 
 export interface EcosystemProjectRecord {
   id: string;
@@ -80,14 +43,18 @@ export interface EcosystemProjectRecord {
   title: string;
   tag: string;
   summary: string;
+  description?: string;
   logo?: string;
   website?: string;
-  status: 'sync_ok' | 'coming_soon' | 'maintenance';
+  twitter?: string;
+  github?: string;
+  status: 'sync_ok' | 'coming_soon' | 'maintenance' | 'deprecated' | 'testing';
   categoryId: string;
   isFeatured: boolean;
+  metrics?: { label: string; value: string }[];
 }
 
-export type DiscoveryItemKind = 'core' | 'project' | 'category' | 'glossary' | 'article';
+export type DiscoveryItemKind = 'core' | 'project' | 'category';
 
 export interface DiscoveryItem {
   id: string;

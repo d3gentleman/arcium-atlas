@@ -8,26 +8,16 @@
    Creating an optimized production build ...
  Γ£ô Compiled successfully
    Linting and checking validity of types ...
-   Collecting page data ...
-Error: Missing required config in Keystatic API setup when using the 'github' storage mode:
-- clientId (can be provided via KEYSTATIC_GITHUB_CLIENT_ID env var)
-- clientSecret (can be provided via KEYSTATIC_GITHUB_CLIENT_SECRET env var)
+Failed to compile.
 
-If you've created your GitHub app locally, make sure to copy the environment variables from your local env file to your deployed environment
-    at t.slugEnvName (E:\Dev\arcatlas\arcium-atlas\.next\server\app\api\keystatic\[...params]\route.js:2:4377)
-    at E:\Dev\arcatlas\arcium-atlas\.next\server\app\api\keystatic\[...params]\route.js:5:1306
-    at 91865 (E:\Dev\arcatlas\arcium-atlas\.next\server\app\api\keystatic\[...params]\route.js:5:1593)
-    at t (E:\Dev\arcatlas\arcium-atlas\.next\server\webpack-runtime.js:1:128)
-    at r (E:\Dev\arcatlas\arcium-atlas\.next\server\app\api\keystatic\[...params]\route.js:5:11953)
-    at E:\Dev\arcatlas\arcium-atlas\.next\server\app\api\keystatic\[...params]\route.js:5:11984
-    at t.X (E:\Dev\arcatlas\arcium-atlas\.next\server\webpack-runtime.js:1:1206)
-    at E:\Dev\arcatlas\arcium-atlas\.next\server\app\api\keystatic\[...params]\route.js:5:11966
-    at Object.<anonymous> (E:\Dev\arcatlas\arcium-atlas\.next\server\app\api\keystatic\[...params]\route.js:5:12012)
-    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+./components/EncyclopediaSearch.tsx:4:10
+Type error: Module '"../types/domain"' has no exported member 'KnowledgeArticleRecord'.
 
-> Build error occurred
-Error: Failed to collect page data for /api/keystatic/[...params]
-    at E:\Dev\arcatlas\arcium-atlas\node_modules\next\dist\build\utils.js:1269:15
-    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {
-  type: 'Error'
-}
+  2 |
+  3 | import { useState, useMemo } from 'react';
+> 4 | import { KnowledgeArticleRecord, KnowledgeCategoryRecord } from '../types/domain';
+    |          ^
+  5 | import KnowledgeRecordCard from './KnowledgeRecordCard';
+  6 |
+  7 | interface EncyclopediaSearchProps {
+Next.js build worker exited with code: 1 and signal: null

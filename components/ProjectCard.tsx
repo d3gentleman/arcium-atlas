@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { EcosystemProjectRecord } from '../types/domain';
 
 interface ProjectCardProps {
@@ -8,9 +9,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, color = '#00FFA3' }: ProjectCardProps) {
   const isComingSoon = project.status === 'coming_soon';
-  const website = project.website
-    ? (project.website.startsWith('http') ? project.website : `https://${project.website}`)
-    : '#';
+  const website = `/ecosystem/${project.slug}`;
 
   return (
     <div 
@@ -61,15 +60,13 @@ export default function ProjectCard({ project, color = '#00FFA3' }: ProjectCardP
             Coming Soon _
           </span>
         ) : (
-          <a
+          <Link
             href={website}
-            target="_blank"
-            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] transition-all bg-surface-container-low/50 hover:bg-primary/10 border border-outline-variant/20 hover:border-primary/50"
             style={{ color: color }}
           >
-            Visit Project <span className="text-sm">↗</span>
-          </a>
+            View Project <span className="text-sm">→</span>
+          </Link>
         )}
         
         <div className="flex items-center gap-2">

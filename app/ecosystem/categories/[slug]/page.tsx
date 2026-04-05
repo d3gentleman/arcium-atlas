@@ -7,8 +7,6 @@ import {
   getEcosystemCategoryBySlug,
   getEcosystemCategories,
   getEcosystemProjects,
-  getKnowledgeArticleBySlug,
-  getKnowledgeArticlePath,
   getEcosystemCategoryPath,
   getCategoryColors
 } from '@/lib/content';
@@ -64,7 +62,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
     project.categoryId === category.slug
   );
   
-  const overviewArticle = await getKnowledgeArticleBySlug('ecosystem-overview');
+  
   const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
 
   return (
@@ -167,25 +165,11 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                     </div>
                     <div className="space-y-3 text-[10px] font-bold uppercase tracking-[0.18em]">
                       <Link
-                        href="/ecosystem"
+                        href="/"
                         className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-white hover:bg-surface-container-high"
                       >
                         Back to Ecosystem
                       </Link>
-                      <Link
-                        href="/encyclopedia"
-                        className="block rounded-[1rem] border border-primary/30 bg-primary/5 px-4 py-3 text-primary transition-colors hover:bg-primary/20 hover:text-white"
-                      >
-                        Explore Encyclopedia
-                      </Link>
-                      {overviewArticle ? (
-                        <Link
-                          href={getKnowledgeArticlePath(overviewArticle.slug)}
-                          className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-white hover:bg-surface-container-high"
-                        >
-                          Read Ecosystem Overview
-                        </Link>
-                      ) : null}
                     </div>
                   </div>
                 </div>
