@@ -1,0 +1,15 @@
+{
+  "id": "glossary-threshold-key-management",
+  "slug": "threshold-key-management",
+  "term": "Threshold Key Management",
+  "tag": "SECURITY",
+  "summary": "Threshold key management splits control of a key or signing authority across multiple participants so no single actor holds the entire secret alone.",
+  "aliases": ["threshold signing"],
+  "keywords": ["keys", "wallets", "security"],
+  "priority": "medium",
+  "source": {
+    "label": "Arcium Docs",
+    "href": "https://docs.arcium.com"
+  },
+  "relatedCategoryIds": ["enc-mpc", "enc-use-cases"]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "guide-confidential-ai",
+  "slug": "confidential-ai-workloads",
+  "title": "Confidential AI Workloads on Arcium",
+  "tag": "USE_CASE",
+  "summary": "A practical overview of why AI teams care about confidential compute, with focus on sensitive datasets, protected models, and the value of private inference or training pipelines.",
+  "kind": "guide",
+  "date": "2026-03-10",
+  "relatedCategoryId": "enc-use-cases",
+  "bodySections": [
+    {
+      "title": "Where the risk lives",
+      "body": "AI systems often rely on inputs that are expensive, private, or both. Datasets may contain proprietary information, user behavior, or highly sensitive business signals that teams cannot afford to expose during computation."
+    },
+    {
+      "title": "What confidentiality unlocks",
+      "body": "Confidential compute can protect the data flowing into an AI workload, the model logic that processes it, or the intermediate states that would otherwise leak too much about either side."
+    },
+    {
+      "title": "How to evaluate fit",
+      "body": "The best Arcium-aligned AI workloads are the ones where exposure risk is real, the protected data is strategically important, and private execution creates a better product or business model than a transparent alternative."
+    }
+  ]
+}

@@ -3,10 +3,10 @@
   "slug": "proj-crunchdao",
   "title": "Crunch DAO",
   "tag": "Confidential Machine Learning",
-  "summary": "Crunch DAO leverages Multiparty Computations to enable confidential model training and secure prediction execution.",
+  "summary": "CrunchDAO points to a strong Arcium-aligned AI pattern: model workflows where sensitive data or strategy should stay protected while useful predictions still get produced.",
   "logo": "/images/ecosystem/proj-crunchdao/logo.png",
   "website": "https://crunchdao.com/",
   "status": "sync_ok",
   "categoryId": "ai",
-  "isFeatured": false
+  "isFeatured": true
 }

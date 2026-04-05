@@ -5,5 +5,14 @@
   "summary": "Arcium enables consumer-facing applications to integrate privacy-preserving functionalities inherently, protecting user identity, reading habits, interactions, and sign-on processes from public scraping.",
   "prefix": "07.",
   "description": "The Consumer Apps ecosystem built on Arcium.",
-  "bodySections": []
+  "bodySections": [
+    {
+      "title": "Why confidentiality matters in consumer apps",
+      "body": "Consumer products win or lose user trust on the treatment of identity, preferences, and interaction history. Privacy infrastructure matters when those signals should shape the experience without becoming public records."
+    },
+    {
+      "title": "What to look for in Arcium-native consumer apps",
+      "body": "Look for products where confidentiality creates a noticeably better user experience: safer identity layers, protected social behavior, or hidden state that enables new interaction patterns."
+    }
+  ]
 }

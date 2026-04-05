@@ -5,5 +5,14 @@
   "summary": "Arcium enables the creation of trustless, decentralized dark pools that provide privacy for large trades while minimizing market manipulation risks. By encrypting trade states, it mitigates MEV, frontrunning, and quote fading, ensuring much fairer execution and on-chain transactional privacy.",
   "prefix": "02.",
   "description": "The DeFi ecosystem built on Arcium.",
-  "bodySections": []
+  "bodySections": [
+    {
+      "title": "Why confidentiality matters in DeFi",
+      "body": "Financial activity is highly information-sensitive. Exposed order intent, portfolio behavior, or transactional context can create direct economic downside for users and builders alike."
+    },
+    {
+      "title": "What to look for in Arcium-native DeFi",
+      "body": "The strongest DeFi examples use privacy to improve execution quality, reduce exploitable information leakage, or support products that would be strategically weaker on fully transparent rails."
+    }
+  ]
 }

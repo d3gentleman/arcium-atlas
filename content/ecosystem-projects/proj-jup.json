@@ -3,7 +3,7 @@
   "slug": "proj-jup",
   "title": "Jupiter",
   "tag": "DEX AGGREGATOR",
-  "summary": "Jupiter is a dex aggregator on Solana.",
+  "summary": "Jupiter is a major Solana routing surface, which makes it a useful reference point when thinking about where private execution could materially change order flow and user protection.",
   "logo": "/images/ecosystem/proj-jup/logo.svg",
   "website": "https://jup.ag",
   "status": "sync_ok",

@@ -12,6 +12,7 @@ import {
   getEcosystemCategoryPath,
   getCategoryColors
 } from '@/lib/content';
+import { buildMetadata } from '@/lib/seo';
 
 interface EcosystemCategoryPageProps {
   params: {
@@ -30,15 +31,17 @@ export async function generateMetadata({ params }: EcosystemCategoryPageProps): 
   const category = await getEcosystemCategoryBySlug(params.slug);
 
   if (!category) {
-    return {
-      title: 'Ecosystem Category Not Found | ARCIUM ATLAS',
-    };
+    return buildMetadata({
+      title: 'Ecosystem Category Not Found',
+      path: `/ecosystem/categories/${params.slug}`,
+    });
   }
 
-  return {
-    title: `${category.title} | Ecosystem | ARCIUM ATLAS`,
+  return buildMetadata({
+    title: `${category.title} Ecosystem`,
     description: category.summary,
-  };
+    path: `/ecosystem/categories/${params.slug}`,
+  });
 }
 
 function slugify(text: string) {
@@ -98,13 +101,28 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
             </div>
             <div className="grid gap-8 p-6 lg:p-12 lg:grid-cols-[minmax(0,1fr)_18rem]">
               <div className="space-y-12 max-w-4xl w-full mx-auto md:mx-0">
+                <div className="grid gap-4 md:grid-cols-3">
+                  <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Category lens</div>
+                    <p className="mt-3 text-sm leading-7 text-on-surface-variant">Use this page to understand why confidentiality matters in this product territory before comparing builders.</p>
+                  </div>
+                  <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Why it matters</div>
+                    <p className="mt-3 text-sm leading-7 text-on-surface-variant">{category.summary}</p>
+                  </div>
+                  <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Builder scan</div>
+                    <p className="mt-3 text-sm leading-7 text-on-surface-variant">The project list below is the fastest way to compare how this thesis shows up in actual ecosystem products.</p>
+                  </div>
+                </div>
+
                 {(category.bodySections || []).map((section) => (
                   <article
                     key={section.title}
                     id={slugify(section.title)}
                     className="scroll-mt-24"
                   >
-                    <h2 className="mb-6 text-[10px] sm:text-lg font-black uppercase tracking-widest text-white border-b border-outline-variant/25 pb-4 inline-block">
+                    <h2 className="mb-6 text-2xl font-black tracking-tight text-white border-b border-outline-variant/25 pb-4 inline-block">
                       {section.title}
                     </h2>
                     <div className="space-y-6 text-base leading-8 text-on-surface-variant font-medium">
@@ -129,7 +147,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                       <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
                         Table of Contents
                       </div>
-                      <nav className="space-y-3 text-xs uppercase tracking-[0.16em] text-outline font-bold">
+                      <nav className="space-y-3 text-sm text-outline font-bold">
                         {category.bodySections.map((section) => (
                           <Link
                             key={section.title}

@@ -5,12 +5,16 @@
   "tag": "START_HERE",
   "summary": "A concise overview of Arcium as a confidential execution layer and why it matters across the rest of the atlas.",
   "kind": "guide",
-  "date": "2024-10-01",
+  "date": "2026-03-04",
   "relatedCategoryId": "enc-eco",
   "bodySections": [
     {
       "title": "Core Idea",
       "body": "Arcium is the privacy layer of Web3: an execution environment where applications can process sensitive inputs without exposing them to a single operator or to the wider network."
+    },
+    {
+      "title": "Why teams care",
+      "body": "Builders care because many useful workloads become worse when everything is public by default. Trading intent, model inputs, private user state, and sensitive business logic all lose value when they are exposed during execution."
     },
     {
       "title": "How to Use This Atlas",

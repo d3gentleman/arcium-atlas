@@ -8,6 +8,14 @@
     {
       "title": "Mathematical Foundation",
       "body": "Cryptography content translates the protocol layer into product consequences. It frames how Multi-Party Computation, verification, and encrypted coordination let Arcium expose useful application behavior without exposing the inputs that produced it."
+    },
+    {
+      "title": "Why readers should care",
+      "body": "This category exists to keep the math attached to real questions. The goal is not to turn every reader into a cryptographer, but to make the security story legible enough that product claims can be judged more rigorously."
+    },
+    {
+      "title": "What belongs here",
+      "body": "Use this category for concepts like proof systems, confidentiality guarantees, trust assumptions, and the language needed to separate a genuine privacy model from vague marketing shorthand."
     }
   ],
   "prefix": "CR",

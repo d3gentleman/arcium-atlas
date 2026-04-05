@@ -8,6 +8,9 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, color = '#00FFA3' }: ProjectCardProps) {
   const isComingSoon = project.status === 'coming_soon';
+  const website = project.website
+    ? (project.website.startsWith('http') ? project.website : `https://${project.website}`)
+    : '#';
 
   return (
     <div 
@@ -59,7 +62,7 @@ export default function ProjectCard({ project, color = '#00FFA3' }: ProjectCardP
           </span>
         ) : (
           <a
-            href={project.website || '#'}
+            href={website}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] transition-all bg-surface-container-low/50 hover:bg-primary/10 border border-outline-variant/20 hover:border-primary/50"

@@ -5,5 +5,14 @@
   "summary": "Arcium enables \"Private Interoperability\" architectures. Users and smart contracts can have secure, private interactions across different blockchains without publicly exposing the sensitive data contained within the cross-chain messages or payloads.",
   "prefix": "04.",
   "description": "The Interoperability ecosystem built on Arcium.",
-  "bodySections": []
+  "bodySections": [
+    {
+      "title": "Why confidentiality matters in interoperability",
+      "body": "Cross-chain or cross-system messaging often carries high-value information. Confidentiality matters when the payload should accomplish coordination without broadcasting every sensitive detail to every observer."
+    },
+    {
+      "title": "What to look for in Arcium-native interoperability",
+      "body": "Good examples protect the contents of messages, preserve the user or application privacy model across domains, and avoid making inter-chain coordination a source of unnecessary leakage."
+    }
+  ]
 }

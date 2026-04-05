@@ -5,5 +5,14 @@
   "summary": "Arcium empowers Web3 analytics platforms to securely aggregate and analyze sensitive demographic or financial data off-chain/on-chain. They can generate high-value, macro-level insights and graphs without compromising individual user privacy or exposing granular tracking.",
   "prefix": "09.",
   "description": "The Analytics ecosystem built on Arcium.",
-  "bodySections": []
+  "bodySections": [
+    {
+      "title": "Why confidentiality matters in analytics",
+      "body": "Analytics products become more useful when they can aggregate sensitive information without turning every data point into public exhaust. Confidential compute can preserve insight while limiting exposure."
+    },
+    {
+      "title": "What to look for in Arcium-native analytics",
+      "body": "The best analytics examples show how protected inputs still produce meaningful dashboards, reporting, or segmentation without creating a surveillance-heavy or trust-fragile product."
+    }
+  ]
 }

@@ -1,0 +1,38 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#05080C"/>
+  <rect x="28" y="28" width="1144" height="574" rx="20" fill="url(#bg)"/>
+  <rect x="28" y="28" width="1144" height="574" rx="20" stroke="#00F0FF" stroke-width="8"/>
+  <circle cx="975" cy="138" r="142" fill="#00F0FF" fill-opacity="0.08"/>
+  <circle cx="1095" cy="472" r="184" fill="#7DF4FF" fill-opacity="0.05"/>
+  <circle cx="160" cy="514" r="168" fill="#00F0FF" fill-opacity="0.06"/>
+  <path d="M84 92H1116" stroke="#00F0FF" stroke-opacity="0.4" stroke-width="2"/>
+  <text x="88" y="132" fill="#7DF4FF" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="6">
+    CURATED GUIDE TO ARCIUM
+  </text>
+  <text x="88" y="258" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="104" font-weight="800">
+    Arcium
+  </text>
+  <text x="88" y="356" fill="#00F0FF" font-family="Arial, Helvetica, sans-serif" font-size="104" font-weight="800">
+    Atlas
+  </text>
+  <text x="88" y="442" fill="#C8D6D9" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="500">
+    Guides, glossary terms, and ecosystem context for
+  </text>
+  <text x="88" y="486" fill="#C8D6D9" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="500">
+    understanding confidential compute faster.
+  </text>
+  <rect x="88" y="530" width="426" height="44" rx="22" fill="#0E161A" stroke="#00F0FF" stroke-opacity="0.4"/>
+  <text x="116" y="558" fill="#7DF4FF" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" letter-spacing="2">
+    ECOSYSTEM • ENCYCLOPEDIA • GLOSSARY
+  </text>
+  <text x="875" y="556" fill="#C8D6D9" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600">
+    arcium-atlas
+  </text>
+  <defs>
+    <linearGradient id="bg" x1="54" y1="54" x2="1146" y2="576" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A1115"/>
+      <stop offset="0.55" stop-color="#10181D"/>
+      <stop offset="1" stop-color="#0B2328"/>
+    </linearGradient>
+  </defs>
+</svg>

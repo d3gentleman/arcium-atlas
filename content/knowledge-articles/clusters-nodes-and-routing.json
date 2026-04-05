@@ -1,0 +1,24 @@
+{
+  "id": "guide-clusters-nodes-routing",
+  "slug": "clusters-nodes-and-routing",
+  "title": "Clusters, Nodes, and Routing",
+  "tag": "INFRA_GUIDE",
+  "summary": "A builder-friendly explanation of the moving parts behind confidential execution, with emphasis on how work moves through the network and why that operational structure matters.",
+  "kind": "guide",
+  "date": "2026-03-12",
+  "relatedCategoryId": "enc-infra",
+  "bodySections": [
+    {
+      "title": "The network view",
+      "body": "Infrastructure becomes easier to reason about when you stop thinking in isolated components and start thinking about flow: where the workload enters, how it gets coordinated, which parties process it, and what leaves the system."
+    },
+    {
+      "title": "Why routing matters",
+      "body": "Routing is not just a networking concern. In confidential systems it also shapes reliability, trust boundaries, and how efficiently the network can place sensitive work where it belongs."
+    },
+    {
+      "title": "What to pay attention to",
+      "body": "When evaluating Arcium infrastructure, focus on coordination, execution placement, and what assumptions are required for a workload to remain private while still producing useful outputs."
+    }
+  ]
+}

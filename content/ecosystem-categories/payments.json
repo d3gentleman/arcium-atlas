@@ -5,5 +5,14 @@
   "summary": "Utilizing Arcium's encrypted stack allows for confidential payments and highly secure thresholds/key management for wallets. This protects user balances and prevents the public tracing of sensitive financial transfers.",
   "prefix": "03.",
   "description": "The Payments ecosystem built on Arcium.",
-  "bodySections": []
+  "bodySections": [
+    {
+      "title": "Why confidentiality matters in payments",
+      "body": "Payments reveal habits, balances, counterparties, and timing. Those signals are often too sensitive to expose by default, especially when users want financial utility without transparent surveillance."
+    },
+    {
+      "title": "What to look for in Arcium-native payments",
+      "body": "Good payment examples show how confidentiality improves user safety, treasury operations, or wallet design without undermining the trust or usability of the final product."
+    }
+  ]
 }

@@ -5,5 +5,14 @@
   "summary": "Arcium supports AI systems that process sensitive data in encrypted form without exposing it. This enables private AI training and inference, ensuring that proprietary datasets and models remain completely confidential during computation.",
   "prefix": "01.",
   "description": "The Artificial Intelligence ecosystem built on Arcium.",
-  "bodySections": []
+  "bodySections": [
+    {
+      "title": "Why confidentiality matters in AI",
+      "body": "AI teams often handle inputs that are strategically sensitive, personally sensitive, or both. Confidential compute changes the value proposition when those inputs cannot safely be exposed during training or inference."
+    },
+    {
+      "title": "What to look for in Arcium-native AI",
+      "body": "Strong examples protect proprietary datasets, preserve user privacy during inference, or enable collaborative modeling without fully exposing the underlying data or model behavior."
+    }
+  ]
 }

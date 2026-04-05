@@ -5,12 +5,20 @@
   "tag": "START_HERE",
   "summary": "A quick orientation to the major territories on the Arcium map and how to read them.",
   "kind": "guide",
-  "date": "2024-10-01",
+  "date": "2026-03-08",
   "relatedCategoryId": "enc-eco",
   "bodySections": [
     {
       "title": "Reading the Territories",
       "body": "The atlas is organized around product territories rather than protocol modules."
+    },
+    {
+      "title": "What the categories signal",
+      "body": "Each territory highlights a place where confidentiality changes the design space. The point is not just to show that Arcium appears in many sectors, but to show why privacy matters differently in each one."
+    },
+    {
+      "title": "How to use the map",
+      "body": "Start with the territory that sounds closest to your own use case. Then move into the related glossary terms or category guides when you want the vocabulary and implementation context behind that market story."
     }
   ]
 }

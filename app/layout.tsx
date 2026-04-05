@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import ShellSwitcher from './ShellSwitcher';
 import { getDiscoveryIndex, getUIConfig } from '@/lib/content';
+import { buildMetadata } from '@/lib/seo';
+import { getSiteUrl } from '@/lib/site';
 import './globals.css';
 
 const spaceGrotesk = Space_Grotesk({ 
@@ -15,8 +17,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'ARCIUM ATLAS | ECOSYSTEM_CORE',
-  description: 'Educational hub about the Arcium ecosystem.',
+  metadataBase: new URL(getSiteUrl()),
+  ...buildMetadata(),
 };
 
 import { Providers } from './providers';
@@ -31,7 +33,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} selection:bg-primary/30 selection:text-primary min-h-screen antialiased bg-black text-white font-jetbrains`}>
+      <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} selection:bg-primary/30 selection:text-primary min-h-screen antialiased bg-black text-white font-body`}>
         <Providers>
           <ShellSwitcher discoveryItems={discoveryItems} ui={ui}>
             {children}

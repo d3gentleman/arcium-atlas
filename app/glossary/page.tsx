@@ -6,11 +6,13 @@ import {
     getKnowledgeCategories, 
     getKnowledgeCategoryPath 
 } from '@/lib/content';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Glossary | ARCIUM ATLAS',
-  description: 'An A-Z reference for Arcium terms, with local summaries and source links back to the official docs.',
-};
+export const metadata: Metadata = buildMetadata({
+  title: 'Glossary',
+  description: 'An A-Z reference for Arcium terms, aliases, and source-linked concepts.',
+  path: '/glossary',
+});
 
 export default async function GlossaryPage() {
   const [terms, categories] = await Promise.all([

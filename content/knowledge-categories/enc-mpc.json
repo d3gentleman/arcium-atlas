@@ -1,0 +1,23 @@
+{
+  "id": "enc-mpc",
+  "slug": "enc-mpc",
+  "title": "MPC Foundations",
+  "tag": "/KNOWLEDGE_BASE/MPC_V1.0",
+  "summary": "The execution model behind Arcium: how distributed computation, shared trust, and confidentiality guarantees combine to make private workloads usable in practice.",
+  "bodySections": [
+    {
+      "title": "Why MPC matters here",
+      "body": "Arcium depends on distributed computation to avoid placing full trust in one machine, one operator, or one organization. MPC is what turns privacy from a promise into an execution model with concrete trust boundaries."
+    },
+    {
+      "title": "From concept to application",
+      "body": "This category connects abstract MPC language to the questions builders actually ask: what gets hidden, which parties coordinate the work, what guarantees users receive, and what tradeoffs appear compared with fully transparent execution."
+    },
+    {
+      "title": "What readers should leave with",
+      "body": "After finishing this category, readers should understand the difference between confidential execution as a product capability and MPC as the mechanism that makes that capability believable."
+    }
+  ],
+  "prefix": "MP",
+  "description": "The execution model and trust assumptions behind Arcium."
+}

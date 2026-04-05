@@ -3,9 +3,9 @@
   "slug": "proj-anonmesh",
   "title": "Anonmesh",
   "tag": "Cold Wallet",
-  "summary": "No internet? No problem. Anonmesh functions as a cold wallet, and, in fact, doesn't need the internet at all. ",
+  "summary": "Anonmesh explores wallet flows that can keep sensitive user activity offline or less exposed, pushing privacy and resilience closer to the edge of the product experience.",
   "logo": "/images/ecosystem/proj-anonmesh/logo.jpg",
-  "website": "anonme.sh",
+  "website": "https://anonme.sh",
   "status": "sync_ok",
   "categoryId": "defi",
   "isFeatured": false

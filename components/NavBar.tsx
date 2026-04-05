@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ActionLink from './ActionLink';
 import { LinkAction } from '../types/domain';
 
@@ -12,9 +13,14 @@ export default function NavBar({ links }: { links: LinkAction[] }) {
         </div>
       </div>
       <div className="p-4 flex flex-wrap justify-between items-center gap-6">
-        <div className="text-xl font-black tracking-tighter text-primary uppercase font-headline">
-          [ARCIUM_ATLAS.V3]
-        </div>
+        <Link 
+          href="/" 
+          className="group text-xl font-black tracking-tighter text-primary uppercase font-headline hover:text-white transition-colors duration-300"
+        >
+          <span className="opacity-50 group-hover:opacity-100 transition-opacity">&lt;</span>
+          ARCIUM_ATLAS
+          <span className="opacity-50 group-hover:opacity-100 transition-opacity">&gt;</span>
+        </Link>
         <nav className="flex flex-wrap gap-6 text-xs uppercase font-bold tracking-widest">
           {links.map((link, idx) => (
             <ActionLink
@@ -28,8 +34,8 @@ export default function NavBar({ links }: { links: LinkAction[] }) {
           ))}
         </nav>
         <div className="hidden md:flex gap-4 font-mono text-[10px] text-primary">
-          <span className="bg-primary/10 px-2 py-1">SYS_SYNC: OK</span>
-          <span className="bg-primary/10 px-2 py-1">COORD: 37.77N_122.41W</span>
+          <span className="bg-primary/10 px-2 py-1">CURATED_GUIDE</span>
+          <span className="bg-primary/10 px-2 py-1">CTRL/CMD+K</span>
         </div>
       </div>
     </header>

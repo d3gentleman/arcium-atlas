@@ -7,9 +7,11 @@ import {
   getKnowledgeArticleBySlug,
   getKnowledgeArticles,
   getKnowledgeCategoryById,
+  getGlossaryTermsByCategoryId,
   getKnowledgeCategoryPath,
   getKnowledgeArticlePath
 } from '@/lib/content';
+import { buildMetadata } from '@/lib/seo';
 
 interface ArticlePageProps {
   params: {
@@ -28,15 +30,17 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   const article = await getKnowledgeArticleBySlug(params.slug);
 
   if (!article) {
-    return {
-      title: 'Article Not Found | ARCIUM ATLAS',
-    };
+    return buildMetadata({
+      title: 'Article Not Found',
+      path: `/encyclopedia/articles/${params.slug}`,
+    });
   }
 
-  return {
-    title: `${article.title} | Encyclopedia | ARCIUM ATLAS`,
+  return buildMetadata({
+    title: article.title,
     description: article.summary,
-  };
+    path: `/encyclopedia/articles/${params.slug}`,
+  });
 }
 
 function slugify(text: string) {
@@ -50,9 +54,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     notFound();
   }
 
-  const [relatedCategory, allArticles] = await Promise.all([
+  const [relatedCategory, allArticles, relatedTerms] = await Promise.all([
     article.relatedCategoryId ? getKnowledgeCategoryById(article.relatedCategoryId) : Promise.resolve(null),
-    getKnowledgeArticles()
+    getKnowledgeArticles(),
+    article.relatedCategoryId ? getGlossaryTermsByCategoryId(article.relatedCategoryId) : Promise.resolve([])
   ]);
 
   const siblingArticles = allArticles
@@ -91,13 +96,28 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </div>
         <div className="grid gap-8 p-6 lg:p-12 lg:grid-cols-[minmax(0,1fr)_18rem]">
           <div className="space-y-12 max-w-4xl w-full mx-auto md:mx-0">
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Key takeaway</div>
+                <p className="mt-3 text-sm leading-7 text-on-surface-variant">{article.summary}</p>
+              </div>
+              <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Why it matters</div>
+                <p className="mt-3 text-sm leading-7 text-on-surface-variant">This page translates Arcium language into product and architecture consequences a reader can actually use.</p>
+              </div>
+              <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Best next move</div>
+                <p className="mt-3 text-sm leading-7 text-on-surface-variant">Use the related concepts and next reads to connect this article back to the rest of the atlas.</p>
+              </div>
+            </div>
+
             {article.bodySections.map((section) => (
               <article
                 key={section.title}
                 id={slugify(section.title)}
                 className="scroll-mt-24"
               >
-                <h2 className="mb-6 text-[10px] sm:text-lg font-black uppercase tracking-widest text-white border-b border-outline-variant/25 pb-4 inline-block">
+                <h2 className="mb-6 text-2xl font-black tracking-tight text-white border-b border-outline-variant/25 pb-4 inline-block">
                   {section.title}
                 </h2>
                 <div className="space-y-6 text-base leading-8 text-on-surface-variant font-medium">
@@ -107,6 +127,23 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 </div>
               </article>
             ))}
+
+            {relatedTerms.length > 0 && (
+              <section className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-6">
+                <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Related concepts</div>
+                <div className="flex flex-wrap gap-2">
+                  {relatedTerms.map((term) => (
+                    <Link
+                      key={term.id}
+                      href={`/glossary#${term.slug}`}
+                      className="rounded-full border border-outline-variant/20 px-3 py-2 text-xs font-bold text-outline transition-colors hover:border-outline-variant/40 hover:text-white"
+                    >
+                      {term.term}
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
           <aside className="relative">
             <div className="sticky top-8 space-y-4">
@@ -114,7 +151,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
                   Table of Contents
                 </div>
-                <nav className="space-y-3 text-xs uppercase tracking-[0.16em] text-outline font-bold">
+                <nav className="space-y-3 text-sm text-outline font-bold">
                   {article.bodySections.map((section) => (
                     <Link
                       key={section.title}
@@ -160,7 +197,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                     Related Category
                   </div>
                   <div className="space-y-2">
-                    <div className="text-sm font-black uppercase text-white">{relatedCategory.title}</div>
+                    <div className="text-lg font-black tracking-tight text-white">{relatedCategory.title}</div>
                     <p className="text-sm leading-7 text-on-surface-variant line-clamp-3">{relatedCategory.summary}</p>
                   </div>
                 </div>

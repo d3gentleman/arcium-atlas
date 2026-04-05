@@ -1,0 +1,24 @@
+{
+  "id": "guide-private-trading-order-flow",
+  "slug": "private-trading-and-order-flow",
+  "title": "Private Trading and Order Flow",
+  "tag": "USE_CASE",
+  "summary": "Why confidential infrastructure matters for trading products, from hidden order intent and fairer execution to the product advantage of protecting high-value financial activity.",
+  "kind": "guide",
+  "date": "2026-03-28",
+  "relatedCategoryId": "enc-use-cases",
+  "bodySections": [
+    {
+      "title": "Why transparent markets leak too much",
+      "body": "On fully transparent rails, orders reveal intent before the user receives the intended outcome. That creates opportunities for frontrunning, manipulation, and strategic behavior by observers."
+    },
+    {
+      "title": "What Arcium changes",
+      "body": "Arcium makes it easier to imagine trading systems where the user gets the benefit of computation without publishing the valuable information that would otherwise be exploited in real time."
+    },
+    {
+      "title": "The practical test",
+      "body": "A strong private trading use case should improve execution quality, user trust, or compliance outcomes. If the privacy layer adds complexity without changing those outcomes, the use case is probably weak."
+    }
+  ]
+}

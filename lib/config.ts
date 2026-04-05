@@ -17,14 +17,14 @@ export const NAVIGATION_CONFIG: LinkAction[] = [
     href: "/glossary"
   },
   {
-    type: "unavailable" as const,
+    type: "internal" as const,
     label: "Infrastructure",
-    reason: "Infrastructure guides are not published yet."
+    href: "/encyclopedia/categories/enc-infra"
   },
   {
-    type: "unavailable" as const,
+    type: "internal" as const,
     label: "About",
-    reason: "About page is not published yet."
+    href: "/about"
   }
 ];
 
@@ -47,9 +47,9 @@ export const FOOTER_CONFIG: FooterConfig = {
     }
   ],
   metadata: {
-    copyright: "(C) 2024 ARCIUM PROTOCOL_GROUP",
-    coords: "LAT: 37.7749 // LONG: -122.4194 // CRC_HASH: 0x8842A_V3",
-    mission: "--- MISSION_OBJECTIVE: DECENTRALIZE_THE_GRID ---"
+    copyright: "(C) 2026 ARCIUM ATLAS",
+    coords: "CURATED_GUIDES // ECOSYSTEM_DIRECTORY // SOURCE_LINKS",
+    mission: "A clearer map of Arcium for newcomers, builders, and researchers."
   }
 };
 
@@ -125,19 +125,19 @@ export const CATEGORY_COLORS: Record<string, string> = {
 
 export const HOMEPAGE_CONFIG = {
   hero: {
-    subtitle: "Core Functionality: Exploration",
-    titleLine1: "NAVIGATE THE",
-    titleLine2: "ECOSYSTEM_ATLAS",
-    description: "Explore the builders, guides, and private computation concepts that make the Arcium network legible.",
+    subtitle: "Curated guide to Arcium",
+    titleLine1: "UNDERSTAND THE",
+    titleLine2: "ARCIUM LANDSCAPE",
+    description: "Browse a clearer map of Arcium: what the network is, where confidential compute fits, and which builders are already putting it to work.",
     primaryCta: {
       type: "internal" as const,
       label: "View Ecosystem",
       href: "/ecosystem"
     },
     secondaryCta: {
-      type: "command" as const,
-      command: "open-discovery",
-      label: "Search Builders & Guides"
+      type: "internal" as const,
+      href: "/about",
+      label: "What Is Arcium?"
     }
   },
   startHereCards: [
@@ -165,9 +165,9 @@ export const HOMEPAGE_CONFIG = {
     },
     {
       prefix: "GRID",
-      tag: "Optimization",
+      tag: "ORIENTATION",
       title: "Ecosystem Overview",
-      description: "A quick orientation to the major territories on the Arcium map and how to read them.",
+      description: "See how Arcium shows up across trading, AI, payments, analytics, and other product territories.",
       action: {
         type: "internal" as const,
         label: "Read Overview",
@@ -178,32 +178,32 @@ export const HOMEPAGE_CONFIG = {
   quickLinks: [
     {
       type: "internal" as const,
-      label: "View Ecosystem",
-      href: "/ecosystem"
+      label: "Browse Encyclopedia",
+      href: "/encyclopedia"
     },
     {
       type: "command" as const,
       command: "open-discovery",
-      label: "Search Builders & Docs"
+      label: "Search Builders & Guides"
     },
     {
-      type: "unavailable" as const,
-      label: "View MPC Node Specs",
-      reason: "Infrastructure specs are not published yet."
+      type: "external" as const,
+      label: "Official Docs",
+      href: "https://docs.arcium.com"
     }
   ],
   liveStatusFeed: [
     {
-      status: "OK",
-      text: "Atlas_Sync: Complete"
+      status: "LIVE",
+      text: "Curated guides, glossary terms, and ecosystem records"
     },
     {
-      status: "OK",
-      text: "MXE_Engines: Active"
+      status: "SOURCE",
+      text: "Atlas entries link back to official Arcium references where possible"
     },
     {
-      status: "OK",
-      text: "MPC_Nodes: 4,092 Online"
+      status: "START",
+      text: "Use About, Start Here, and the glossary to orient quickly"
     }
   ]
 };

@@ -1,0 +1,24 @@
+{
+  "id": "guide-mpc-vs-zk",
+  "slug": "mpc-versus-zero-knowledge",
+  "title": "MPC Versus Zero-Knowledge in Arcium",
+  "tag": "FOUNDATIONS",
+  "summary": "A practical comparison of MPC and zero-knowledge language in the Arcium conversation, focused on what each mechanism contributes rather than treating them as interchangeable privacy buzzwords.",
+  "kind": "guide",
+  "date": "2026-03-18",
+  "relatedCategoryId": "enc-mpc",
+  "bodySections": [
+    {
+      "title": "Why the terms get conflated",
+      "body": "Both MPC and zero-knowledge are privacy-adjacent, so readers often hear them together before they understand the distinction. The result is a vague sense that both are “privacy tech” without clarity on their jobs."
+    },
+    {
+      "title": "What MPC contributes",
+      "body": "MPC is about executing computation without concentrating trust in a single party. In the Arcium context, it is the execution model that lets multiple parties coordinate sensitive work without exposing the raw inputs."
+    },
+    {
+      "title": "What proof systems contribute",
+      "body": "Zero-knowledge language helps establish confidence in claims about hidden computation or hidden state. The important takeaway is that proof systems and MPC can complement each other, but they are not the same capability."
+    }
+  ]
+}

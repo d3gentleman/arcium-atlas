@@ -5,5 +5,14 @@
   "summary": "DePIN projects integrate with Arcium's network to securely store and process sensitive operational data (such as geographical locations, user nodes, or telemetrics). This ensures user privacy while enabling decentralized hardware systems to scale securely.",
   "prefix": "05.",
   "description": "The DePIN ecosystem built on Arcium.",
-  "bodySections": []
+  "bodySections": [
+    {
+      "title": "Why confidentiality matters in DePIN",
+      "body": "Decentralized physical networks often generate data about devices, locations, operators, or utilization that should not be transparently exposed even when coordination remains decentralized."
+    },
+    {
+      "title": "What to look for in Arcium-native DePIN",
+      "body": "Good examples protect operational data while still allowing networks to verify usage, coordinate participants, and reward the right behavior."
+    }
+  ]
 }

@@ -5,11 +5,13 @@ import {
     getKnowledgeArticles, 
     getKnowledgeCategories
 } from '@/lib/content';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Encyclopedia | ARCIUM ATLAS',
-  description: 'Browse category pages, guides, and recent articles for the Arcium Atlas knowledge base.',
-};
+export const metadata: Metadata = buildMetadata({
+  title: 'Encyclopedia',
+  description: 'Browse Arcium categories, guides, and updates in one curated encyclopedia.',
+  path: '/encyclopedia',
+});
 
 export default async function EncyclopediaPage() {
   const [categories, articles] = await Promise.all([

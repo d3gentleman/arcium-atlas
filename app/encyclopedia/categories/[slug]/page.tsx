@@ -8,9 +8,11 @@ import {
   getKnowledgeArticles,
   getKnowledgeCategoryBySlug,
   getKnowledgeCategories,
+  getGlossaryTermsByCategoryId,
   getKnowledgeArticlePath,
   getKnowledgeCategoryPath
 } from '@/lib/content';
+import { buildMetadata } from '@/lib/seo';
 
 interface CategoryPageProps {
   params: {
@@ -29,15 +31,17 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const category = await getKnowledgeCategoryBySlug(params.slug);
 
   if (!category) {
-    return {
-      title: 'Category Not Found | ARCIUM ATLAS',
-    };
+    return buildMetadata({
+      title: 'Category Not Found',
+      path: `/encyclopedia/categories/${params.slug}`,
+    });
   }
 
-  return {
-    title: `${category.title} | Encyclopedia | ARCIUM ATLAS`,
+  return buildMetadata({
+    title: category.title,
     description: category.summary,
-  };
+    path: `/encyclopedia/categories/${params.slug}`,
+  });
 }
 
 function slugify(text: string) {
@@ -59,7 +63,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     article.relatedCategoryId === category.slug
   );
   
-  const overviewArticle = await getKnowledgeArticleBySlug('ecosystem-overview');
+  const [overviewArticle, relatedTerms] = await Promise.all([
+    getKnowledgeArticleBySlug('ecosystem-overview'),
+    getGlossaryTermsByCategoryId(category.id),
+  ]);
 
   return (
     <KnowledgePageFrame
@@ -93,13 +100,28 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </div>
         <div className="grid gap-8 p-6 lg:p-12 lg:grid-cols-[minmax(0,1fr)_18rem]">
           <div className="space-y-12 max-w-4xl w-full mx-auto md:mx-0">
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Best for</div>
+                <p className="mt-3 text-sm leading-7 text-on-surface-variant">Readers who want the conceptual model before jumping into individual articles.</p>
+              </div>
+              <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Why it matters</div>
+                <p className="mt-3 text-sm leading-7 text-on-surface-variant">{category.summary}</p>
+              </div>
+              <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Next step</div>
+                <p className="mt-3 text-sm leading-7 text-on-surface-variant">Use the related articles below to move from overview into narrower, more actionable reading.</p>
+              </div>
+            </div>
+
             {(category.bodySections || []).map((section) => (
               <article
                 key={section.title}
                 id={slugify(section.title)}
                 className="scroll-mt-24"
               >
-                <h2 className="mb-6 text-[10px] sm:text-lg font-black uppercase tracking-widest text-white border-b border-outline-variant/25 pb-4 inline-block">
+                <h2 className="mb-6 text-2xl font-black tracking-tight text-white border-b border-outline-variant/25 pb-4 inline-block">
                   {section.title}
                 </h2>
                 <div className="space-y-6 text-base leading-8 text-on-surface-variant font-medium">
@@ -109,6 +131,23 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 </div>
               </article>
             ))}
+
+            {relatedTerms.length > 0 && (
+              <section className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-6">
+                <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Related concepts</div>
+                <div className="flex flex-wrap gap-2">
+                  {relatedTerms.map((term) => (
+                    <Link
+                      key={term.id}
+                      href={`/glossary#${term.slug}`}
+                      className="rounded-full border border-outline-variant/20 px-3 py-2 text-xs font-bold text-outline transition-colors hover:border-outline-variant/40 hover:text-white"
+                    >
+                      {term.term}
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
           <aside className="relative">
             <div className="sticky top-8 space-y-4">
@@ -117,7 +156,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                   <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
                     Table of Contents
                   </div>
-                  <nav className="space-y-3 text-xs uppercase tracking-[0.16em] text-outline font-bold">
+                  <nav className="space-y-3 text-sm text-outline font-bold">
                     {category.bodySections.map((section) => (
                       <Link
                         key={section.title}

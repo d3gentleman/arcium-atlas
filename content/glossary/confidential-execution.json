@@ -1,0 +1,15 @@
+{
+  "id": "glossary-confidential-execution",
+  "slug": "confidential-execution",
+  "term": "Confidential Execution",
+  "tag": "FOUNDATION",
+  "summary": "Confidential execution means running a workload while keeping sensitive inputs or intermediate state hidden from parties that should not see them.",
+  "aliases": ["private execution"],
+  "keywords": ["privacy", "secure compute", "hidden state"],
+  "priority": "high",
+  "source": {
+    "label": "Arcium Docs",
+    "href": "https://docs.arcium.com"
+  },
+  "relatedCategoryIds": ["enc-eco", "enc-mpc"]
+}

@@ -12,6 +12,7 @@ interface EcosystemDirectoryProps {
 
 export default function EcosystemDirectory({ categories, projects, categoryColors }: EcosystemDirectoryProps) {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
+  const featuredProjects = projects.filter((project) => project.isFeatured);
 
   const filteredCategories = selectedCategoryId 
     ? categories.filter(c => c.id === selectedCategoryId || c.slug === selectedCategoryId)
@@ -61,6 +62,106 @@ export default function EcosystemDirectory({ categories, projects, categoryColor
       {/* Categories Grid */}
       <div className="space-y-24">
         {(() => {
+          const emptyState = (
+            <div className="flex flex-col border border-primary/20 bg-primary/5 p-12 text-center rounded-sm animate-in fade-in duration-500">
+              <div className="text-primary mb-4 font-space text-4xl">{"</>"}</div>
+              <h3 className="font-space text-xl font-bold uppercase tracking-widest text-white mb-2">
+                [SYSTEM_ALERT]: NO_PROJECTS_FOUND
+              </h3>
+              <p className="font-jetbrains text-sm text-on-surface-variant/60 uppercase mb-8 max-w-md mx-auto">
+                Scan complete. No projects detected in this sector yet. The network is expanding.
+              </p>
+              <button 
+                onClick={() => setSelectedCategoryId(null)}
+                className="mx-auto px-6 py-2 border border-primary/50 text-primary text-xs font-bold uppercase tracking-widest hover:bg-primary/10 transition-colors shadow-[0_0_15px_rgba(47,230,166,0.15)] hover:shadow-[0_0_20px_rgba(47,230,166,0.3)]"
+              >
+                Reset_Query
+              </button>
+            </div>
+          );
+
+          if (selectedCategoryId === null) {
+            if (projects.length === 0) return emptyState;
+
+            return (
+              <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                {featuredProjects.length > 0 && (
+                  <section className="space-y-8">
+                    <div 
+                      className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 border-b pb-4 border-outline-variant/30 text-primary"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="h-2 w-2 shadow-[0_0_8px_currentColor] bg-primary text-primary" />
+                        <h2 className="font-space text-xl md:text-2xl font-black uppercase tracking-widest text-white">
+                          FEATURED_BUILDERS
+                          <span className="ml-3 sm:ml-4 text-xs font-mono tracking-normal opacity-60 lowercase text-primary">
+                           {"//"} highest_signal_examples
+                          </span>
+                        </h2>
+                      </div>
+                      <div className="text-xs font-mono text-on-surface-variant/60 uppercase">
+                        {featuredProjects.length} Featured
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                      {featuredProjects.map((project) => {
+                        const category = categories.find(c => c.id === project.categoryId || c.slug === project.categoryId);
+                        const color = category ? (categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3') : '#00FFA3';
+                        return (
+                          <ProjectCard key={project.id} project={project} color={color} />
+                        );
+                      })}
+                    </div>
+                  </section>
+                )}
+
+                {categories.map((category) => {
+                  const categoryProjects = projects.filter(p => 
+                    p.categoryId === category.id || p.categoryId === category.slug
+                  );
+
+                  if (categoryProjects.length === 0) return null;
+
+                  const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
+
+                  return (
+                    <section key={category.id} className="space-y-8">
+                      <div 
+                        className="flex flex-col gap-4 border-b pb-4"
+                        style={{ borderColor: `${color}33` }}
+                      >
+                        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
+                          <div className="flex items-center gap-3">
+                            <div className="h-2 w-2 shadow-[0_0_8px_currentColor]" style={{ backgroundColor: color, color: color }} />
+                            <h2 className="font-space text-xl md:text-2xl font-black uppercase tracking-widest text-white">
+                              {category.title}
+                              <span className="ml-3 sm:ml-4 text-xs font-mono tracking-normal opacity-60 lowercase" style={{ color: color }}>
+                               {"//"} {category.tag}
+                              </span>
+                            </h2>
+                          </div>
+                          <div className="text-xs font-mono text-on-surface-variant/60 uppercase">
+                            {categoryProjects.length} Projects_Detected
+                          </div>
+                        </div>
+                        <p className="max-w-3xl text-sm leading-7 text-on-surface-variant">
+                          {category.summary}
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {categoryProjects.map((project) => (
+                          <ProjectCard key={project.id} project={project} color={color} />
+                        ))}
+                      </div>
+                    </section>
+                  );
+                })}
+              </div>
+            );
+          }
+
           let renderedCategoriesCount = 0;
           
           const categoryElements = filteredCategories.map((category) => {
@@ -76,9 +177,10 @@ export default function EcosystemDirectory({ categories, projects, categoryColor
             return (
               <section key={category.id} className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div 
-                  className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 border-b pb-4"
+                  className="flex flex-col gap-4 border-b pb-4"
                   style={{ borderColor: `${color}33` }}
                 >
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
                   <div className="flex items-center gap-3">
                     <div className="h-2 w-2 shadow-[0_0_8px_currentColor]" style={{ backgroundColor: color, color: color }} />
                     <h2 className="font-space text-xl md:text-2xl font-black uppercase tracking-widest text-white">
@@ -91,6 +193,10 @@ export default function EcosystemDirectory({ categories, projects, categoryColor
                   <div className="text-xs font-mono text-on-surface-variant/60 uppercase">
                     {categoryProjects.length} Projects_Detected
                   </div>
+                  </div>
+                  <p className="max-w-3xl text-sm leading-7 text-on-surface-variant">
+                    {category.summary}
+                  </p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -103,23 +209,7 @@ export default function EcosystemDirectory({ categories, projects, categoryColor
           });
 
           if (renderedCategoriesCount === 0) {
-            return (
-              <div className="flex flex-col border border-primary/20 bg-primary/5 p-12 text-center rounded-sm animate-in fade-in duration-500">
-                <div className="text-primary mb-4 font-space text-4xl">{"</>"}</div>
-                <h3 className="font-space text-xl font-bold uppercase tracking-widest text-white mb-2">
-                  [SYSTEM_ALERT]: NO_PROJECTS_FOUND
-                </h3>
-                <p className="font-jetbrains text-sm text-on-surface-variant/60 uppercase mb-8 max-w-md mx-auto">
-                  Scan complete. No projects detected in this sector yet. The network is expanding.
-                </p>
-                <button 
-                  onClick={() => setSelectedCategoryId(null)}
-                  className="mx-auto px-6 py-2 border border-primary/50 text-primary text-xs font-bold uppercase tracking-widest hover:bg-primary/10 transition-colors shadow-[0_0_15px_rgba(47,230,166,0.15)] hover:shadow-[0_0_20px_rgba(47,230,166,0.3)]"
-                >
-                  Reset_Query
-                </button>
-              </div>
-            );
+            return emptyState;
           }
 
           return categoryElements;

@@ -1,0 +1,15 @@
+{
+  "id": "glossary-coordinator",
+  "slug": "coordinator",
+  "term": "Coordinator",
+  "tag": "INFRA",
+  "summary": "A coordinator is the component or role responsible for directing confidential workloads through the system and helping execution happen in the right place.",
+  "aliases": [],
+  "keywords": ["routing", "orchestration", "network"],
+  "priority": "medium",
+  "source": {
+    "label": "Arcium Docs",
+    "href": "https://docs.arcium.com"
+  },
+  "relatedCategoryIds": ["enc-infra"]
+}

@@ -5,5 +5,14 @@
   "summary": "Arcium creates the foundation for \"Private NFTs.\" This allows users to securely trade and own digital assets while keeping highly sensitive data—such as true ownership identity, historical transfers, and hidden metadata properties—completely confidential.",
   "prefix": "08.",
   "description": "The NFTs ecosystem built on Arcium.",
-  "bodySections": []
+  "bodySections": [
+    {
+      "title": "Why confidentiality matters in NFTs",
+      "body": "Digital assets can carry sensitive metadata, ownership context, and behavioral signals that users may not want permanently exposed. Privacy changes what ownership and transfer can mean in practice."
+    },
+    {
+      "title": "What to look for in Arcium-native NFT systems",
+      "body": "Look for products where hidden metadata, protected provenance detail, or confidential asset interactions create a better collector, creator, or market experience."
+    }
+  ]
 }

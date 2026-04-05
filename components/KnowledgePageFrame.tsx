@@ -43,7 +43,7 @@ export default async function KnowledgePageFrame({
         <div className="grid gap-8 p-6 md:grid-cols-[minmax(0,1fr)_18rem] md:p-8">
           <div className="space-y-6">
             {breadcrumbs.length > 0 && (
-              <nav className="flex flex-wrap items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-outline">
+              <nav className="flex flex-wrap items-center gap-3 text-xs font-bold text-outline">
                 {breadcrumbs.map((crumb, index) => (
                   <span key={crumb.href} className="flex items-center gap-3">
                     <Link href={crumb.href} className="transition-colors hover:text-primary">
@@ -56,11 +56,11 @@ export default async function KnowledgePageFrame({
             )}
             <div>
               <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">{eyebrow}</div>
-              <h1 className="max-w-4xl text-4xl font-black uppercase tracking-tight text-white md:text-6xl text-wrap break-words">
+              <h1 className="max-w-4xl text-4xl font-black tracking-tight text-white md:text-6xl text-wrap break-words">
                 {title}
               </h1>
             </div>
-            <p className="max-w-3xl text-sm leading-7 text-on-surface-variant md:text-base">
+            <p className="max-w-3xl text-base leading-8 text-on-surface-variant">
               {summary}
             </p>
           </div>
@@ -68,7 +68,7 @@ export default async function KnowledgePageFrame({
             <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-primary/80">
               Context
             </div>
-            <div className="space-y-3 text-xs uppercase tracking-[0.16em] text-outline">
+            <div className="space-y-3 text-sm text-outline">
               <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3 text-primary">
                 STATUS // {statusLabel}
               </div>

@@ -1,0 +1,15 @@
+{
+  "id": "glossary-order-flow-privacy",
+  "slug": "order-flow-privacy",
+  "term": "Order Flow Privacy",
+  "tag": "MARKETS",
+  "summary": "Order flow privacy is the protection of trade intent, size, or sequencing information so observers cannot exploit it before execution completes.",
+  "aliases": [],
+  "keywords": ["trading", "execution", "markets"],
+  "priority": "medium",
+  "source": {
+    "label": "Arcium Docs",
+    "href": "https://docs.arcium.com"
+  },
+  "relatedCategoryIds": ["enc-use-cases"]
+}

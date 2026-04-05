@@ -21,14 +21,86 @@ import {
 
 const reader = createReader(process.cwd(), keystaticConfig);
 
+function sortByDateDescending<T extends { date?: string }>(records: T[]): T[] {
+  return [...records].sort((left, right) => {
+    const leftTime = left.date ? Date.parse(left.date) : Number.NEGATIVE_INFINITY;
+    const rightTime = right.date ? Date.parse(right.date) : Number.NEGATIVE_INFINITY;
+
+    if (Number.isNaN(leftTime) && Number.isNaN(rightTime)) {
+      return 0;
+    }
+
+    if (Number.isNaN(leftTime)) {
+      return 1;
+    }
+
+    if (Number.isNaN(rightTime)) {
+      return -1;
+    }
+
+    return rightTime - leftTime;
+  });
+}
+
+const KNOWLEDGE_CATEGORY_ORDER = [
+  'enc-eco',
+  'enc-mpc',
+  'enc-infra',
+  'enc-use-cases',
+  'enc-dev',
+  'enc-crypto',
+];
+
+function sortKnowledgeCategories(records: KnowledgeCategoryRecord[]): KnowledgeCategoryRecord[] {
+  return [...records].sort((left, right) => {
+    const leftIndex = KNOWLEDGE_CATEGORY_ORDER.indexOf(left.id);
+    const rightIndex = KNOWLEDGE_CATEGORY_ORDER.indexOf(right.id);
+
+    if (leftIndex === -1 && rightIndex === -1) {
+      return left.title.localeCompare(right.title);
+    }
+
+    if (leftIndex === -1) {
+      return 1;
+    }
+
+    if (rightIndex === -1) {
+      return -1;
+    }
+
+    return leftIndex - rightIndex;
+  });
+}
+
+function sortEcosystemCategories(records: EcosystemCategoryRecord[]): EcosystemCategoryRecord[] {
+  return [...records].sort((left, right) => {
+    const leftPrefix = Number.parseInt(left.prefix || '', 10);
+    const rightPrefix = Number.parseInt(right.prefix || '', 10);
+
+    if (Number.isNaN(leftPrefix) && Number.isNaN(rightPrefix)) {
+      return left.title.localeCompare(right.title);
+    }
+
+    if (Number.isNaN(leftPrefix)) {
+      return 1;
+    }
+
+    if (Number.isNaN(rightPrefix)) {
+      return -1;
+    }
+
+    return leftPrefix - rightPrefix;
+  });
+}
+
 // --- CATEGORIES ---
 
 export async function getKnowledgeCategories(): Promise<KnowledgeCategoryRecord[]> {
   const categories = await reader.collections.knowledgeCategories.all();
-  return categories.map(cat => ({
+  return sortKnowledgeCategories(categories.map(cat => ({
     ...cat.entry,
     slug: cat.slug,
-  })) as KnowledgeCategoryRecord[];
+  })) as KnowledgeCategoryRecord[]);
 }
 
 export async function getKnowledgeCategoryBySlug(slug: string): Promise<KnowledgeCategoryRecord | null> {
@@ -46,10 +118,10 @@ export async function getKnowledgeCategoryById(id: string): Promise<KnowledgeCat
 
 export async function getKnowledgeArticles(): Promise<KnowledgeArticleRecord[]> {
   const articles = await reader.collections.knowledgeArticles.all();
-  return articles.map(art => ({
+  return sortByDateDescending(articles.map(art => ({
     ...art.entry,
     slug: art.slug,
-  })) as KnowledgeArticleRecord[];
+  })) as KnowledgeArticleRecord[]);
 }
 
 export async function getKnowledgeArticleBySlug(slug: string): Promise<KnowledgeArticleRecord | null> {
@@ -86,14 +158,19 @@ export async function getGlossaryTermBySlug(slug: string): Promise<GlossaryTermR
   return { ...term, slug } as GlossaryTermRecord;
 }
 
+export async function getGlossaryTermsByCategoryId(categoryId: string): Promise<GlossaryTermRecord[]> {
+  const terms = await getGlossaryTerms();
+  return terms.filter((term) => (term.relatedCategoryIds || []).includes(categoryId));
+}
+
 // --- ECOSYSTEM ---
 
 export async function getEcosystemCategories(): Promise<EcosystemCategoryRecord[]> {
   const categories = await reader.collections.ecosystemCategories.all();
-  return categories.map(cat => ({
+  return sortEcosystemCategories(categories.map(cat => ({
     ...cat.entry,
     slug: cat.slug,
-  })) as EcosystemCategoryRecord[];
+  })) as EcosystemCategoryRecord[]);
 }
 
 export async function getEcosystemCategoryBySlug(slug: string): Promise<EcosystemCategoryRecord | null> {
@@ -104,10 +181,23 @@ export async function getEcosystemCategoryBySlug(slug: string): Promise<Ecosyste
 
 export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> {
   const projects = await reader.collections.ecosystemProjects.all();
-  return projects.map(p => ({
+  const mappedProjects = projects.map(p => ({
     ...p.entry,
     slug: p.slug,
   })) as EcosystemProjectRecord[];
+
+  const seenTitles = new Set<string>();
+
+  return mappedProjects.filter((project) => {
+    const normalizedTitle = project.title.trim().toLowerCase();
+
+    if (seenTitles.has(normalizedTitle)) {
+      return false;
+    }
+
+    seenTitles.add(normalizedTitle);
+    return true;
+  });
 }
 
 export async function getEcosystemProjectBySlug(slug: string): Promise<EcosystemProjectRecord | null> {
@@ -230,7 +320,18 @@ export async function getHomepageConfig() {
 
 export async function getRecentArticles(count: number = 3): Promise<KnowledgeArticleRecord[]> {
   const articles = await getKnowledgeArticles();
-  return articles.slice(0, count);
+  return sortByDateDescending(articles).slice(0, count);
+}
+
+export async function getFeaturedProjects(count?: number): Promise<EcosystemProjectRecord[]> {
+  const projects = await getEcosystemProjects();
+  const featuredProjects = projects.filter((project) => project.isFeatured);
+
+  if (count) {
+    return featuredProjects.slice(0, count);
+  }
+
+  return featuredProjects;
 }
 
 // --- PATH HELPERS ---

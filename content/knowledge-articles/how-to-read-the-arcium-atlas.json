@@ -1,0 +1,24 @@
+{
+  "id": "guide-how-to-read-the-atlas",
+  "slug": "how-to-read-the-arcium-atlas",
+  "title": "How to Read the Arcium Atlas",
+  "tag": "START_HERE",
+  "summary": "A short guide to the structure of the site, what each section is for, and how to move from high-level orientation into technical context without getting lost in the vocabulary.",
+  "kind": "guide",
+  "date": "2026-03-14",
+  "relatedCategoryId": "enc-eco",
+  "bodySections": [
+    {
+      "title": "Start broad, then narrow",
+      "body": "The homepage and About page establish the framing. They explain what Arcium is, why confidential compute matters, and how the rest of the atlas is organized."
+    },
+    {
+      "title": "Use the glossary aggressively",
+      "body": "Arcium terminology gets dense quickly. The glossary is designed to be part of the reading flow, not a separate destination you only visit once."
+    },
+    {
+      "title": "Pair categories with examples",
+      "body": "Whenever a concept starts to feel abstract, move into the ecosystem directory. Seeing how a term maps to an actual product category is often the fastest way to make the concept stick."
+    }
+  ]
+}

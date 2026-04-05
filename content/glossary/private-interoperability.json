@@ -1,0 +1,15 @@
+{
+  "id": "glossary-private-interoperability",
+  "slug": "private-interoperability",
+  "term": "Private Interoperability",
+  "tag": "USE_CASE",
+  "summary": "Private interoperability describes cross-chain or cross-system interactions where the message or payload stays protected instead of being fully exposed to every observer.",
+  "aliases": [],
+  "keywords": ["cross-chain", "messaging", "privacy"],
+  "priority": "low",
+  "source": {
+    "label": "Arcium Docs",
+    "href": "https://docs.arcium.com"
+  },
+  "relatedCategoryIds": ["enc-use-cases"]
+}

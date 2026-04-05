@@ -273,7 +273,7 @@ export default function GlossaryExplorer({ terms }: GlossaryExplorerProps) {
                                 TERM
                               </span>
                             </div>
-                            <h2 className="text-2xl font-black uppercase tracking-tight text-white">
+                            <h2 className="text-2xl font-black tracking-tight text-white">
                               {term.term}
                             </h2>
                             {term.aliases.length > 0 ? (
@@ -281,7 +281,7 @@ export default function GlossaryExplorer({ terms }: GlossaryExplorerProps) {
                                 {term.aliases.map((alias) => (
                                   <span
                                     key={alias}
-                                    className="rounded-full border border-outline-variant/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-outline"
+                                    className="rounded-full border border-outline-variant/20 px-3 py-1 text-[10px] font-bold tracking-[0.12em] text-outline"
                                   >
                                     {`AKA // ${alias}`}
                                   </span>
@@ -332,7 +332,7 @@ export default function GlossaryExplorer({ terms }: GlossaryExplorerProps) {
                                 <Link
                                   key={`${term.id}-${link.kind}-${link.href}`}
                                   href={link.href}
-                                  className="rounded-full border border-outline-variant/20 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-outline transition-colors hover:border-outline-variant/40 hover:text-white"
+                                  className="rounded-full border border-outline-variant/20 px-3 py-2 text-[10px] font-bold tracking-[0.12em] text-outline transition-colors hover:border-outline-variant/40 hover:text-white"
                                 >
                                   {`${link.kind} // ${link.label}`}
                                 </Link>

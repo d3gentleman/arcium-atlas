@@ -8,6 +8,14 @@
     {
       "title": "Deep Dive",
       "body": "Infrastructure content explains how Arcium moves from abstract privacy guarantees to an actual operating network. It covers the execution surfaces, the movement of encrypted work across the system, and the components that let applications rely on confidential compute as a service."
+    },
+    {
+      "title": "Why operations matter",
+      "body": "Infrastructure is where privacy claims become operational commitments. Readers should come away understanding that confidentiality is not only about hiding inputs, but also about how jobs are coordinated, placed, and completed without breaking the intended trust model."
+    },
+    {
+      "title": "What to look for",
+      "body": "Strong infrastructure explanations make routing, coordination, execution surfaces, and network roles easier to reason about. If a system cannot explain those pieces clearly, its privacy guarantees are harder to evaluate with confidence."
     }
   ],
   "prefix": "IN",
