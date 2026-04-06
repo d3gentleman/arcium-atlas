@@ -1,0 +1,14 @@
+{
+  "id": "nosana",
+  "slug": "proj-nosana",
+  "title": "Nosana",
+  "tag": "GPU COMPUTE",
+  "summary": "A decentralized GPU marketplace on Solana that connects idle consumer hardware to AI inference workloads, offering affordable compute at scale.",
+  "logo": "/images/ecosystem/proj-nosana/logo.png",
+  "website": "https://nosana.com",
+  "twitter": "https://x.com/nosana_ci",
+  "github": "https://github.com/nosana-ci",
+  "status": "sync_ok",
+  "categoryId": "ai",
+  "isFeatured": false
+}
