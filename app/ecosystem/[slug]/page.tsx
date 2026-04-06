@@ -1,4 +1,5 @@
-import { getEcosystemProjectBySlug, getCategoryColors, getEcosystemCategories } from '@/lib/content';
+import type { Metadata } from 'next';
+import { getEcosystemProjectBySlug, getEcosystemProjects, getCategoryColors, getEcosystemCategories } from '@/lib/content';
 import { notFound } from 'next/navigation';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
@@ -6,12 +7,32 @@ import { getNavigation, getFooterConfig } from '@/lib/content';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink, Github, Twitter, BarChart2 } from 'lucide-react';
+import { buildMetadata } from '@/lib/seo';
 
-export default async function ProjectPage({
-  params,
-}: {
+interface ProjectPageProps {
   params: { slug: string };
-}) {
+}
+
+export async function generateStaticParams() {
+  const projects = await getEcosystemProjects();
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const project = await getEcosystemProjectBySlug(params.slug);
+  if (!project) {
+    return buildMetadata({ title: 'Project Not Found', path: `/ecosystem/${params.slug}` });
+  }
+  return buildMetadata({
+    title: project.title,
+    description: project.summary,
+    path: `/ecosystem/${params.slug}`,
+  });
+}
+
+export default async function ProjectPage({ params }: ProjectPageProps) {
   const project = await getEcosystemProjectBySlug(params.slug);
   
   if (!project) {
