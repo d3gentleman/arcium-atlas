@@ -6,6 +6,10 @@
       "components/NavBar.tsx",
       "components/EcosystemDirectory.tsx",
       "app/about/page.tsx",
+      "app/ecosystem/categories/page.tsx",
+      "lib/categoryIcons.tsx",
+      "components/NavBarSearchButton.tsx",
+      "components/ProjectRow.tsx",
       "components/DiscoveryShell.tsx",
       "app/ecosystem/categories/[slug]/page.tsx",
       "app/sitemap.ts",
@@ -17,6 +21,7 @@
       "keystatic.config.ts",
       "types/domain.ts"
     ],
-    "builtIn": true
+    "builtIn": true,
+    "bookmarks": {}
   }
 ]

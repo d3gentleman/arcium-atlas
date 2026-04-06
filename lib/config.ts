@@ -13,6 +13,11 @@ export const NAVIGATION_CONFIG: LinkAction[] = [
   },
   {
     type: "internal" as const,
+    label: "Territories",
+    href: "/ecosystem/categories"
+  },
+  {
+    type: "internal" as const,
     label: "About",
     href: "/about"
   }

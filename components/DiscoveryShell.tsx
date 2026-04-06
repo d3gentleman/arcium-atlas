@@ -13,6 +13,16 @@ import {
 } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { DiscoveryItem, DiscoveryItemKind, UIConfig } from '../types/domain';
+import { Folder, Box, Terminal } from 'lucide-react';
+
+const getKindIcon = (kind: DiscoveryItemKind) => {
+  switch (kind) {
+    case 'category': return <Folder size={12} className="opacity-70" />;
+    case 'project': return <Box size={12} className="opacity-70" />;
+    case 'core': return <Terminal size={12} className="opacity-70" />;
+    default: return null;
+  }
+};
 
 interface DiscoveryShellProps {
   children: ReactNode;
@@ -35,6 +45,7 @@ const MAX_RESULTS = 8;
 const GROUP_ORDER: DiscoveryItemKind[] = ['core', 'project', 'category'];
 
 const DiscoveryContext = createContext<DiscoveryContextValue | null>(null);
+
 
 function kindOrder(kind: DiscoveryItemKind): number {
   return GROUP_ORDER.indexOf(kind);
@@ -305,7 +316,8 @@ function DiscoveryPalette({ isOpen, items, onClose, ui }: DiscoveryPaletteProps)
                             >
                               <div className="min-w-0 flex-1">
                                 <div className="mb-2 flex flex-wrap items-center gap-3">
-                                  <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                                  <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                                    {getKindIcon(item.kind)}
                                     {item.eyebrow}
                                   </span>
                                   <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-outline">

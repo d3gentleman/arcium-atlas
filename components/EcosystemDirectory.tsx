@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { EcosystemCategoryRecord, EcosystemProjectRecord } from '../types/domain';
 import ProjectRow from './ProjectRow';
+import { getCategoryIcon } from '@/lib/categoryIcons';
+
+
 
 interface EcosystemDirectoryProps {
   categories: EcosystemCategoryRecord[];
@@ -139,7 +142,7 @@ export default function EcosystemDirectory({ categories, projects, categoryColor
                       >
                         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
                           <div className="flex items-center gap-3">
-                            <div className="h-2 w-2 shadow-[0_0_8px_currentColor]" style={{ backgroundColor: color, color: color }} />
+                            {getCategoryIcon(category.slug, color)}
                             <h2 className="font-space text-xl md:text-2xl font-black uppercase tracking-widest text-white">
                               {category.title}
                               <span className="ml-3 sm:ml-4 text-xs font-mono tracking-normal opacity-60 lowercase" style={{ color: color }}>
@@ -194,7 +197,7 @@ export default function EcosystemDirectory({ categories, projects, categoryColor
                 >
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="h-2 w-2 shadow-[0_0_8px_currentColor]" style={{ backgroundColor: color, color: color }} />
+                    {getCategoryIcon(category.slug, color)}
                     <h2 className="font-space text-xl md:text-2xl font-black uppercase tracking-widest text-white">
                       {category.title}
                       <span className="ml-3 sm:ml-4 text-xs font-mono tracking-normal opacity-60 lowercase" style={{ color: color }}>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import ActionLink from './ActionLink';
+import NavBarSearchButton from './NavBarSearchButton';
 import { LinkAction } from '../types/domain';
 
 export default function NavBar({ links }: { links: LinkAction[] }) {
@@ -33,9 +34,9 @@ export default function NavBar({ links }: { links: LinkAction[] }) {
             </ActionLink>
           ))}
         </nav>
-        <div className="hidden md:flex gap-4 font-mono text-[10px] text-primary">
-          <span className="bg-primary/10 px-2 py-1">CURATED_GUIDE</span>
-          <span className="bg-primary/10 px-2 py-1">CTRL/CMD+K</span>
+        <div className="flex gap-4 font-mono text-[10px] items-center">
+          <span className="hidden md:inline bg-primary/10 text-primary px-2 py-1.5 border border-primary/20 rounded-sm">CURATED_GUIDE</span>
+          <NavBarSearchButton />
         </div>
       </div>
     </header>

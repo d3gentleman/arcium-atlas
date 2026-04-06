@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { ArrowLeft, ChevronRight, Map } from 'lucide-react';
 import KnowledgePageFrame from '@/components/KnowledgePageFrame';
 import ProjectRow from '@/components/ProjectRow';
+import { getCategoryIcon } from '@/lib/categoryIcons';
 import {
   getEcosystemCategoryBySlug,
   getEcosystemCategories,
@@ -61,8 +63,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
     project.categoryId === category.id || 
     project.categoryId === category.slug
   );
-  
-  
+
   const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
 
   return (
@@ -75,7 +76,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
           statusLabel={'TERRITORY_GUIDE_READY'}
           breadcrumbs={[
             { label: 'Home', href: '/' },
-            { label: 'Ecosystem', href: '/ecosystem' },
+            { label: 'Territories', href: '/ecosystem/categories' },
             { label: category.title, href: getEcosystemCategoryPath(category.slug) },
           ]}
           meta={
@@ -94,25 +95,14 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
         >
           <section className="console-window col-span-12">
             <div className="console-header">
-              <span>MODULE_09: TERRITORY_BRIEFING</span>
-              <span className="text-primary">{(category.prefix || 'TER').toUpperCase()}_ACTIVE</span>
+              <span className="flex items-center gap-2">
+                {getCategoryIcon(category.slug, color, 14)}
+                MODULE_09: TERRITORY_BRIEFING
+              </span>
+              <span style={{ color }}>{(category.prefix || 'TER').toUpperCase()}_ACTIVE</span>
             </div>
             <div className="grid gap-8 p-6 lg:p-12 lg:grid-cols-[minmax(0,1fr)_18rem]">
               <div className="space-y-12 max-w-4xl w-full mx-auto md:mx-0">
-                <div className="grid gap-4 md:grid-cols-3">
-                  <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Category lens</div>
-                    <p className="mt-3 text-sm leading-7 text-on-surface-variant">Use this page to understand why confidentiality matters in this product territory before comparing builders.</p>
-                  </div>
-                  <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Why it matters</div>
-                    <p className="mt-3 text-sm leading-7 text-on-surface-variant">{category.summary}</p>
-                  </div>
-                  <div className="rounded-[1.2rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Builder scan</div>
-                    <p className="mt-3 text-sm leading-7 text-on-surface-variant">The project list below is the fastest way to compare how this thesis shows up in actual ecosystem products.</p>
-                  </div>
-                </div>
 
                 {(category.bodySections || []).map((section) => (
                   <article
@@ -120,7 +110,11 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                     id={slugify(section.title)}
                     className="scroll-mt-24"
                   >
-                    <h2 className="mb-6 text-2xl font-black tracking-tight text-white border-b border-outline-variant/25 pb-4 inline-block">
+                    <h2
+                      className="mb-6 text-2xl font-black tracking-tight text-white border-b pb-4 inline-flex items-center gap-3"
+                      style={{ borderColor: `${color}33` }}
+                    >
+                      <ChevronRight size={18} style={{ color }} />
                       {section.title}
                     </h2>
                     <div className="space-y-6 text-base leading-8 text-on-surface-variant font-medium">
@@ -150,8 +144,9 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                           <Link
                             key={section.title}
                             href={`#${slugify(section.title)}`}
-                            className="block transition-colors hover:text-white"
+                            className="flex items-center gap-2 transition-colors hover:text-white group"
                           >
+                            <ChevronRight size={12} className="opacity-40 group-hover:opacity-100 transition-opacity" style={{ color }} />
                             {section.title}
                           </Link>
                         ))}
@@ -165,10 +160,18 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                     </div>
                     <div className="space-y-3 text-[10px] font-bold uppercase tracking-[0.18em]">
                       <Link
-                        href="/"
-                        className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-white hover:bg-surface-container-high"
+                        href="/ecosystem/categories"
+                        className="flex items-center gap-2 rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-white hover:bg-surface-container-high"
                       >
-                        Back to Ecosystem
+                        <Map size={12} />
+                        All Territories
+                      </Link>
+                      <Link
+                        href="/ecosystem"
+                        className="flex items-center gap-2 rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-white hover:bg-surface-container-high"
+                      >
+                        <ArrowLeft size={12} />
+                        Back to Directory
                       </Link>
                     </div>
                   </div>
@@ -181,7 +184,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
             <section className="console-window col-span-12">
               <div className="console-header">
                 <span>MODULE_10: TERRITORY_PROJECTS</span>
-                <span className="text-primary">ENTITIES_DETECTED</span>
+                <span style={{ color }}>{projects.length} ENTITIES_DETECTED</span>
               </div>
               <div className="flex flex-col border border-outline-variant/30 bg-[#06080a]/50 m-6 lg:m-12">
                 <div className="hidden md:grid md:grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant/30 bg-surface-container/30 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50">
