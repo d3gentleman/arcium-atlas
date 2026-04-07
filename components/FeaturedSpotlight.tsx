@@ -70,7 +70,7 @@ export default function FeaturedSpotlight({ projects }: FeaturedSpotlightProps) 
                     )}
                     
                     <div className="absolute top-4 right-4 z-20 bg-black/80 border border-outline-variant/30 text-[10px] font-mono px-2 py-1 text-on-surface-variant tracking-widest uppercase backdrop-blur-md transition-colors group-hover:border-primary/40 group-hover:text-white">
-                      MODULE: {project.categoryId}
+                      SECTOR: {project.categoryId}
                     </div>
                   </div>
 
