@@ -12,12 +12,12 @@ import {
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Ecosystem Territories',
-  description: 'Explore the Arcium ecosystem by territory, with live builder coverage and watchlist briefings.',
+  title: 'Ecosystem Sectors',
+  description: 'Explore the Arcium ecosystem by sector, with live builder coverage and watchlist briefings.',
   path: '/ecosystem/categories',
 });
 
-export default async function TerritoriesPage() {
+export default async function SectorsPage() {
   const [categories, allProjects, categoryColors] = await Promise.all([
     getEcosystemCategories(),
     getEcosystemProjects(),
@@ -102,14 +102,14 @@ export default async function TerritoriesPage() {
 
   return (
     <KnowledgePageFrame
-      eyebrow="ATLAS // TERRITORY_MAP"
-      title="Ecosystem Territories"
-      summary="Navigate the Arcium ecosystem by category. Some territories already have mapped builder records, while others are live briefings that will fill in as Atlas coverage expands."
+      eyebrow="ATLAS // SECTOR_MAP"
+      title="Ecosystem Sectors"
+      summary="Navigate the Arcium ecosystem by category. Some sectors already have mapped builder records, while others are live briefings that will fill in as Atlas coverage expands."
       statusLabel="MAP_READY"
       breadcrumbs={[
         { label: 'Home', href: '/' },
         { label: 'Directory', href: '/ecosystem' },
-        { label: 'Territories', href: '/ecosystem/categories' },
+        { label: 'Sectors', href: '/ecosystem/categories' },
       ]}
       meta={
         <>
@@ -127,7 +127,7 @@ export default async function TerritoriesPage() {
     >
           <section className="console-window col-span-12">
             <div className="console-header">
-              <span>MODULE_11: TERRITORY_INDEX</span>
+              <span>MODULE_11: SECTOR_INDEX</span>
               <span className="text-primary">SCAN_COMPLETE</span>
             </div>
 
@@ -136,10 +136,10 @@ export default async function TerritoriesPage() {
                 <div className="mb-4 flex flex-col gap-4 border-b border-outline-variant/20 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
                   <div>
                     <h2 className="text-lg font-black uppercase tracking-widest text-white">
-                      ACTIVE_TERRITORIES
+                      ACTIVE_SECTORS
                     </h2>
                     <p className="mt-2 max-w-3xl text-sm leading-7 text-on-surface-variant">
-                      These territories already have at least one published builder record in Atlas.
+                      These sectors already have at least one published builder record in Atlas.
                     </p>
                   </div>
                     <div className="text-[11px] font-mono uppercase tracking-widest text-on-surface-variant/60">
@@ -157,10 +157,10 @@ export default async function TerritoriesPage() {
                   <div className="mb-4 flex flex-col gap-4 border-b border-outline-variant/20 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
                     <div>
                       <h2 className="text-lg font-black uppercase tracking-widest text-white">
-                        WATCHLIST_TERRITORIES
+                        WATCHLIST_SECTORS
                       </h2>
                       <p className="mt-2 max-w-3xl text-sm leading-7 text-on-surface-variant">
-                        These territories already have briefings, but Atlas has not published builder records for them yet.
+                        These sectors already have briefings, but Atlas has not published builder records for them yet.
                       </p>
                     </div>
                     <div className="text-[11px] font-mono uppercase tracking-widest text-on-surface-variant/60">

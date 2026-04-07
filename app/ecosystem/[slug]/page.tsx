@@ -98,7 +98,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const color = category
     ? categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3'
     : '#00FFA3';
-  const territoryHref = category ? getEcosystemCategoryPath(category.slug) : '/ecosystem/categories';
+  const sectorHref = category ? getEcosystemCategoryPath(category.slug) : '/ecosystem/categories';
   const relatedProjects = allProjects
     .filter(
       (entry) =>
@@ -124,8 +124,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       statusLabel={getStatusLabel(project.status) || 'ACTIVE_RECORD'}
       breadcrumbs={[
         { label: 'Home', href: '/' },
-        { label: 'Territories', href: '/ecosystem/categories' },
-        ...(category ? [{ label: category.title, href: territoryHref }] : []),
+        { label: 'Sectors', href: '/ecosystem/categories' },
+        ...(category ? [{ label: category.title, href: sectorHref }] : []),
         { label: project.title, href: `/ecosystem/${project.slug}` },
       ]}
       meta={
@@ -270,9 +270,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   value={confidenceLabel}
                 />
                 <CoverageRow
-                  label="Territory"
+                  label="Sector"
                   value={category?.title ?? 'Unassigned'}
-                  href={territoryHref}
+                  href={sectorHref}
                 />
                 <CoverageRow
                   label="Last Reviewed"

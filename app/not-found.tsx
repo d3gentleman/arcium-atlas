@@ -38,7 +38,7 @@ export default function NotFound() {
               href="/ecosystem/categories"
               className="border border-outline-variant/30 px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-outline transition-colors hover:bg-surface-container hover:text-white"
             >
-              Browse Territories
+              Browse Sectors
             </Link>
           </div>
         </div>

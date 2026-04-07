@@ -64,19 +64,19 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
     project.categoryId === category.slug
   );
   const hasPublishedProjects = projects.length > 0;
-  const statusLabel = hasPublishedProjects ? 'TERRITORY_GUIDE_READY' : 'WATCHLIST_BRIEFING';
+  const statusLabel = hasPublishedProjects ? 'SECTOR_GUIDE_READY' : 'WATCHLIST_BRIEFING';
 
   const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
 
   return (
     <KnowledgePageFrame
-      eyebrow={`TERRITORY // ECOSYSTEM`}
+      eyebrow={`SECTOR // ECOSYSTEM`}
       title={category.title}
-      summary={hasPublishedProjects ? category.summary : `${category.summary} Atlas has not published builder records for this territory yet.`}
+      summary={hasPublishedProjects ? category.summary : `${category.summary} Atlas has not published builder records for this sector yet.`}
       statusLabel={statusLabel}
       breadcrumbs={[
         { label: 'Home', href: '/' },
-        { label: 'Territories', href: '/ecosystem/categories' },
+        { label: 'Sectors', href: '/ecosystem/categories' },
         { label: category.title, href: getEcosystemCategoryPath(category.slug) },
       ]}
       meta={
@@ -97,7 +97,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
             <div className="console-header">
               <span className="flex items-center gap-2">
                 {getCategoryIcon(category.slug, color, 14)}
-                MODULE_09: TERRITORY_BRIEFING
+                MODULE_09: SECTOR_BRIEFING
               </span>
               <span style={{ color }}>{(category.prefix || 'TER').toUpperCase()}_ACTIVE</span>
             </div>
@@ -127,7 +127,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                 
                 {category.bodySections.length === 0 && (
                   <div className="py-12 border border-dashed border-outline-variant/25 rounded-[1rem] text-center text-on-surface-variant/60 font-mono text-[11px] uppercase tracking-widest">
-                    No detailed overview available for this territory yet.
+                    No detailed overview available for this sector yet.
                   </div>
                 )}
               </div>
@@ -164,7 +164,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                         className="flex items-center gap-2 rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-white hover:bg-surface-container-high"
                       >
                         <Map size={12} />
-                        All Territories
+                        All Sectors
                       </Link>
                       <Link
                         href="/ecosystem"
@@ -183,7 +183,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
           {projects.length > 0 ? (
             <section className="console-window col-span-12">
               <div className="console-header">
-                <span>MODULE_10: TERRITORY_PROJECTS</span>
+                <span>MODULE_10: SECTOR_PROJECTS</span>
                 <span style={{ color }}>{projects.length} ENTITIES_DETECTED</span>
               </div>
               <div className="flex flex-col border border-outline-variant/30 bg-[#06080a]/50 m-6 lg:m-12">
@@ -205,7 +205,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
           ) : (
             <section className="console-window col-span-12">
               <div className="console-header">
-                <span>MODULE_10: TERRITORY_PROJECTS</span>
+                <span>MODULE_10: SECTOR_PROJECTS</span>
                 <span style={{ color }}>WATCHLIST_ONLY</span>
               </div>
               <div className="p-6 lg:p-12">
@@ -214,7 +214,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                     Coverage Status
                   </div>
                   <p className="mt-4 max-w-3xl text-sm leading-7 text-on-surface-variant">
-                    This territory briefing is live, but Atlas has not published builder records for it yet. Treat this page as a directional overview until concrete ecosystem entries are added.
+                    This sector briefing is live, but Atlas has not published builder records for it yet. Treat this page as a directional overview until concrete ecosystem entries are added.
                   </p>
                   <div className="mt-6">
                     <Link

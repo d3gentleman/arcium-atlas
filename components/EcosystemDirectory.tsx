@@ -111,14 +111,14 @@ export default function EcosystemDirectory({
         <>
           <p className="mx-auto mb-8 max-w-xl font-jetbrains text-sm leading-7 text-on-surface-variant/70">
             Atlas has not published builder records for <span className="text-white">{selectedCategory.title}</span> yet.
-            The territory briefing is live, but coverage for this sector is still being filled in.
+            The sector briefing is live, but coverage for this sector is still being filled in.
           </p>
           <div className="mx-auto flex flex-wrap justify-center gap-4">
             <Link
               href={getCategoryPath(selectedCategory.slug)}
               className="border border-outline-variant/40 px-6 py-2 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-surface-container"
             >
-              Open_Territory_Briefing
+              Open_Sector_Briefing
             </Link>
             <button
               onClick={() => setSelectedCategoryId(null)}
@@ -242,10 +242,10 @@ export default function EcosystemDirectory({
                 <div className="flex flex-col gap-4 border-b border-outline-variant/20 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
                   <div>
                     <h2 className="font-space text-xl font-black uppercase tracking-widest text-white md:text-2xl">
-                      WATCHLIST_TERRITORIES
+                      WATCHLIST_SECTORS
                     </h2>
                     <p className="mt-3 max-w-3xl text-sm leading-7 text-on-surface-variant">
-                      These territory briefings are live, but Atlas does not yet have published builder records for them.
+                      These sector briefings are live, but Atlas does not yet have published builder records for them.
                     </p>
                   </div>
                   <div className="text-xs font-mono uppercase text-on-surface-variant/60">

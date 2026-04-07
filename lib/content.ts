@@ -97,7 +97,7 @@ export async function getDiscoveryIndex(): Promise<DiscoveryItem[]> {
     href: getEcosystemCategoryPath(c.slug),
     summary: c.summary || '',
     tag: c.tag || 'ECOSYSTEM',
-    eyebrow: c.prefix || 'TERRITORY',
+    eyebrow: c.prefix || 'SECTOR',
     priority: 'high',
     featured: false,
     keywords: []

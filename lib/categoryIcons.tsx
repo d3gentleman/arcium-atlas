@@ -13,7 +13,7 @@ import {
 
 /**
  * Returns a Lucide icon element mapped to an ecosystem category slug.
- * Used across the Ecosystem Directory, Category pages, and Territories index.
+ * Used across the Ecosystem Directory, Category pages, and Sectors index.
  */
 export function getCategoryIcon(slug: string, color: string, size = 20) {
   const props = { size, color, className: 'drop-shadow-[0_0_8px_currentColor]' };

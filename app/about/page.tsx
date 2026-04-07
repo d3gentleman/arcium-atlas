@@ -13,13 +13,13 @@ export const metadata = buildMetadata({
 const audienceCards = [
   {
     title: 'New to Arcium',
-    description: 'Start with the territory briefs to understand where confidential compute is most relevant before diving into builder records.',
+    description: 'Start with the sector briefs to understand where confidential compute is most relevant before diving into builder records.',
     action: {
       type: 'internal',
       href: '/ecosystem/categories',
-      label: 'Browse territories',
+      label: 'Browse sectors',
     } as LinkAction,
-    label: 'Browse territories',
+    label: 'Browse sectors',
   },
   {
     title: 'Evaluating the ecosystem',
@@ -48,7 +48,7 @@ export default function AboutPage() {
     <KnowledgePageFrame
       eyebrow="ABOUT_ATLAS"
       title="What Arcium Atlas is for"
-      summary="Arcium Atlas is a curated ecosystem directory and territory guide for people trying to understand where Arcium fits without piecing the story together from scattered announcements and jargon."
+      summary="Arcium Atlas is a curated ecosystem directory and sector guide for people trying to understand where Arcium fits without piecing the story together from scattered announcements and jargon."
       statusLabel="REFERENCE_MISSION_ACTIVE"
       breadcrumbs={[
         { label: 'Home', href: '/' },
@@ -78,15 +78,15 @@ export default function AboutPage() {
           <article className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-6 lg:col-span-2">
             <h2 className="text-2xl font-black tracking-tight text-white">The 30-second explanation</h2>
             <p className="mt-4 text-base leading-8 text-on-surface-variant">
-              Arcium Atlas explains where confidential compute may matter in the Arcium ecosystem, which public builder records are currently mapped, and how those records are organized by territory. It is designed to help readers move from slogans to a usable model of the landscape.
+              Arcium Atlas explains where confidential compute may matter in the Arcium ecosystem, which public builder records are currently mapped, and how those records are organized by sector. It is designed to help readers move from slogans to a usable model of the landscape.
             </p>
             <h3 className="mt-8 text-xl font-black tracking-tight text-white">Why it matters</h3>
             <p className="mt-4 text-base leading-8 text-on-surface-variant">
-              Privacy infrastructure can be hard to evaluate because the language is technical and the public ecosystem picture is fragmented. Atlas closes part of that gap by pairing territory briefings, builder records, and outbound links to official sources in one place.
+              Privacy infrastructure can be hard to evaluate because the language is technical and the public ecosystem picture is fragmented. Atlas closes part of that gap by pairing sector briefings, builder records, and outbound links to official sources in one place.
             </p>
             <h3 className="mt-8 text-xl font-black tracking-tight text-white">How to use it</h3>
             <p className="mt-4 text-base leading-8 text-on-surface-variant">
-              Start with the territory pages to understand the verticals, move into the ecosystem directory for the current builder map, and use the official docs whenever you need deeper protocol detail than Atlas currently covers.
+              Start with the sector pages to understand the verticals, move into the ecosystem directory for the current builder map, and use the official docs whenever you need deeper protocol detail than Atlas currently covers.
             </p>
           </article>
 
@@ -94,7 +94,7 @@ export default function AboutPage() {
             <div className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">Quick paths</div>
             <div className="mt-4 space-y-3">
               <Link href="/ecosystem/categories" className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-sm font-bold text-outline transition-colors hover:bg-surface-container hover:text-white">
-                Browse territory briefs
+                Browse sector briefs
               </Link>
               <Link href="/ecosystem" className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-sm font-bold text-outline transition-colors hover:bg-surface-container hover:text-white">
                 Browse builder records

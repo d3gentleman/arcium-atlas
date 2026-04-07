@@ -22,7 +22,7 @@ export default async function EcosystemPage() {
     <KnowledgePageFrame
       eyebrow="ATLAS // CURATED_DIRECTORY"
       title="Arcium Ecosystem"
-      summary="A curated directory of public builder records, reference projects, and territory coverage related to Arcium. Use the filters for a narrow scan, or browse the grouped sections to see where coverage is already mapped and where it is still filling in."
+      summary="A curated directory of public builder records, reference projects, and sector coverage related to Arcium. Use the filters for a narrow scan, or browse the grouped sections to see where coverage is already mapped and where it is still filling in."
       statusLabel="DIRECTORY_LIVE"
       breadcrumbs={[
         { label: 'Home', href: '/' },
@@ -34,7 +34,7 @@ export default async function EcosystemPage() {
             PROJECTS // {projects.length}
           </div>
           <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
-            TERRITORIES // {ecosystemCategories.length}
+            SECTORS // {ecosystemCategories.length}
           </div>
           <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
             FORMAT // CURATED GUIDE

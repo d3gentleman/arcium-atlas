@@ -13,7 +13,7 @@ export const NAVIGATION_CONFIG: LinkAction[] = [
   },
   {
     type: "internal" as const,
-    label: "Territories",
+    label: "Sectors",
     href: "/ecosystem/categories"
   },
   {
@@ -72,7 +72,7 @@ export const UI_STRINGS: UIConfig = {
   heroMode: "MODE: ECOSYSTEM_OVERVIEW",
   heroRenderActive: "REALTIME_RENDER_ACTIVE",
   heroZoom: "ZOOM: 1.0X",
-  heroAtlasTerritories: "Territories",
+  heroAtlasTerritories: "Sectors",
   heroFeaturedSystems: "Featured Builders",
   filterLegendDesc: "ACTIVE_FILTERS",
   filterAllStr: "View All",
@@ -87,12 +87,12 @@ export const UI_STRINGS: UIConfig = {
   discoveryClose: "Close Search",
   discoverySearchPlaceholder: "Search builders and ecosystem categories...",
   discoverySearchHint: "CTRL/CMD + K // ESC to close",
-  discoveryInitialState: "Search builder records and territory briefings.",
+  discoveryInitialState: "Search builder records and sector briefings.",
   discoveryNoResultsTitle: "No atlas records matched this query.",
   discoveryNoResultsBody: "Try a builder name or a category name.",
   discoveryGroupCore: "Core Network",
   discoveryGroupProjects: "Builders",
-  discoveryGroupCategories: "Territories",
+  discoveryGroupCategories: "Sectors",
   discoveryGroupGlossary: "Glossary Terms",
   discoveryGroupArticles: "Guides & Articles",
   discoveryOpenResult: "Open Record",
@@ -127,7 +127,7 @@ export const HOMEPAGE_CONFIG = {
     subtitle: "The Arcium Ecosystem",
     titleLine1: "DISCOVER THE",
     titleLine2: "BUILDER NETWORK",
-    description: "Explore public builder records, territory briefs, and source links across the Arcium ecosystem.",
+    description: "Explore public builder records, sector briefs, and source links across the Arcium ecosystem.",
     primaryCta: {
       type: "internal" as const,
       label: "View Directory",
@@ -159,7 +159,7 @@ export const HOMEPAGE_CONFIG = {
   liveStatusFeed: [
     {
       status: "LIVE",
-      text: "Explore current builder records and territory coverage"
+      text: "Explore current builder records and sector coverage"
     },
     {
       status: "SOURCE",
