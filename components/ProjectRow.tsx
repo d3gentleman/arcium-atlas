@@ -43,7 +43,7 @@ export default function ProjectRow({ project, color = '#00FFA3' }: ProjectRowPro
           )}
         </div>
         <div className="flex flex-col min-w-0">
-          <div className="text-[10px] font-bold uppercase tracking-[0.25em] mb-1" style={{ color }}>
+          <div className="text-[11px] font-bold uppercase tracking-[0.25em] mb-1" style={{ color }}>
             {project.tag}
           </div>
           <h3 className="font-space text-lg font-black uppercase tracking-tight text-white group-hover:text-primary transition-colors truncate">
@@ -65,7 +65,7 @@ export default function ProjectRow({ project, color = '#00FFA3' }: ProjectRowPro
           className={`h-2 w-2 rounded-full ${project.status === 'sync_ok' ? '' : 'bg-on-surface-variant/30 animate-pulse'}`} 
           style={project.status === 'sync_ok' ? { backgroundColor: color, boxShadow: `0 0 10px ${color}99` } : {}}
         />
-        <span className="text-[10px] font-mono text-on-surface-variant/60 uppercase tracking-widest whitespace-nowrap group-hover:text-white transition-colors">
+        <span className="text-[11px] font-mono text-on-surface-variant/60 uppercase tracking-widest whitespace-nowrap group-hover:text-white transition-colors">
           {project.status === 'sync_ok' ? 'ONLINE' : project.status.replace('_', ' ').toUpperCase()}
         </span>
       </div>

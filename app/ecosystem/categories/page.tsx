@@ -72,7 +72,7 @@ export default async function TerritoriesPage() {
             <h2 className="truncate text-base font-black uppercase tracking-wide text-white transition-colors group-hover:text-white/90">
               {category.title}
             </h2>
-            <div className="text-[10px] font-mono uppercase tracking-widest" style={{ color }}>
+            <div className="text-[11px] font-mono uppercase tracking-widest" style={{ color }}>
               {watchlist ? 'WATCHLIST' : category.tag}
             </div>
           </div>
@@ -83,11 +83,11 @@ export default async function TerritoriesPage() {
         </p>
 
         <div className="mt-auto flex items-center justify-between border-t border-outline-variant/15 pt-2">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-on-surface-variant/50">
+          <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-on-surface-variant/50">
             {watchlist ? '0 PROJECTS' : `${count} ${count === 1 ? 'PROJECT' : 'PROJECTS'}`}
           </span>
           <span
-            className={`flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest ${
+            className={`flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest ${
               watchlist ? 'transition-colors group-hover:text-white' : 'opacity-0 transition-opacity duration-300 group-hover:opacity-100'
             }`}
             style={{ color }}
@@ -101,32 +101,30 @@ export default async function TerritoriesPage() {
   };
 
   return (
-    <div className="col-span-12 flex min-h-screen flex-col bg-background text-on-surface">
-      <main className="container mx-auto flex-1 px-4 py-8 md:px-8">
-        <KnowledgePageFrame
-          eyebrow="ATLAS // TERRITORY_MAP"
-          title="Ecosystem Territories"
-          summary="Navigate the Arcium ecosystem by category. Some territories already have mapped builder records, while others are live briefings that will fill in as Atlas coverage expands."
-          statusLabel="MAP_READY"
-          breadcrumbs={[
-            { label: 'Home', href: '/' },
-            { label: 'Directory', href: '/ecosystem' },
-            { label: 'Territories', href: '/ecosystem/categories' },
-          ]}
-          meta={
-            <>
-              <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
-                ACTIVE // {activeCategories.length}
-              </div>
-              <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
-                TOTAL_PROJECTS // {allProjects.length}
-              </div>
-              <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
-                WATCHLIST // {watchlistCategories.length}
-              </div>
-            </>
-          }
-        >
+    <KnowledgePageFrame
+      eyebrow="ATLAS // TERRITORY_MAP"
+      title="Ecosystem Territories"
+      summary="Navigate the Arcium ecosystem by category. Some territories already have mapped builder records, while others are live briefings that will fill in as Atlas coverage expands."
+      statusLabel="MAP_READY"
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Directory', href: '/ecosystem' },
+        { label: 'Territories', href: '/ecosystem/categories' },
+      ]}
+      meta={
+        <>
+          <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
+            ACTIVE // {activeCategories.length}
+          </div>
+          <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
+            TOTAL_PROJECTS // {allProjects.length}
+          </div>
+          <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
+            WATCHLIST // {watchlistCategories.length}
+          </div>
+        </>
+      }
+    >
           <section className="console-window col-span-12">
             <div className="console-header">
               <span>MODULE_11: TERRITORY_INDEX</span>
@@ -144,10 +142,10 @@ export default async function TerritoriesPage() {
                       These territories already have at least one published builder record in Atlas.
                     </p>
                   </div>
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-on-surface-variant/60">
-                    {activeCategories.length} live
+                    <div className="text-[11px] font-mono uppercase tracking-widest text-on-surface-variant/60">
+                      {activeCategories.length} live
+                    </div>
                   </div>
-                </div>
 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {activeCategories.map((category, index) => renderCategoryCard(category, index))}
@@ -165,7 +163,7 @@ export default async function TerritoriesPage() {
                         These territories already have briefings, but Atlas has not published builder records for them yet.
                       </p>
                     </div>
-                    <div className="text-[10px] font-mono uppercase tracking-widest text-on-surface-variant/60">
+                    <div className="text-[11px] font-mono uppercase tracking-widest text-on-surface-variant/60">
                       {watchlistCategories.length} pending
                     </div>
                   </div>
@@ -179,8 +177,6 @@ export default async function TerritoriesPage() {
               )}
             </div>
           </section>
-        </KnowledgePageFrame>
-      </main>
-    </div>
+    </KnowledgePageFrame>
   );
 }

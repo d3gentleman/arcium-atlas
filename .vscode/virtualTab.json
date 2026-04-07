@@ -6,7 +6,7 @@
       "components/NavBar.tsx",
       "components/EcosystemDirectory.tsx",
       "app/about/page.tsx",
-      "app/ecosystem/categories/page.tsx",
+      "components/Hero.tsx",
       "content/ecosystem-projects/proj-nosana.json",
       "lib/categoryIcons.tsx",
       "components/NavBarSearchButton.tsx",

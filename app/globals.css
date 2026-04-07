@@ -31,12 +31,72 @@
 }
 
 .console-window {
-  @apply border-2 border-outline-variant/30 bg-surface-container-lowest relative;
+  @apply relative border-2 border-outline-variant/30 bg-surface-container-lowest/75 backdrop-blur-[2px];
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
 }
 
 .console-header {
-  @apply border-b-2 border-outline-variant/30 bg-surface-container-high px-3 py-1 text-[10px] flex justify-between items-center font-label;
+  @apply flex items-center justify-between border-b-2 border-outline-variant/30 bg-surface-container-high/70 px-3 py-1.5 text-[11px] font-label backdrop-blur-sm;
+}
+
+.atlas-public-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.atlas-public-shell::before,
+.atlas-public-shell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.atlas-public-shell::before {
+  z-index: -2;
+  background-image:
+    radial-gradient(circle at 18% 10%, rgba(0, 240, 255, 0.1), transparent 28%),
+    radial-gradient(circle at 82% 14%, rgba(255, 200, 87, 0.08), transparent 24%),
+    radial-gradient(circle at 74% 72%, rgba(47, 230, 166, 0.08), transparent 20%),
+    linear-gradient(rgba(59, 73, 75, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 73, 75, 0.08) 1px, transparent 1px);
+  background-size: auto, auto, auto, 24px 24px, 24px 24px;
+  background-position: center;
+}
+
+.atlas-public-shell::after {
+  z-index: -1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 10, 0.18) 0%,
+      rgba(5, 7, 10, 0.08) 18%,
+      rgba(5, 7, 10, 0.18) 55%,
+      rgba(5, 7, 10, 0.3) 100%
+    ),
+    radial-gradient(circle at top center, rgba(8, 10, 13, 0.06) 0%, rgba(8, 10, 13, 0.42) 72%, rgba(8, 10, 13, 0.72) 100%);
+}
+
+.atlas-public-shell--calm::before {
+  opacity: 0.6;
+  background-image:
+    radial-gradient(circle at 18% 10%, rgba(0, 240, 255, 0.07), transparent 26%),
+    radial-gradient(circle at 82% 14%, rgba(255, 200, 87, 0.05), transparent 22%),
+    linear-gradient(rgba(59, 73, 75, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 73, 75, 0.07) 1px, transparent 1px);
+  background-size: auto, auto, 24px 24px, 24px 24px;
+}
+
+.atlas-public-shell--calm::after {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 10, 0.28) 0%,
+      rgba(5, 7, 10, 0.16) 24%,
+      rgba(5, 7, 10, 0.24) 60%,
+      rgba(5, 7, 10, 0.38) 100%
+    ),
+    radial-gradient(circle at top center, rgba(8, 10, 13, 0.04) 0%, rgba(8, 10, 13, 0.3) 72%, rgba(8, 10, 13, 0.56) 100%);
 }
 
 .scanline-effect {

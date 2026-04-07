@@ -1,14 +1,11 @@
-import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
-import NavBar from '@/components/NavBar';
 import EcosystemDirectory from '@/components/EcosystemDirectory';
+import PublicPageShell from '@/components/PublicPageShell';
 import Marquee from 'react-fast-marquee';
 import {
   getEcosystemProjects,
   getEcosystemCategories,
-  getFooterConfig,
   getHomepageConfig,
-  getNavigation,
   getCategoryColors,
 } from '@/lib/content';
 import { buildMetadata } from '@/lib/seo';
@@ -21,16 +18,12 @@ export const metadata = buildMetadata({
 
 export default async function Home() {
   const [
-    navLinks,
     homepage,
-    footerConfig,
     projects,
     categories,
     categoryColors,
   ] = await Promise.all([
-    getNavigation(),
     getHomepageConfig(),
-    getFooterConfig(),
     getEcosystemProjects(),
     getEcosystemCategories(),
     getCategoryColors(),
@@ -54,10 +47,7 @@ export default async function Home() {
   const marqueeProjects = projects.filter(p => p.logo);
 
   return (
-    <>
-      <NavBar links={navLinks} />
-      
-      <main className="col-span-12 space-y-16 pb-16">
+    <PublicPageShell mainClassName="space-y-16 pb-16 md:pb-20">
         <Hero
           hero={homepage.hero}
           quickLinks={homepage.quickLinks}
@@ -86,10 +76,6 @@ export default async function Home() {
             categoryColors={categoryColors} 
           />
         </section>
-        
-      </main>
-
-      <Footer config={footerConfig} />
-    </>
+    </PublicPageShell>
   );
 }

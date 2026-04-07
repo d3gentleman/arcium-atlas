@@ -25,7 +25,7 @@ export default function Hero({ hero, quickLinks, liveStatusFeed }: HeroProps) {
         <div className="flex-1 max-w-2xl">
           <div className="flex items-center gap-4 mb-6">
             <div className="h-[2px] w-12 bg-primary"></div>
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary drop-shadow-[0_0_8px_rgba(0,255,163,0.5)]">
+            <span className="text-[11px] font-black uppercase tracking-[0.3em] text-primary drop-shadow-[0_0_8px_rgba(0,255,163,0.5)]">
               {hero.subtitle}
             </span>
           </div>
@@ -58,11 +58,11 @@ export default function Hero({ hero, quickLinks, liveStatusFeed }: HeroProps) {
         
         <div className="w-full lg:w-80 flex flex-col gap-8">
           <div className="p-6 bg-black/40 border border-outline-variant/20 backdrop-blur-md rounded-sm">
-            <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-outline mb-4 flex items-center gap-2">
+            <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-outline mb-4 flex items-center gap-2">
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
               Live_Status_Feed
             </div>
-            <div className="space-y-3 font-mono text-[10px]">
+            <div className="space-y-3 font-mono text-[11px]">
               {liveStatusFeed.map((item, i) => (
                 <div key={i} className="flex justify-between items-center border-b border-outline-variant/10 pb-2 last:border-0 last:pb-0">
                   <span className="text-on-surface-variant/60">[{item.status}]</span>
@@ -73,7 +73,7 @@ export default function Hero({ hero, quickLinks, liveStatusFeed }: HeroProps) {
           </div>
           
           <div className="p-6 bg-primary/5 border border-primary/20 backdrop-blur-md rounded-sm">
-            <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-4">
+            <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary mb-4">
               Quick_Access_Nodes
             </div>
             <div className="flex flex-col gap-2">

@@ -67,6 +67,7 @@ export default function AboutPage() {
           </div>
         </>
       }
+      backgroundVariant="calm"
     >
       <section className="console-window col-span-12 overflow-hidden">
         <div className="console-header">
@@ -90,7 +91,7 @@ export default function AboutPage() {
           </article>
 
           <aside className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-6">
-            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Quick paths</div>
+            <div className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">Quick paths</div>
             <div className="mt-4 space-y-3">
               <Link href="/ecosystem/categories" className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-sm font-bold text-outline transition-colors hover:bg-surface-container hover:text-white">
                 Browse territory briefs

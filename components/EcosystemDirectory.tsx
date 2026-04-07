@@ -86,7 +86,7 @@ export default function EcosystemDirectory({
         </div>
 
         <div className="flex flex-col border border-outline-variant/30 bg-[#06080a]/50">
-          <div className="hidden gap-4 border-b border-outline-variant/30 bg-surface-container/30 px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50 md:grid md:grid-cols-12">
+          <div className="hidden gap-4 border-b border-outline-variant/30 bg-surface-container/30 px-4 py-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/50 md:grid md:grid-cols-12">
             <div className="col-span-4">Project_Identifier</div>
             <div className="col-span-5">Summary_Log</div>
             <div className="col-span-2">Sys_Status</div>
@@ -274,7 +274,7 @@ export default function EcosystemDirectory({
                             <div className="text-sm font-black uppercase tracking-wide text-white">
                               {category.title}
                             </div>
-                            <div className="text-[10px] font-mono uppercase tracking-widest" style={{ color }}>
+                            <div className="text-[11px] font-mono uppercase tracking-widest" style={{ color }}>
                               WATCHLIST
                             </div>
                           </div>
@@ -282,7 +282,7 @@ export default function EcosystemDirectory({
                         <p className="mt-4 text-sm leading-6 text-on-surface-variant">
                           {category.summary}
                         </p>
-                        <div className="mt-4 text-[10px] font-bold uppercase tracking-widest text-outline transition-colors group-hover:text-white">
+                        <div className="mt-4 text-[11px] font-bold uppercase tracking-widest text-outline transition-colors group-hover:text-white">
                           Open briefing
                         </div>
                       </Link>

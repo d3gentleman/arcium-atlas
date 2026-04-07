@@ -69,32 +69,30 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
   const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
 
   return (
-    <div className="col-span-12 flex min-h-screen flex-col bg-background text-on-surface">
-      <main className="container mx-auto flex-1 px-4 py-8 md:px-8">
-        <KnowledgePageFrame
-          eyebrow={`TERRITORY // ECOSYSTEM`}
-          title={category.title}
-          summary={hasPublishedProjects ? category.summary : `${category.summary} Atlas has not published builder records for this territory yet.`}
-          statusLabel={statusLabel}
-          breadcrumbs={[
-            { label: 'Home', href: '/' },
-            { label: 'Territories', href: '/ecosystem/categories' },
-            { label: category.title, href: getEcosystemCategoryPath(category.slug) },
-          ]}
-          meta={
-            <>
-              <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
-                TAG // {category.tag}
-              </div>
-              <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
-                PROJECTS // {projects.length}
-              </div>
-              <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
-                STATUS // {hasPublishedProjects ? 'LIVE' : 'WATCHLIST'}
-              </div>
-            </>
-          }
-        >
+    <KnowledgePageFrame
+      eyebrow={`TERRITORY // ECOSYSTEM`}
+      title={category.title}
+      summary={hasPublishedProjects ? category.summary : `${category.summary} Atlas has not published builder records for this territory yet.`}
+      statusLabel={statusLabel}
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Territories', href: '/ecosystem/categories' },
+        { label: category.title, href: getEcosystemCategoryPath(category.slug) },
+      ]}
+      meta={
+        <>
+          <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
+            TAG // {category.tag}
+          </div>
+          <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
+            PROJECTS // {projects.length}
+          </div>
+          <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
+            STATUS // {hasPublishedProjects ? 'LIVE' : 'WATCHLIST'}
+          </div>
+        </>
+      }
+    >
           <section className="console-window col-span-12">
             <div className="console-header">
               <span className="flex items-center gap-2">
@@ -128,7 +126,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                 ))}
                 
                 {category.bodySections.length === 0 && (
-                  <div className="py-12 border border-dashed border-outline-variant/25 rounded-[1rem] text-center text-on-surface-variant/60 font-mono text-[10px] uppercase tracking-widest">
+                  <div className="py-12 border border-dashed border-outline-variant/25 rounded-[1rem] text-center text-on-surface-variant/60 font-mono text-[11px] uppercase tracking-widest">
                     No detailed overview available for this territory yet.
                   </div>
                 )}
@@ -138,7 +136,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                 <div className="sticky top-8 space-y-4">
                   {category.bodySections && category.bodySections.length > 0 && (
                     <div className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
-                      <div className="mb-4 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+                      <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
                         Table of Contents
                       </div>
                       <nav className="space-y-3 text-sm text-outline font-bold">
@@ -157,10 +155,10 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                   )}
 
                   <div className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-5">
-                    <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+                    <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
                       Quick Paths
                     </div>
-                    <div className="space-y-3 text-[10px] font-bold uppercase tracking-[0.18em]">
+                    <div className="space-y-3 text-[11px] font-bold uppercase tracking-[0.18em]">
                       <Link
                         href="/ecosystem/categories"
                         className="flex items-center gap-2 rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-outline transition-colors hover:text-white hover:bg-surface-container-high"
@@ -189,7 +187,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                 <span style={{ color }}>{projects.length} ENTITIES_DETECTED</span>
               </div>
               <div className="flex flex-col border border-outline-variant/30 bg-[#06080a]/50 m-6 lg:m-12">
-                <div className="hidden md:grid md:grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant/30 bg-surface-container/30 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50">
+                <div className="hidden md:grid md:grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant/30 bg-surface-container/30 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/50">
                   <div className="col-span-4">Project_Identifier</div>
                   <div className="col-span-5">Summary_Log</div>
                   <div className="col-span-2">Sys_Status</div>
@@ -212,7 +210,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
               </div>
               <div className="p-6 lg:p-12">
                 <div className="rounded-[1.4rem] border border-dashed border-outline-variant/25 bg-surface-container-lowest/50 p-6">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
                     Coverage Status
                   </div>
                   <p className="mt-4 max-w-3xl text-sm leading-7 text-on-surface-variant">
@@ -221,7 +219,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                   <div className="mt-6">
                     <Link
                       href="/ecosystem"
-                      className="inline-flex items-center gap-2 rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-outline transition-colors hover:bg-surface-container-high hover:text-white"
+                      className="inline-flex items-center gap-2 rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-outline transition-colors hover:bg-surface-container-high hover:text-white"
                     >
                       <ArrowLeft size={12} />
                       Browse Directory
@@ -231,8 +229,6 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
               </div>
             </section>
           )}
-        </KnowledgePageFrame>
-      </main>
-    </div>
+    </KnowledgePageFrame>
   );
 }
