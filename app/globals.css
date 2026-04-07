@@ -156,18 +156,6 @@
   }
 }
 
-@keyframes auditScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.audit-ticker {
-  animation: auditScroll 60s linear infinite;
-}
-
-.audit-ticker:hover {
-  animation-play-state: paused;
-}
 
 @media (prefers-reduced-motion: reduce) {
   html {

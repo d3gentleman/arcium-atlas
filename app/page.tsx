@@ -1,5 +1,7 @@
 import Hero from '@/components/Hero';
-import EcosystemDirectory from '@/components/EcosystemDirectory';
+import SectorRadar from '@/components/SectorRadar';
+import FeaturedSpotlight from '@/components/FeaturedSpotlight';
+import DirectoryLaunchCTA from '@/components/DirectoryLaunchCTA';
 import PublicPageShell from '@/components/PublicPageShell';
 import RegistryPulse from '@/components/RegistryPulse';
 import {
@@ -43,6 +45,8 @@ export default async function Home() {
     },
   ];
 
+  const featuredProjects = projects.filter(p => p.isFeatured);
+
   return (
     <PublicPageShell mainClassName="space-y-16 pb-16 md:pb-20">
         <Hero
@@ -51,16 +55,24 @@ export default async function Home() {
           liveStatusFeed={liveStatusFeed}
         />
 
-        <section className="col-span-12 border-y border-outline-variant/30">
+        <section className="col-span-12 border-t border-outline-variant/30">
           <RegistryPulse projects={projects} categories={categories} />
         </section>
 
         <section className="col-span-12">
-          <EcosystemDirectory 
-            categories={categories} 
-            projects={projects} 
-            categoryColors={categoryColors} 
+          <SectorRadar 
+            categories={categories}
+            projects={projects}
+            categoryColors={categoryColors}
           />
+        </section>
+
+        <section className="col-span-12">
+          <FeaturedSpotlight projects={featuredProjects} />
+        </section>
+
+        <section className="col-span-12">
+          <DirectoryLaunchCTA />
         </section>
     </PublicPageShell>
   );

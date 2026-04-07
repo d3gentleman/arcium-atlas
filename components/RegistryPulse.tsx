@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { EcosystemCategoryRecord, EcosystemProjectRecord } from '@/types/domain';
 
 interface RegistryPulseProps {
@@ -34,62 +34,6 @@ function computeConfidenceLabel(projects: EcosystemProjectRecord[]) {
     if (avg >= threshold) return label;
   }
   return 'MINIMAL';
-}
-
-/* ── Audit-log event generator ── */
-type AuditEvent = { timestamp: string; type: string; detail: string };
-
-const EVENT_TEMPLATES: ((p: EcosystemProjectRecord) => AuditEvent)[] = [
-  (p) => ({
-    timestamp: fakeTimestamp(),
-    type: 'PROJECT_REVIEW_SYNC',
-    detail: `${normalizeTitle(p.title)}_VERIFIED`,
-  }),
-  (p) => ({
-    timestamp: fakeTimestamp(),
-    type: 'REGISTRY_ENTRY_MAPPED',
-    detail: `${normalizeTitle(p.title)}_${p.tag}_INDEXED`,
-  }),
-  (p) => ({
-    timestamp: fakeTimestamp(),
-    type: 'SIGNAL_CONFIDENCE_SET',
-    detail: `${normalizeTitle(p.title)}_CONFIDENCE_${(p.confidence ?? 'unreviewed').toUpperCase()}`,
-  }),
-];
-
-function normalizeTitle(title: string) {
-  return title.toUpperCase().replace(/[^A-Z0-9]+/g, '_');
-}
-
-function fakeTimestamp() {
-  const h = String(Math.floor(Math.random() * 24)).padStart(2, '0');
-  const m = String(Math.floor(Math.random() * 60)).padStart(2, '0');
-  const s = String(Math.floor(Math.random() * 60)).padStart(2, '0');
-  return `${h}:${m}:${s}`;
-}
-
-function generateAuditEvents(projects: EcosystemProjectRecord[]): AuditEvent[] {
-  const events: AuditEvent[] = [];
-
-  for (const project of projects) {
-    const template = EVENT_TEMPLATES[events.length % EVENT_TEMPLATES.length];
-    events.push(template(project));
-  }
-
-  // Add a few ecosystem-level events
-  events.push({
-    timestamp: fakeTimestamp(),
-    type: 'SECTOR_COVERAGE_UPDATE',
-    detail: 'ALL_SECTORS_RESCANNED',
-  });
-  events.push({
-    timestamp: fakeTimestamp(),
-    type: 'SYSTEM_HEARTBEAT',
-    detail: 'REGISTRY_ONLINE_ALL_NODES_HEALTHY',
-  });
-
-  // Sort by timestamp for a natural feel
-  return events.sort((a, b) => a.timestamp.localeCompare(b.timestamp));
 }
 
 /* ── Animated counter hook ── */
@@ -170,7 +114,6 @@ function StatModule({
 
 /* ── Main component ── */
 export default function RegistryPulse({ projects, categories }: RegistryPulseProps) {
-  const tickerRef = useRef<HTMLDivElement>(null);
 
   // ── Metrics ──
   const buildersCount = projects.length;
@@ -182,8 +125,6 @@ export default function RegistryPulse({ projects, categories }: RegistryPulsePro
   const confidenceLabel = computeConfidenceLabel(projects);
   const featuredCount = projects.filter((p) => p.isFeatured).length;
 
-  // ── Audit events ──
-  const auditEvents = generateAuditEvents(projects);
 
   return (
     <div className="space-y-0">
@@ -213,31 +154,6 @@ export default function RegistryPulse({ projects, categories }: RegistryPulsePro
         />
       </div>
 
-      {/* ── Audit Feed Ticker ── */}
-      <div className="overflow-hidden border-t border-outline-variant/15 bg-black/60 backdrop-blur-sm">
-        <div className="flex items-center">
-          <div className="shrink-0 border-r border-outline-variant/20 bg-primary/5 px-4 py-2">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary font-jetbrains whitespace-nowrap">
-              Audit_Feed
-            </span>
-          </div>
-          <div className="relative flex-1 overflow-hidden py-2" ref={tickerRef}>
-            <div className="audit-ticker flex w-max gap-12 px-4">
-              {/* Duplicate the events for seamless loop */}
-              {[...auditEvents, ...auditEvents].map((event, idx) => (
-                <span
-                  key={`${event.type}-${idx}`}
-                  className="inline-flex items-center gap-2 whitespace-nowrap text-[11px] font-jetbrains text-on-surface-variant/50 transition-colors hover:text-on-surface-variant"
-                >
-                  <span className="text-on-surface-variant/30">[{event.timestamp}]</span>
-                  <span className="text-primary/70">{event.type}:</span>
-                  <span>{event.detail}</span>
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
