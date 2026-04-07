@@ -37,7 +37,18 @@ export default async function Home() {
   ]);
 
   const liveStatusFeed = [
-    { status: 'LIVE', text: `${projects.length} curated ecosystem records mapped to territories` },
+    {
+      status: 'LIVE',
+      text: `${projects.length} public builder records currently mapped`,
+    },
+    {
+      status: 'MAP',
+      text: `${categories.filter((category) => projects.some((project) => project.categoryId === category.id || project.categoryId === category.slug)).length} territories with published builder coverage`,
+    },
+    {
+      status: 'WATCH',
+      text: `${categories.filter((category) => !projects.some((project) => project.categoryId === category.id || project.categoryId === category.slug)).length} territories still filling in`,
+    },
   ];
 
   const marqueeProjects = projects.filter(p => p.logo);

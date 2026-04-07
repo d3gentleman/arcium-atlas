@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import ActionLink from '@/components/ActionLink';
 import KnowledgePageFrame from '@/components/KnowledgePageFrame';
 import { buildMetadata } from '@/lib/seo';
+import { LinkAction } from '@/types/domain';
 
 export const metadata = buildMetadata({
   title: 'About',
@@ -11,21 +13,33 @@ export const metadata = buildMetadata({
 const audienceCards = [
   {
     title: 'New to Arcium',
-    description: 'Start with the core guides and glossary to build a working mental model before diving into category pages.',
-    href: '/encyclopedia',
-    label: 'Start with guides',
+    description: 'Start with the territory briefs to understand where confidential compute is most relevant before diving into builder records.',
+    action: {
+      type: 'internal',
+      href: '/ecosystem/categories',
+      label: 'Browse territories',
+    } as LinkAction,
+    label: 'Browse territories',
   },
   {
     title: 'Evaluating the ecosystem',
-    description: 'Use the ecosystem directory to see where Arcium is already showing up across product territories.',
-    href: '/ecosystem',
-    label: 'Browse builders',
+    description: 'Use the ecosystem directory to review the current public builder records, featured projects, and coverage gaps.',
+    action: {
+      type: 'internal',
+      href: '/ecosystem',
+      label: 'Browse builder records',
+    } as LinkAction,
+    label: 'Browse builder records',
   },
   {
-    title: 'Looking for terms and references',
-    description: 'Use the glossary and encyclopedia together when you need faster answers and stronger context.',
-    href: '/glossary',
-    label: 'Open glossary',
+    title: 'Looking for source material',
+    description: 'Use Atlas for orientation, then jump to the official Arcium docs when you need protocol-level detail and the latest references.',
+    action: {
+      type: 'external',
+      href: 'https://docs.arcium.com',
+      label: 'Open official docs',
+    } as LinkAction,
+    label: 'Open official docs',
   },
 ];
 
@@ -34,7 +48,7 @@ export default function AboutPage() {
     <KnowledgePageFrame
       eyebrow="ABOUT_ATLAS"
       title="What Arcium Atlas is for"
-      summary="Arcium Atlas is a curated reference layer for people trying to understand Arcium without piecing the story together from scattered announcements, jargon, and ecosystem fragments."
+      summary="Arcium Atlas is a curated ecosystem directory and territory guide for people trying to understand where Arcium fits without piecing the story together from scattered announcements and jargon."
       statusLabel="REFERENCE_MISSION_ACTIVE"
       breadcrumbs={[
         { label: 'Home', href: '/' },
@@ -63,26 +77,26 @@ export default function AboutPage() {
           <article className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-6 lg:col-span-2">
             <h2 className="text-2xl font-black tracking-tight text-white">The 30-second explanation</h2>
             <p className="mt-4 text-base leading-8 text-on-surface-variant">
-              Arcium Atlas explains what Arcium is, why confidential compute matters, and where the ecosystem is already becoming concrete. It is designed to help readers move from slogans to a usable model of the network.
+              Arcium Atlas explains where confidential compute may matter in the Arcium ecosystem, which public builder records are currently mapped, and how those records are organized by territory. It is designed to help readers move from slogans to a usable model of the landscape.
             </p>
             <h3 className="mt-8 text-xl font-black tracking-tight text-white">Why it matters</h3>
             <p className="mt-4 text-base leading-8 text-on-surface-variant">
-              Privacy infrastructure can be hard to evaluate because the language is technical and the product implications are easy to lose. Atlas closes that gap by pairing conceptual guides, glossary entries, and builder examples in one place.
+              Privacy infrastructure can be hard to evaluate because the language is technical and the public ecosystem picture is fragmented. Atlas closes part of that gap by pairing territory briefings, builder records, and outbound links to official sources in one place.
             </p>
             <h3 className="mt-8 text-xl font-black tracking-tight text-white">How to use it</h3>
             <p className="mt-4 text-base leading-8 text-on-surface-variant">
-              Start with the high-level guides, use the glossary whenever the vocabulary gets dense, and then move into ecosystem or category pages when you want to see how those ideas map to real products and technical surfaces.
+              Start with the territory pages to understand the verticals, move into the ecosystem directory for the current builder map, and use the official docs whenever you need deeper protocol detail than Atlas currently covers.
             </p>
           </article>
 
           <aside className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-6">
             <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Quick paths</div>
             <div className="mt-4 space-y-3">
-              <Link href="/encyclopedia" className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-sm font-bold text-outline transition-colors hover:bg-surface-container hover:text-white">
-                Start with the encyclopedia
+              <Link href="/ecosystem/categories" className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-sm font-bold text-outline transition-colors hover:bg-surface-container hover:text-white">
+                Browse territory briefs
               </Link>
               <Link href="/ecosystem" className="block rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-sm font-bold text-outline transition-colors hover:bg-surface-container hover:text-white">
-                Browse the ecosystem
+                Browse builder records
               </Link>
               <a href="https://docs.arcium.com" target="_blank" rel="noreferrer noopener" className="block rounded-[1rem] border border-primary/30 bg-primary/5 px-4 py-3 text-sm font-bold text-primary transition-colors hover:bg-primary/20 hover:text-white">
                 Open official docs
@@ -102,10 +116,10 @@ export default function AboutPage() {
             <article key={card.title} className="rounded-[1.4rem] border border-outline-variant/25 bg-surface-container-lowest p-6">
               <h2 className="text-2xl font-black tracking-tight text-white">{card.title}</h2>
               <p className="mt-4 text-sm leading-7 text-on-surface-variant">{card.description}</p>
-              <Link href={card.href} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-white">
+              <ActionLink action={card.action} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-white">
                 {card.label}
                 <span aria-hidden="true">→</span>
-              </Link>
+              </ActionLink>
             </article>
           ))}
         </div>

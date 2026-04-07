@@ -36,8 +36,8 @@ export default async function EcosystemPage() {
             Arcium <span className="text-primary">Ecosystem</span>
           </h1>
           <p className="font-jetbrains text-lg leading-relaxed text-on-surface-variant/80">
-            A curated directory of the builders, partners, and product territories already making Arcium more concrete.
-            Use the filters for a narrow scan, or browse the grouped sections to understand where confidentiality matters most.
+            A curated directory of public builder records, reference projects, and territory coverage related to Arcium.
+            Use the filters for a narrow scan, or browse the grouped sections to see where coverage is already mapped and where it is still filling in.
           </p>
         </header>
 

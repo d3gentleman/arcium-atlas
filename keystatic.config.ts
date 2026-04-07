@@ -23,6 +23,23 @@ const bodySectionFields = {
   body: fields.text({ label: 'Body content', multiline: true }),
 };
 
+const sourceFields = {
+  label: fields.text({ label: 'Source Label' }),
+  href: fields.text({ label: 'Source URL' }),
+  type: fields.select({
+    label: 'Source Type',
+    options: [
+      { label: 'Official Docs', value: 'official_doc' as const },
+      { label: 'Official Site', value: 'official_site' as const },
+      { label: 'GitHub', value: 'github' as const },
+      { label: 'Social', value: 'social' as const },
+      { label: 'Other', value: 'other' as const },
+    ],
+    defaultValue: 'other',
+  }),
+  note: fields.text({ label: 'Note' }),
+};
+
 function resolveStorageKind(): 'local' | 'github' {
   const publicConfiguredMode = process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE_MODE;
   const configuredMode = process.env.KEYSTATIC_STORAGE_MODE;
@@ -80,6 +97,10 @@ export default config({
         tag: fields.text({ label: 'Tag (e.g. DEX AGGREGATOR)' }),
         summary: fields.text({ label: 'Summary', multiline: true }),
         description: fields.text({ label: 'Detailed Project Description', multiline: true }),
+        bodySections: fields.array(fields.object(bodySectionFields), {
+          label: 'Body Sections',
+          itemLabel: (props) => props.fields.title.value,
+        }),
         logo: fields.image({
           label: 'Logo/Icon',
           directory: 'public/images/ecosystem',
@@ -93,8 +114,36 @@ export default config({
           { label: 'Key Metrics', itemLabel: (p) => p.fields.label.value }
         ),
         website: fields.text({ label: 'Website URL' }),
+        docs: fields.text({ label: 'Docs URL' }),
         twitter: fields.text({ label: 'Twitter URL' }),
         github: fields.text({ label: 'GitHub URL' }),
+        relationshipType: fields.select({
+          label: 'Relationship Type',
+          options: [
+            { label: 'Unreviewed', value: 'unreviewed' as const },
+            { label: 'Confirmed Integration', value: 'confirmed_integration' as const },
+            { label: 'Ecosystem Project', value: 'ecosystem_project' as const },
+            { label: 'Reference Project', value: 'reference_project' as const },
+            { label: 'Watchlist', value: 'watchlist' as const },
+          ],
+          defaultValue: 'unreviewed',
+        }),
+        confidence: fields.select({
+          label: 'Editorial Confidence',
+          options: [
+            { label: 'Unreviewed', value: 'unreviewed' as const },
+            { label: 'High', value: 'high' as const },
+            { label: 'Medium', value: 'medium' as const },
+            { label: 'Low', value: 'low' as const },
+          ],
+          defaultValue: 'unreviewed',
+        }),
+        statusNote: fields.text({ label: 'Status Note', multiline: true }),
+        lastReviewed: fields.text({ label: 'Last Reviewed (YYYY-MM-DD)' }),
+        sources: fields.array(fields.object(sourceFields), {
+          label: 'Sources',
+          itemLabel: (props) => props.fields.label.value,
+        }),
         status: fields.select({
           label: 'Status',
           options: [

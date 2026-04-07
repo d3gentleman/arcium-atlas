@@ -63,6 +63,8 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
     project.categoryId === category.id || 
     project.categoryId === category.slug
   );
+  const hasPublishedProjects = projects.length > 0;
+  const statusLabel = hasPublishedProjects ? 'TERRITORY_GUIDE_READY' : 'WATCHLIST_BRIEFING';
 
   const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
 
@@ -72,8 +74,8 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
         <KnowledgePageFrame
           eyebrow={`TERRITORY // ECOSYSTEM`}
           title={category.title}
-          summary={category.summary}
-          statusLabel={'TERRITORY_GUIDE_READY'}
+          summary={hasPublishedProjects ? category.summary : `${category.summary} Atlas has not published builder records for this territory yet.`}
+          statusLabel={statusLabel}
           breadcrumbs={[
             { label: 'Home', href: '/' },
             { label: 'Territories', href: '/ecosystem/categories' },
@@ -88,7 +90,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                 PROJECTS // {projects.length}
               </div>
               <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
-                STATUS // LIVE
+                STATUS // {hasPublishedProjects ? 'LIVE' : 'WATCHLIST'}
               </div>
             </>
           }
@@ -180,7 +182,7 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
             </div>
           </section>
 
-          {projects.length > 0 && (
+          {projects.length > 0 ? (
             <section className="console-window col-span-12">
               <div className="console-header">
                 <span>MODULE_10: TERRITORY_PROJECTS</span>
@@ -200,6 +202,32 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
                     color={color}
                   />
                 ))}
+              </div>
+            </section>
+          ) : (
+            <section className="console-window col-span-12">
+              <div className="console-header">
+                <span>MODULE_10: TERRITORY_PROJECTS</span>
+                <span style={{ color }}>WATCHLIST_ONLY</span>
+              </div>
+              <div className="p-6 lg:p-12">
+                <div className="rounded-[1.4rem] border border-dashed border-outline-variant/25 bg-surface-container-lowest/50 p-6">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.24em] text-primary">
+                    Coverage Status
+                  </div>
+                  <p className="mt-4 max-w-3xl text-sm leading-7 text-on-surface-variant">
+                    This territory briefing is live, but Atlas has not published builder records for it yet. Treat this page as a directional overview until concrete ecosystem entries are added.
+                  </p>
+                  <div className="mt-6">
+                    <Link
+                      href="/ecosystem"
+                      className="inline-flex items-center gap-2 rounded-[1rem] border border-outline-variant/25 px-4 py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-outline transition-colors hover:bg-surface-container-high hover:text-white"
+                    >
+                      <ArrowLeft size={12} />
+                      Browse Directory
+                    </Link>
+                  </div>
+                </div>
               </div>
             </section>
           )}

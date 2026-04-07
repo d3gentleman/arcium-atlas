@@ -24,6 +24,12 @@ export interface BodySection {
   body: string;
 }
 
+export interface ProjectSource {
+  label: string;
+  href: string;
+  type: 'official_doc' | 'official_site' | 'github' | 'social' | 'other';
+  note?: string;
+}
 
 export interface EcosystemCategoryRecord {
   id: string;
@@ -44,10 +50,17 @@ export interface EcosystemProjectRecord {
   tag: string;
   summary: string;
   description?: string;
+  bodySections?: BodySection[];
   logo?: string;
   website?: string;
+  docs?: string;
   twitter?: string;
   github?: string;
+  relationshipType?: 'unreviewed' | 'confirmed_integration' | 'ecosystem_project' | 'reference_project' | 'watchlist';
+  confidence?: 'unreviewed' | 'high' | 'medium' | 'low';
+  statusNote?: string;
+  lastReviewed?: string;
+  sources?: ProjectSource[];
   status: 'sync_ok' | 'coming_soon' | 'maintenance' | 'deprecated' | 'testing';
   categoryId: string;
   isFeatured: boolean;

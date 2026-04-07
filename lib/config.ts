@@ -44,7 +44,7 @@ export const FOOTER_CONFIG: FooterConfig = {
   metadata: {
     copyright: "(C) 2026 ARCIUM ATLAS",
     coords: "ECOSYSTEM_HUB // BUILDER_DIRECTORY // SOURCE_LINKS",
-    mission: "A comprehensive directory of the Arcium ecosystem."
+    mission: "A curated directory of public Arcium ecosystem records."
   }
 };
 
@@ -87,7 +87,7 @@ export const UI_STRINGS: UIConfig = {
   discoveryClose: "Close Search",
   discoverySearchPlaceholder: "Search builders and ecosystem categories...",
   discoverySearchHint: "CTRL/CMD + K // ESC to close",
-  discoveryInitialState: "Search Arcium builders and category territories.",
+  discoveryInitialState: "Search builder records and territory briefings.",
   discoveryNoResultsTitle: "No atlas records matched this query.",
   discoveryNoResultsBody: "Try a builder name or a category name.",
   discoveryGroupCore: "Core Network",
@@ -127,7 +127,7 @@ export const HOMEPAGE_CONFIG = {
     subtitle: "The Arcium Ecosystem",
     titleLine1: "DISCOVER THE",
     titleLine2: "BUILDER NETWORK",
-    description: "Explore the decentralized applications, protocols, and infrastructure leveraging Arcium for confidential computing.",
+    description: "Explore public builder records, territory briefs, and source links across the Arcium ecosystem.",
     primaryCta: {
       type: "internal" as const,
       label: "View Directory",
@@ -159,15 +159,15 @@ export const HOMEPAGE_CONFIG = {
   liveStatusFeed: [
     {
       status: "LIVE",
-      text: "Explore live projects and featured builders"
+      text: "Explore current builder records and territory coverage"
     },
     {
       status: "SOURCE",
-      text: "Every builder leverages confidential compute"
+      text: "Follow outbound links to official docs and project sites"
     },
     {
-      status: "BUILD",
-      text: "Start building on Arcium today"
+      status: "SCOPE",
+      text: "Coverage expands as new public records are added"
     }
   ]
 };
