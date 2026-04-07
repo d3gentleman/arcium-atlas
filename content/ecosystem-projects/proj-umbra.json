@@ -1,0 +1,66 @@
+{
+  "id": "umbra",
+  "slug": "proj-umbra",
+  "title": "Umbra",
+  "tag": "PRIVATE TRANSFERS",
+  "summary": "Umbra is a financial privacy layer for Solana focused on confidential transactions, encrypted balances, and anonymous transfers. Its own docs describe the product as powered by Arcium MPC, making this one of the clearer missing confirmed integrations.",
+  "description": "Umbra positions itself as a financial privacy layer for Solana. The public docs describe confidential transactions, encrypted balances, and anonymous transfers, and search-visible docs metadata explicitly frame the product as powered by Arcium's MPC network.\n\nArcium's mainnet page also lists Umbra among verified projects coming to the network. Taken together, those sources are strong enough to classify Umbra as a confirmed integration rather than just an ecosystem listing.",
+  "bodySections": [
+    {
+      "title": "What_Atlas_Reviewed",
+      "body": "Umbra's public docs focus on payment and transfer privacy rather than generalized DeFi execution. The language is direct: confidential balances, anonymous transfers, and a Solana-native privacy layer for moving value without exposing full wallet activity."
+    },
+    {
+      "title": "Arcium_Relevance",
+      "body": "Umbra is a confirmed Arcium integration. Project-side docs metadata describe Umbra as powered by Arcium MPC, and Arcium's mainnet page separately lists the project as a verified launch partner."
+    }
+  ],
+  "logo": "/images/ecosystem/proj-umbra/logo.png",
+  "website": "https://umbraprivacy.com",
+  "docs": "https://docs.umbraprivacy.com",
+  "relationshipType": "confirmed_integration",
+  "confidence": "high",
+  "statusNote": "Umbra's own docs describe the privacy layer as powered by Arcium MPC, and Arcium lists Umbra as a verified mainnet project.",
+  "lastReviewed": "2026-04-07",
+  "sources": [
+    {
+      "label": "Umbra Website",
+      "href": "https://umbraprivacy.com",
+      "type": "official_site",
+      "note": "Official Umbra site for the Solana privacy layer."
+    },
+    {
+      "label": "Umbra Docs",
+      "href": "https://docs.umbraprivacy.com",
+      "type": "official_doc",
+      "note": "Project docs describing confidential transfers, encrypted balances, and Arcium-powered privacy infrastructure."
+    },
+    {
+      "label": "Arcium Mainnet",
+      "href": "https://www.arcium.com/mainnet",
+      "type": "official_site",
+      "note": "Arcium lists Umbra among verified projects coming to the network."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Network",
+      "value": "Solana"
+    },
+    {
+      "label": "Core Features",
+      "value": "Encrypted balances and transfers"
+    },
+    {
+      "label": "Execution Layer",
+      "value": "Arcium MPC"
+    },
+    {
+      "label": "Atlas Status",
+      "value": "Confirmed integration"
+    }
+  ],
+  "status": "sync_ok",
+  "categoryId": "payments",
+  "isFeatured": false
+}

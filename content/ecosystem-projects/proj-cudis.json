@@ -1,0 +1,66 @@
+{
+  "id": "cudis",
+  "slug": "proj-cudis",
+  "title": "CUDIS",
+  "tag": "WELLNESS",
+  "summary": "CUDIS builds an AI-powered smart ring and wellness platform with an explicit privacy angle. Arcium includes it in the encrypted consumer-app ecosystem, but the public CUDIS materials I reviewed do not document a specific Arcium-powered feature.",
+  "description": "CUDIS positions its smart ring around sleep, recovery, and wellness tracking with AI-driven insights and a strong privacy-oriented marketing message. That makes it an interesting Atlas case because encrypted computation is not only about finance; personal data and consumer health surfaces are also high-stakes privacy domains.\n\nArcium includes CUDIS in the encrypted consumer-app ecosystem. That supports Atlas inclusion, but I did not find a current CUDIS page describing a specific Arcium-powered module.",
+  "bodySections": [
+    {
+      "title": "Why_It_Matters",
+      "body": "CUDIS broadens the Atlas thesis beyond crypto-native transaction flows. If personal wellness devices are serious about user-owned, private AI surfaces, encrypted computation and selective data sharing become directly relevant to product design."
+    },
+    {
+      "title": "Arcium_Relevance",
+      "body": "Arcium lists CUDIS among consumer-app ecosystem partners. That is enough for ecosystem coverage, but the public CUDIS materials I reviewed do not yet document a clearly Arcium-powered implementation."
+    }
+  ],
+  "logo": "/images/ecosystem/proj-cudis/logo.svg",
+  "website": "https://www.cudis.xyz",
+  "docs": "https://whitepaper.cudis.xyz",
+  "relationshipType": "ecosystem_project",
+  "confidence": "medium",
+  "statusNote": "Arcium includes CUDIS in its consumer-app ecosystem coverage, but I did not find a current CUDIS page documenting an explicit Arcium-powered feature.",
+  "lastReviewed": "2026-04-07",
+  "sources": [
+    {
+      "label": "CUDIS Website",
+      "href": "https://www.cudis.xyz",
+      "type": "official_site",
+      "note": "Official site for the AI-powered wellness smart ring."
+    },
+    {
+      "label": "CUDIS Whitepaper",
+      "href": "https://whitepaper.cudis.xyz",
+      "type": "official_doc",
+      "note": "Official documentation for the broader CUDIS product and ecosystem."
+    },
+    {
+      "label": "Arcium Encrypted Ecosystem",
+      "href": "https://www.arcium.com/articles/the-encrypted-ecosystem",
+      "type": "official_site",
+      "note": "Arcium lists CUDIS among consumer-app ecosystem partners."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Device Type",
+      "value": "AI-powered smart ring"
+    },
+    {
+      "label": "Focus",
+      "value": "Sleep, recovery, wellness"
+    },
+    {
+      "label": "Privacy Angle",
+      "value": "User-owned health data narrative"
+    },
+    {
+      "label": "Atlas Status",
+      "value": "Consumer ecosystem partner"
+    }
+  ],
+  "status": "sync_ok",
+  "categoryId": "consumer",
+  "isFeatured": false
+}

@@ -1,0 +1,66 @@
+{
+  "id": "metaplex",
+  "slug": "proj-metaplex",
+  "title": "Metaplex",
+  "tag": "DIGITAL ASSET INFRA",
+  "summary": "Metaplex is one of the foundational digital-asset protocols on Solana, now spanning token launches and broader launch tooling. Arcium includes it in the encrypted NFT ecosystem, but the public Metaplex materials I reviewed do not document a specific Arcium-powered feature.",
+  "description": "Metaplex now markets around token launches on Solana, built-in protections, and protocol-driven launch management, while still carrying the broader weight of Solana's digital-asset infrastructure heritage. That makes it relevant to Atlas even beyond classic NFTs.\n\nArcium includes Metaplex in the encrypted NFT ecosystem. That supports inclusion in Atlas, but I did not find a current Metaplex page documenting an explicit Arcium-powered module.",
+  "bodySections": [
+    {
+      "title": "Protocol_Surface",
+      "body": "Metaplex is no longer just shorthand for NFTs. The public site and docs now emphasize launch tooling, protocol rails, and developer-facing asset infrastructure on Solana, which makes it one of the broadest digital-asset surfaces in the ecosystem."
+    },
+    {
+      "title": "Arcium_Relevance",
+      "body": "Arcium lists Metaplex among NFT ecosystem partners. That is enough for Atlas inclusion, but not enough to label the relationship as a confirmed integration from current public materials."
+    }
+  ],
+  "logo": "/images/ecosystem/proj-metaplex/logo.png",
+  "website": "https://www.metaplex.com",
+  "docs": "https://developers.metaplex.com",
+  "relationshipType": "ecosystem_project",
+  "confidence": "medium",
+  "statusNote": "Arcium includes Metaplex in its encrypted NFT ecosystem coverage, but I did not find a current Metaplex page documenting a specific Arcium-powered feature.",
+  "lastReviewed": "2026-04-07",
+  "sources": [
+    {
+      "label": "Metaplex Website",
+      "href": "https://www.metaplex.com",
+      "type": "official_site",
+      "note": "Official site describing Metaplex's launch and digital asset infrastructure."
+    },
+    {
+      "label": "Metaplex Developers",
+      "href": "https://developers.metaplex.com",
+      "type": "official_doc",
+      "note": "Official developer docs for Metaplex tools and protocol flows."
+    },
+    {
+      "label": "Arcium Encrypted Ecosystem",
+      "href": "https://www.arcium.com/articles/the-encrypted-ecosystem",
+      "type": "official_site",
+      "note": "Arcium lists Metaplex among NFT ecosystem partners."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Primary Role",
+      "value": "Digital asset and launch infrastructure"
+    },
+    {
+      "label": "Network",
+      "value": "Solana"
+    },
+    {
+      "label": "Developer Surface",
+      "value": "Public docs and CLI"
+    },
+    {
+      "label": "Atlas Status",
+      "value": "NFT ecosystem partner"
+    }
+  ],
+  "status": "sync_ok",
+  "categoryId": "nfts",
+  "isFeatured": false
+}

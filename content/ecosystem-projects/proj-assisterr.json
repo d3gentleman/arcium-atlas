@@ -1,0 +1,59 @@
+{
+  "id": "assisterr",
+  "slug": "proj-assisterr",
+  "title": "Assisterr",
+  "tag": "SMALL LANGUAGE MODELS",
+  "summary": "Assisterr is building a network of small language models and agent-like AI surfaces. Arcium currently includes it in ecosystem coverage, but the public project materials I reviewed do not yet document a specific Arcium-powered workflow.",
+  "description": "Assisterr's current public positioning is concise: it describes itself as a network of small language models. That framing places it squarely in the crypto-native AI tooling stack focused on more modular, deployable, and monetizable model surfaces rather than monolithic closed systems.\n\nArcium includes Assisterr in its encrypted AI ecosystem article. That supports Atlas inclusion, but not a confirmed integration classification without a project-side implementation note.",
+  "bodySections": [
+    {
+      "title": "What_Atlas_Reviewed",
+      "body": "The official site positions Assisterr around SLM infrastructure. Public materials are still relatively light compared with more mature AI infra peers, so Atlas should avoid over-claiming deeper technical details that are not clearly documented."
+    },
+    {
+      "title": "Arcium_Relevance",
+      "body": "Arcium lists Assisterr among AI ecosystem partners. That is enough to keep the project in Atlas as ecosystem coverage, but not enough to claim a clearly shipped Arcium integration from currently public sources."
+    }
+  ],
+  "logo": "/images/ecosystem/proj-assisterr/logo.svg",
+  "website": "https://assisterr.ai",
+  "relationshipType": "ecosystem_project",
+  "confidence": "medium",
+  "statusNote": "Arcium includes Assisterr in its AI ecosystem coverage, but the public Assisterr materials I reviewed do not document a specific Arcium-powered deployment or product module.",
+  "lastReviewed": "2026-04-07",
+  "sources": [
+    {
+      "label": "Assisterr Website",
+      "href": "https://assisterr.ai",
+      "type": "official_site",
+      "note": "Official site describing Assisterr as a network of small language models."
+    },
+    {
+      "label": "Arcium Encrypted Ecosystem",
+      "href": "https://www.arcium.com/articles/the-encrypted-ecosystem",
+      "type": "official_site",
+      "note": "Arcium lists Assisterr among AI ecosystem partners."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Primary Focus",
+      "value": "Small language models"
+    },
+    {
+      "label": "Category",
+      "value": "Crypto-native AI infrastructure"
+    },
+    {
+      "label": "Public Positioning",
+      "value": "Network of SLMs"
+    },
+    {
+      "label": "Atlas Status",
+      "value": "Ecosystem coverage"
+    }
+  ],
+  "status": "sync_ok",
+  "categoryId": "ai",
+  "isFeatured": false
+}

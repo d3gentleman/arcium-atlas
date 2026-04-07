@@ -1,0 +1,60 @@
+{
+  "id": "dreader",
+  "slug": "proj-dreader",
+  "title": "dReader",
+  "tag": "DIGITAL COMICS",
+  "summary": "dReader is a blockchain-native digital comics platform with reader loyalty and collectible mechanics. Arcium includes it in the encrypted consumer-app ecosystem, but the public dReader materials I reviewed do not document a specific Arcium-powered module.",
+  "description": "dReader's public documentation describes the product as a digital comic experience on blockchain. Reader-facing materials emphasize loyalty, collectibles, and a more interactive ownership layer than traditional web comic platforms.\n\nArcium includes dReader in the encrypted consumer-app ecosystem. That supports Atlas inclusion, but I did not find a current dReader page describing a specific Arcium-powered feature or privacy layer.",
+  "bodySections": [
+    {
+      "title": "Consumer_Surface",
+      "body": "dReader matters to Atlas because it shows that encrypted-computation narratives do not need to stop at finance or AI. Consumer media products with collectible, loyalty, and progression layers are also candidates for private state and personalized logic."
+    },
+    {
+      "title": "Arcium_Relevance",
+      "body": "Arcium lists dReader among consumer-app ecosystem partners. That is enough for ecosystem coverage, but not enough to classify the project as a confirmed Arcium integration from current public materials."
+    }
+  ],
+  "logo": "/images/ecosystem/proj-dreader/logo.png",
+  "website": "https://docs.dreader.io",
+  "docs": "https://docs.dreader.io",
+  "relationshipType": "ecosystem_project",
+  "confidence": "medium",
+  "statusNote": "Arcium includes dReader in its consumer-app ecosystem coverage, but I did not find a current dReader page documenting a specific Arcium-powered feature.",
+  "lastReviewed": "2026-04-07",
+  "sources": [
+    {
+      "label": "dReader Docs",
+      "href": "https://docs.dreader.io",
+      "type": "official_doc",
+      "note": "Official documentation describing dReader as a digital comic experience on blockchain."
+    },
+    {
+      "label": "Arcium Encrypted Ecosystem",
+      "href": "https://www.arcium.com/articles/the-encrypted-ecosystem",
+      "type": "official_site",
+      "note": "Arcium lists dReader among consumer-app ecosystem partners."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Category",
+      "value": "Digital comics"
+    },
+    {
+      "label": "User Layer",
+      "value": "Reader loyalty"
+    },
+    {
+      "label": "Ownership Surface",
+      "value": "Collectibles on blockchain"
+    },
+    {
+      "label": "Atlas Status",
+      "value": "Consumer ecosystem partner"
+    }
+  ],
+  "status": "sync_ok",
+  "categoryId": "consumer",
+  "isFeatured": false
+}

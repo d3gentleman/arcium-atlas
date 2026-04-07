@@ -1,0 +1,65 @@
+{
+  "id": "alphaneural",
+  "slug": "proj-alphaneural",
+  "title": "AlphaNeural AI",
+  "tag": "AI MODEL PLATFORM",
+  "summary": "AlphaNeural AI is a Web3-native platform for discovering, deploying, tokenizing, and monetizing AI models, datasets, and agents. Arcium currently lists it in ecosystem coverage rather than a clearly documented Arcium integration.",
+  "description": "AlphaNeural AI presents itself as decentralized AI infrastructure combining a marketplace for tokenized models, agents, and datasets with aggregated GPU access. Public materials focus on deploying models, monetizing AI assets, and running workloads without relying on a single centralized cloud.\n\nArcium includes AlphaNeural AI in its encrypted AI ecosystem. That supports Atlas inclusion, but I did not find a current AlphaNeural page describing a specific Arcium-powered module.",
+  "bodySections": [
+    {
+      "title": "Platform_Surface",
+      "body": "The official site and FAQ emphasize three product planes: tokenized AI asset marketplaces, decentralized GPU access, and on-chain monetization or licensing for creators. The public marketplace already lists deployable models and agent surfaces."
+    },
+    {
+      "title": "Arcium_Relevance",
+      "body": "Arcium lists AlphaNeural AI among ecosystem partners in encrypted AI. That makes the fit directionally strong, but the currently public AlphaNeural materials do not document a clearly shipped Arcium integration, so the safer classification is ecosystem project."
+    }
+  ],
+  "logo": "/images/ecosystem/proj-alphaneural/logo.svg",
+  "website": "https://www.alphaneural.io",
+  "relationshipType": "ecosystem_project",
+  "confidence": "medium",
+  "statusNote": "Arcium includes AlphaNeural AI in ecosystem coverage, but I did not find a current AlphaNeural implementation page naming an Arcium-powered feature.",
+  "lastReviewed": "2026-04-07",
+  "sources": [
+    {
+      "label": "AlphaNeural Website",
+      "href": "https://www.alphaneural.io",
+      "type": "official_site",
+      "note": "Official site and marketplace for deploying and monetizing AI models."
+    },
+    {
+      "label": "AlphaNeural FAQ",
+      "href": "https://www.alphaneural.io/faq",
+      "type": "official_site",
+      "note": "FAQ describing aggregated GPU access, NFT-based ownership, and model monetization."
+    },
+    {
+      "label": "Arcium Encrypted Ecosystem",
+      "href": "https://www.arcium.com/articles/the-encrypted-ecosystem",
+      "type": "official_site",
+      "note": "Arcium lists AlphaNeural AI among AI ecosystem partners."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Asset Types",
+      "value": "Models, datasets, agents"
+    },
+    {
+      "label": "Infrastructure",
+      "value": "Aggregated decentralized GPU access"
+    },
+    {
+      "label": "Monetization",
+      "value": "On-chain licensing and usage"
+    },
+    {
+      "label": "Marketplace",
+      "value": "Live AI asset discovery"
+    }
+  ],
+  "status": "sync_ok",
+  "categoryId": "ai",
+  "isFeatured": false
+}

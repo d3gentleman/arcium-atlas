@@ -1,0 +1,59 @@
+{
+  "id": "squads",
+  "slug": "proj-squads",
+  "title": "Squads",
+  "tag": "STABLECOIN RAILS",
+  "summary": "Squads now positions itself around finance products and APIs built on stablecoin rails, spanning smart accounts, payments, trading, and yield surfaces. Arcium includes it in the encrypted payments ecosystem, but the public Squads materials I reviewed do not yet document a specific Arcium-powered module.",
+  "description": "Squads describes its stack as finance without legacy constraints, covering stablecoin-based products, programmable smart accounts, multisig, payments, trading, and yield APIs. That makes it a relevant anchor for Atlas whenever confidential balance management, policy-controlled treasury logic, or private payment coordination become part of the conversation.\n\nArcium includes Squads in its encrypted payments ecosystem article. That supports Atlas inclusion, but I did not find a current Squads page that documents an explicit Arcium-powered feature.",
+  "bodySections": [
+    {
+      "title": "Platform_Surface",
+      "body": "The official site shows how broad Squads has become: smart accounts, multisig, stablecoin rails, payment APIs, and more. The product is no longer just a wallet coordination tool; it is a wider programmable finance stack."
+    },
+    {
+      "title": "Arcium_Relevance",
+      "body": "Arcium lists Squads among payments ecosystem partners. That is enough to keep it in Atlas as ecosystem coverage, but not enough to classify it as a confirmed Arcium integration from current public materials."
+    }
+  ],
+  "logo": "/images/ecosystem/proj-squads/logo.svg",
+  "website": "https://squads.xyz",
+  "relationshipType": "ecosystem_project",
+  "confidence": "medium",
+  "statusNote": "Arcium includes Squads in its encrypted payments ecosystem coverage, but I did not find a current Squads page that documents an explicit Arcium-powered product surface.",
+  "lastReviewed": "2026-04-07",
+  "sources": [
+    {
+      "label": "Squads Website",
+      "href": "https://squads.xyz",
+      "type": "official_site",
+      "note": "Official site describing stablecoin rails, smart accounts, and finance APIs."
+    },
+    {
+      "label": "Arcium Encrypted Ecosystem",
+      "href": "https://www.arcium.com/articles/the-encrypted-ecosystem",
+      "type": "official_site",
+      "note": "Arcium lists Squads among payments ecosystem partners."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Finance Surface",
+      "value": "Payments, trading, yield APIs"
+    },
+    {
+      "label": "Account Model",
+      "value": "Programmable smart accounts"
+    },
+    {
+      "label": "Coordination Layer",
+      "value": "Multisig and policy controls"
+    },
+    {
+      "label": "Atlas Status",
+      "value": "Payments ecosystem partner"
+    }
+  ],
+  "status": "sync_ok",
+  "categoryId": "payments",
+  "isFeatured": false
+}

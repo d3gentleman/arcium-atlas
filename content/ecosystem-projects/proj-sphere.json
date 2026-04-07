@@ -1,0 +1,59 @@
+{
+  "id": "sphere",
+  "slug": "proj-sphere",
+  "title": "Sphere",
+  "tag": "PAYMENTS API",
+  "summary": "SpherePay is a global stablecoin payments API and dashboard built for internet-native money movement. Arcium currently lists it in ecosystem coverage rather than a project-side documented Arcium integration.",
+  "description": "SpherePay positions itself around global stablecoin payments infrastructure delivered through APIs and dashboards. That places it in the same design space as other programmable payment platforms where confidential settlement, private accounting, or shielded treasury logic could become meaningful.\n\nArcium includes Sphere in its encrypted payments ecosystem. That is enough for Atlas inclusion, but the public Sphere materials I reviewed do not currently document a specific Arcium-powered module.",
+  "bodySections": [
+    {
+      "title": "What_Atlas_Reviewed",
+      "body": "Sphere's public surface is centered on payment infrastructure rather than consumer wallets. The site emphasizes API and dashboard layers, which makes the project more relevant to embedded payment stacks than to retail app UX."
+    },
+    {
+      "title": "Arcium_Relevance",
+      "body": "Arcium lists Sphere among payments ecosystem partners. That supports inclusion in Atlas as ecosystem coverage, but not a confirmed-integration label from current public sources."
+    }
+  ],
+  "logo": "/images/ecosystem/proj-sphere/logo.svg",
+  "website": "https://spherepay.co",
+  "relationshipType": "ecosystem_project",
+  "confidence": "medium",
+  "statusNote": "Arcium includes Sphere in its encrypted payments ecosystem coverage, but the public Sphere materials I reviewed do not document a specific Arcium-powered feature.",
+  "lastReviewed": "2026-04-07",
+  "sources": [
+    {
+      "label": "SpherePay Website",
+      "href": "https://spherepay.co",
+      "type": "official_site",
+      "note": "Official site positioning SpherePay as a global stablecoin payments API and dashboard."
+    },
+    {
+      "label": "Arcium Encrypted Ecosystem",
+      "href": "https://www.arcium.com/articles/the-encrypted-ecosystem",
+      "type": "official_site",
+      "note": "Arcium lists Sphere among payments ecosystem partners."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Primary Product",
+      "value": "Stablecoin payments API"
+    },
+    {
+      "label": "Operator Surface",
+      "value": "Dashboard tooling"
+    },
+    {
+      "label": "Reach",
+      "value": "Global payments"
+    },
+    {
+      "label": "Atlas Status",
+      "value": "Payments ecosystem partner"
+    }
+  ],
+  "status": "sync_ok",
+  "categoryId": "payments",
+  "isFeatured": false
+}

@@ -1,0 +1,66 @@
+{
+  "id": "wormhole",
+  "slug": "proj-wormhole",
+  "title": "Wormhole",
+  "tag": "CROSS-CHAIN INFRA",
+  "summary": "Wormhole is one of the most important interoperability layers in crypto. Arcium includes it in the encrypted interoperability ecosystem, but the public Wormhole materials I reviewed do not document a specific Arcium-powered feature.",
+  "description": "Wormhole positions itself as financial infrastructure for the modern economy and publishes extensive docs for multichain messaging, token transfers, querying, and related interoperability flows. That makes it a natural reference point whenever Atlas readers are thinking about how encrypted state or private proofs could move across chains.\n\nArcium includes Wormhole in its encrypted interoperability ecosystem. That supports Atlas inclusion, but I did not find a current Wormhole page naming a specific Arcium-powered product surface.",
+  "bodySections": [
+    {
+      "title": "Infrastructure_Surface",
+      "body": "Wormhole's public surface spans messaging, token transfers, querying, and developer tooling. It is one of the clearest interoperability anchors in the ecosystem, which makes it especially relevant to any future encrypted cross-chain design discussion."
+    },
+    {
+      "title": "Arcium_Relevance",
+      "body": "Arcium lists Wormhole among interoperability ecosystem partners. That is enough to keep the project in Atlas, but not enough to classify the relationship as a confirmed integration from currently public materials."
+    }
+  ],
+  "logo": "/images/ecosystem/proj-wormhole/logo.svg",
+  "website": "https://wormhole.com",
+  "docs": "https://wormhole.com/docs/",
+  "relationshipType": "ecosystem_project",
+  "confidence": "medium",
+  "statusNote": "Arcium includes Wormhole in its interoperability ecosystem coverage, but I did not find a current Wormhole page that documents an explicit Arcium-powered feature.",
+  "lastReviewed": "2026-04-07",
+  "sources": [
+    {
+      "label": "Wormhole Website",
+      "href": "https://wormhole.com",
+      "type": "official_site",
+      "note": "Official site for Wormhole's interoperability and messaging stack."
+    },
+    {
+      "label": "Wormhole Docs",
+      "href": "https://wormhole.com/docs/",
+      "type": "official_doc",
+      "note": "Official documentation for Wormhole products and SDKs."
+    },
+    {
+      "label": "Arcium Encrypted Ecosystem",
+      "href": "https://www.arcium.com/articles/the-encrypted-ecosystem",
+      "type": "official_site",
+      "note": "Arcium lists Wormhole among interoperability ecosystem partners."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Primary Role",
+      "value": "Interoperability infrastructure"
+    },
+    {
+      "label": "Core Products",
+      "value": "Messaging, transfers, query"
+    },
+    {
+      "label": "Developer Surface",
+      "value": "SDKs and docs"
+    },
+    {
+      "label": "Atlas Status",
+      "value": "Interoperability ecosystem partner"
+    }
+  ],
+  "status": "sync_ok",
+  "categoryId": "interoperability",
+  "isFeatured": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "titan",
+  "slug": "proj-titan",
+  "title": "Titan",
+  "tag": "SWAP ROUTER",
+  "summary": "Titan is a Solana trading surface focused on reducing fees and improving execution quality. Arcium includes it in encrypted DeFi ecosystem coverage, but the public Titan materials I reviewed do not document a specific Arcium-powered feature.",
+  "description": "Titan's public website keeps the positioning concise: the product promises to find every possible way to lower fees and maximize gains. That places Titan squarely in the execution and routing layer where confidential intent, private coordination, or hidden order flow could matter.\n\nArcium includes Titan in its encrypted DeFi ecosystem. That is enough for Atlas inclusion, but not enough to upgrade the record to confirmed integration without a project-side Arcium implementation note.",
+  "bodySections": [
+    {
+      "title": "Market_Surface",
+      "body": "Titan is best understood as an execution optimization product: routing, fee minimization, and trading UX are at the center of the public pitch. That makes it relevant to Atlas because encrypted execution is ultimately about materially improving how orders reach market."
+    },
+    {
+      "title": "Arcium_Relevance",
+      "body": "Arcium lists Titan among DeFi ecosystem partners. That supports inclusion in Atlas, but I did not find a current Titan page naming a specific Arcium-powered trading path or execution primitive."
+    }
+  ],
+  "logo": "/images/ecosystem/proj-titan/logo.png",
+  "website": "https://titan.exchange",
+  "relationshipType": "ecosystem_project",
+  "confidence": "medium",
+  "statusNote": "Arcium includes Titan in its DeFi ecosystem coverage, but the currently public Titan materials I reviewed do not document an explicit Arcium integration.",
+  "lastReviewed": "2026-04-07",
+  "sources": [
+    {
+      "label": "Titan Website",
+      "href": "https://titan.exchange",
+      "type": "official_site",
+      "note": "Official Titan site focused on execution quality and lower fees."
+    },
+    {
+      "label": "Arcium Encrypted Ecosystem",
+      "href": "https://www.arcium.com/articles/the-encrypted-ecosystem",
+      "type": "official_site",
+      "note": "Arcium lists Titan among DeFi ecosystem partners."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Focus",
+      "value": "Execution optimization"
+    },
+    {
+      "label": "Core Promise",
+      "value": "Lower fees, better gains"
+    },
+    {
+      "label": "Network",
+      "value": "Solana trading"
+    },
+    {
+      "label": "Atlas Status",
+      "value": "Ecosystem coverage"
+    }
+  ],
+  "status": "sync_ok",
+  "categoryId": "defi",
+  "isFeatured": false
+}

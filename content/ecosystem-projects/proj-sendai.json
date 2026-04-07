@@ -1,0 +1,66 @@
+{
+  "id": "sendai",
+  "slug": "proj-sendai",
+  "title": "SendAI",
+  "tag": "AGENT TOOLING",
+  "summary": "SendAI is a Solana-native agent tooling layer that grew out of the Solana AI Hackathon and the Solana Agent Kit. Arcium currently lists it as part of the encrypted AI ecosystem rather than a publicly documented Arcium-powered product surface.",
+  "description": "SendAI positions itself as the tooling layer for financial agents. The official site says the project started by hosting the Solana AI Hackathon with 400+ projects and by launching the Solana Agent Kit, which it describes as the top framework for building agents on Solana.\n\nArcium includes SendAI in its AI ecosystem coverage. That supports inclusion in Atlas, but I did not find a current SendAI page describing a clearly shipped Arcium-powered workflow.",
+  "bodySections": [
+    {
+      "title": "What_Atlas_Reviewed",
+      "body": "The official site frames SendAI as an applied AI lab for crypto, centered on the Solana Agent Kit and agent-facing financial infrastructure. Public materials highlight open-source tooling, agent application growth, and hackathon-driven ecosystem formation."
+    },
+    {
+      "title": "Arcium_Relevance",
+      "body": "Arcium lists SendAI as part of its encrypted AI ecosystem. That is enough to classify SendAI as an ecosystem project with medium confidence, but not enough to claim a documented Arcium integration on the current public product surface."
+    }
+  ],
+  "logo": "/images/ecosystem/proj-sendai/logo.svg",
+  "website": "https://sendai.fun",
+  "docs": "https://resources.sendai.fun/getting-started",
+  "relationshipType": "ecosystem_project",
+  "confidence": "medium",
+  "statusNote": "Arcium includes SendAI in its AI ecosystem coverage, but I did not find a current SendAI page describing a specific Arcium-powered product flow.",
+  "lastReviewed": "2026-04-07",
+  "sources": [
+    {
+      "label": "SendAI Website",
+      "href": "https://sendai.fun",
+      "type": "official_site",
+      "note": "Official site describing SendAI, the Solana AI Hackathon, and the Solana Agent Kit."
+    },
+    {
+      "label": "SendAI Resources",
+      "href": "https://resources.sendai.fun/getting-started",
+      "type": "official_doc",
+      "note": "Official educational resources for SendAI's crypto x AI ecosystem."
+    },
+    {
+      "label": "Arcium Encrypted Ecosystem",
+      "href": "https://www.arcium.com/articles/the-encrypted-ecosystem",
+      "type": "official_site",
+      "note": "Arcium lists SendAI among AI ecosystem partners."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Hackathon Projects",
+      "value": "400+"
+    },
+    {
+      "label": "NPM Downloads",
+      "value": "50K+"
+    },
+    {
+      "label": "GitHub Stars",
+      "value": "900+"
+    },
+    {
+      "label": "Agentic Apps",
+      "value": "150+"
+    }
+  ],
+  "status": "sync_ok",
+  "categoryId": "ai",
+  "isFeatured": false
+}
