@@ -38,13 +38,13 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
   return (
     <div className="relative overflow-hidden bg-[#06080a] border-b border-outline-variant/30 py-20">
       {/* Background Radar Effect */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-20">
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-40">
         <div className="w-[800px] h-[800px] rounded-full border border-primary/20 absolute" />
         <div className="w-[600px] h-[600px] rounded-full border border-primary/20 absolute" />
         <div className="w-[400px] h-[400px] rounded-full border border-primary/30 absolute" />
         <motion.div 
           className="absolute w-[800px] h-[800px] rounded-full"
-          style={{ background: 'conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(0, 240, 255, 0.1) 360deg)' }}
+          style={{ background: 'conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(0, 240, 255, 0.25) 360deg)' }}
           animate={{ rotate: 360 }}
           transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
         />
@@ -56,10 +56,10 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
             System Scan Complete
           </h2>
           <div className="text-3xl font-space font-black uppercase tracking-widest text-white md:text-4xl">
-            Sector Coverage Radar
+            Sector Overview
           </div>
           <p className="max-w-2xl mx-auto mt-4 text-sm leading-6 text-on-surface-variant/70 font-jetbrains">
-            Global view of builder node distribution across Arcium sectors. High-density sectors represent verified live entries.
+            Track what&apos;s being built in key sectors.
           </p>
         </div>
 

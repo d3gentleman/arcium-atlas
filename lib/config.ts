@@ -125,12 +125,12 @@ export const CATEGORY_COLORS: Record<string, string> = {
 export const HOMEPAGE_CONFIG = {
   hero: {
     subtitle: "The Arcium Ecosystem",
-    titleLine1: "DISCOVER THE",
-    titleLine2: "BUILDER NETWORK",
-    description: "Explore public builder records, sector briefs, and source links across the Arcium ecosystem.",
+    titleLine1: "EXPLORE ARCIUM'S",
+    titleLine2: "ENCRYPTED ECOSYSTEM",
+    description: "Discover the projects, use cases, and tools harnessing the power of Arcium's encrypted supercomputer.",
     primaryCta: {
       type: "internal" as const,
-      label: "View Directory",
+      label: "Browse Projects",
       href: "/ecosystem"
     },
     secondaryCta: {
