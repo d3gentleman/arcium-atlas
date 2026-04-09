@@ -3,9 +3,12 @@
 import { useState } from 'react';
 import { Submission } from '@/lib/db/schema';
 
-export default function AdminSubmissionsClient({ initialSubmissions }: { initialSubmissions: Submission[] }) {
-  const [submissions, setSubmissions] = useState<Submission[]>(initialSubmissions);
-  const [selectedSub, setSelectedSub] = useState<Submission | null>(null);
+// Overwrite specific fields that get serialized
+type SerializableSubmission = Omit<Submission, 'createdAt'> & { createdAt: string };
+
+export default function AdminSubmissionsClient({ initialSubmissions }: { initialSubmissions: SerializableSubmission[] }) {
+  const [submissions, setSubmissions] = useState<SerializableSubmission[]>(initialSubmissions);
+  const [selectedSub, setSelectedSub] = useState<SerializableSubmission | null>(null);
 
   const overrideStatus = async (id: number, status: 'approved' | 'rejected') => {
     try {
@@ -56,7 +59,7 @@ export default function AdminSubmissionsClient({ initialSubmissions }: { initial
               </div>
               <div className="text-xs text-zinc-400 truncate">{sub.submitterName}</div>
               <div className="text-xs text-zinc-500 mt-1">
-                {new Date(sub.createdAt).toLocaleDateString()}
+                {sub.createdAt.split('T')[0]}
               </div>
             </button>
           ))}

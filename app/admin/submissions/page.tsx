@@ -9,6 +9,12 @@ export const dynamic = 'force-dynamic';
 export default async function AdminSubmissionsPage() {
   const list = await db.select().from(submissions).orderBy(desc(submissions.createdAt));
 
+  // Serialize dates for Client Component props
+  const serializedList = list.map(sub => ({
+    ...sub,
+    createdAt: sub.createdAt.toISOString()
+  }));
+
   return (
     <KnowledgePageFrame
       eyebrow="Admin"
@@ -17,7 +23,7 @@ export default async function AdminSubmissionsPage() {
       statusLabel="SECURE_MODE_ACTIVE"
       breadcrumbs={[{ label: 'Admin', href: '/admin' }, { label: 'Submissions', href: '/admin/submissions' }]}
     >
-      <AdminSubmissionsClient initialSubmissions={list} />
+      <AdminSubmissionsClient initialSubmissions={serializedList} />
     </KnowledgePageFrame>
   );
 }
