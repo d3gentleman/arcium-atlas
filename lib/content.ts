@@ -15,8 +15,24 @@ import {
   UI_STRINGS, 
   HOMEPAGE_CONFIG 
 } from './config';
+import { db } from '@/lib/db';
+import { submissions } from '@/lib/db/schema';
+import { eq } from 'drizzle-orm';
 
 const reader = createReader(process.cwd(), keystaticConfig);
+
+/**
+ * Utility to convert string to URL-safe slug
+ */
+function slugify(text: string): string {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')     // Replace spaces with -
+    .replace(/[^\w-]+/g, '')  // Remove all non-word chars
+    .replace(/--+/g, '-');    // Replace multiple - with single -
+}
 
 function sortEcosystemCategories(records: EcosystemCategoryRecord[]): EcosystemCategoryRecord[] {
   return [...records].sort((left, right) => {
@@ -62,9 +78,38 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
     slug: p.slug,
   })) as EcosystemProjectRecord[];
 
+  // ── APPROVED DB PROJECTS ──────────────────────
+  let dbProjects: EcosystemProjectRecord[] = [];
+  try {
+    const approvedEntries = await db
+      .select()
+      .from(submissions)
+      .where(eq(submissions.status, 'approved'));
+
+    dbProjects = approvedEntries.map(entry => ({
+      id: entry.id.toString(),
+      slug: slugify(entry.projectName),
+      title: entry.projectName,
+      tag: entry.arciumRole || 'ECOSYSTEM',
+      summary: entry.projectSummary,
+      logo: entry.logoUrl || undefined,
+      website: entry.website || undefined,
+      twitter: entry.projectTwitter || undefined,
+      categoryId: entry.category,
+      isFeatured: false,
+      status: 'sync_ok',
+      relationshipType: 'ecosystem_project',
+      confidence: 'medium',
+      description: entry.additionalContext || undefined,
+    } as EcosystemProjectRecord));
+  } catch (err) {
+    console.error('[lib/content] Failed to fetch DB projects:', err);
+  }
+
+  const allProjects = [...mappedProjects, ...dbProjects];
   const seenTitles = new Set<string>();
 
-  return mappedProjects.filter((project) => {
+  return allProjects.filter((project) => {
     const normalizedTitle = project.title.trim().toLowerCase();
 
     if (seenTitles.has(normalizedTitle)) {
@@ -77,9 +122,15 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
 }
 
 export async function getEcosystemProjectBySlug(slug: string): Promise<EcosystemProjectRecord | null> {
+  // 1. Try Keystatic first
   const project = await reader.collections.ecosystemProjects.read(slug);
-  if (!project) return null;
-  return { ...project, slug } as EcosystemProjectRecord;
+  if (project) {
+    return { ...project, slug } as EcosystemProjectRecord;
+  }
+
+  // 2. Try DB if not found in Keystatic
+  const allProjects = await getEcosystemProjects();
+  return allProjects.find(p => p.slug === slug) || null;
 }
 
 // --- AGGREGATORS & SEARCH ---

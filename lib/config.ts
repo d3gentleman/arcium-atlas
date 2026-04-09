@@ -20,6 +20,11 @@ export const NAVIGATION_CONFIG: LinkAction[] = [
     type: "internal" as const,
     label: "About",
     href: "/about"
+  },
+  {
+    type: "internal" as const,
+    label: "Submit Project",
+    href: "/submit"
   }
 ];
 

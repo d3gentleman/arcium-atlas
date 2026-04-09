@@ -38,7 +38,7 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
   return (
     <div className="relative overflow-hidden bg-[#06080a] border-b border-outline-variant/30 py-20">
       {/* Background Radar Effect */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-40">
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-25">
         <div className="w-[800px] h-[800px] rounded-full border border-primary/20 absolute" />
         <div className="w-[600px] h-[600px] rounded-full border border-primary/20 absolute" />
         <div className="w-[400px] h-[400px] rounded-full border border-primary/30 absolute" />
