@@ -72,7 +72,9 @@ export default function KnowledgePageFrame({
           </aside>
         </div>
       </section>
-      {children}
+      <div className="col-span-12">
+        {children}
+      </div>
     </PublicPageShell>
   );
 }
