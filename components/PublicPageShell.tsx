@@ -24,7 +24,9 @@ export default async function PublicPageShell({
       className={`atlas-public-shell atlas-public-shell--${backgroundVariant} col-span-12 flex min-h-screen flex-col text-on-surface`}
     >
       <NavBar links={navLinks} />
-      <main className={`flex-1 px-4 py-8 md:px-8 md:py-10 ${mainClassName}`.trim()}>{children}</main>
+      <main className={`grid-cols-12 gap-x-4 gap-y-12 px-4 py-8 md:grid md:px-8 md:py-10 ${mainClassName}`.trim()}>
+        {children}
+      </main>
       <Footer config={footerConfig} />
     </div>
   );
