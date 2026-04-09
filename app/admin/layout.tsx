@@ -9,7 +9,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div className="col-span-12 w-full max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
       {children}
     </div>
   );
