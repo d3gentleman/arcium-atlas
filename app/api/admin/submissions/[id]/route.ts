@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { submissions } from '@/lib/db/schema';
+import { submissions, ecosystemProjects } from '@/lib/db/schema';
 import { checkAdmin } from '@/lib/adminCheck';
 import { eq } from 'drizzle-orm';
+import { slugify } from '@/lib/content';
+import { revalidatePath } from 'next/cache';
 
 export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
   const isAdmin = await checkAdmin();
@@ -21,6 +23,36 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
       .set({ status })
       .where(eq(submissions.id, parseInt(params.id, 10)))
       .returning();
+
+    // ── If APPROVED, promote to ecosystem_projects ──
+    if (status === 'approved') {
+      try {
+        await db.insert(ecosystemProjects).values({
+          slug: slugify(record.projectName),
+          title: record.projectName,
+          tag: record.arciumRole || 'BUILDER',
+          summary: record.projectSummary,
+          description: record.additionalContext,
+          logoUrl: record.logoUrl,
+          website: record.website,
+          twitter: record.projectTwitter,
+          categoryId: record.category,
+          status: 'sync_ok',
+          isFeatured: false,
+        }).onConflictDoUpdate({
+          target: ecosystemProjects.slug,
+          set: {
+            title: record.projectName,
+            updatedAt: new Date(),
+          }
+        });
+        
+        revalidatePath('/ecosystem');
+        revalidatePath('/admin/projects');
+      } catch (dbErr) {
+        console.error('[Admin PATCH] Migration to ecosystem_projects failed:', dbErr);
+      }
+    }
 
     // ── Notify Builder ────────────────────────────
     try {

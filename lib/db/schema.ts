@@ -4,6 +4,7 @@ import {
   timestamp,
   jsonb,
   serial,
+  boolean,
 } from 'drizzle-orm/pg-core';
 
 /**
@@ -61,3 +62,50 @@ export const submissions = pgTable('submissions', {
 
 export type Submission = typeof submissions.$inferSelect;
 export type NewSubmission = typeof submissions.$inferInsert;
+
+/**
+ * ecosystem_projects table
+ *
+ * Stores projects manually added or promoted by staff.
+ */
+export const ecosystemProjects = pgTable('ecosystem_projects', {
+  id: serial('id').primaryKey(),
+  slug: text('slug').notNull().unique(),
+  title: text('title').notNull(),
+  tag: text('tag').notNull(),
+  summary: text('summary').notNull(),
+  description: text('description'),
+  
+  // JSONB blocks
+  bodySections: jsonb('body_sections').default([]),
+  metrics: jsonb('metrics').default([]),
+  sources: jsonb('sources').default([]),
+  
+  // Links
+  logoUrl: text('logo_url'),
+  website: text('website'),
+  docs: text('docs'),
+  twitter: text('twitter'),
+  github: text('github'),
+  
+  // Metadata
+  relationshipType: text('relationship_type'),
+  confidence: text('confidence'),
+  statusNote: text('status_note'),
+  lastReviewed: text('last_reviewed'),
+  
+  // Status & Category
+  status: text('status').notNull().default('sync_ok'),
+  categoryId: text('category_id').notNull(),
+  isFeatured: boolean('is_featured').notNull().default(false),
+  
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export type DBProject = typeof ecosystemProjects.$inferSelect;
+export type NewDBProject = typeof ecosystemProjects.$inferInsert;

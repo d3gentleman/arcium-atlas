@@ -6,7 +6,9 @@ import {
   NavigationLink,
   FooterConfig,
   UIConfig,
-  DiscoveryItem
+  DiscoveryItem,
+  BodySection,
+  ProjectSource
 } from '../types/domain';
 import { 
   CATEGORY_COLORS, 
@@ -16,7 +18,7 @@ import {
   HOMEPAGE_CONFIG 
 } from './config';
 import { db } from '@/lib/db';
-import { submissions } from '@/lib/db/schema';
+import { submissions, ecosystemProjects } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 
 const reader = createReader(process.cwd(), keystaticConfig);
@@ -24,7 +26,7 @@ const reader = createReader(process.cwd(), keystaticConfig);
 /**
  * Utility to convert string to URL-safe slug
  */
-function slugify(text: string): string {
+export function slugify(text: string): string {
   return text
     .toString()
     .toLowerCase()
@@ -78,19 +80,19 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
     slug: p.slug,
   })) as EcosystemProjectRecord[];
 
-  // ── APPROVED DB PROJECTS ──────────────────────
-  let dbProjects: EcosystemProjectRecord[] = [];
+  // ── APPROVED DB PROJECTS (Legacy Submissions) ──
+  let dbSubmissions: EcosystemProjectRecord[] = [];
   try {
     const approvedEntries = await db
       .select()
       .from(submissions)
       .where(eq(submissions.status, 'approved'));
 
-    dbProjects = approvedEntries.map(entry => ({
-      id: entry.id.toString(),
+    dbSubmissions = approvedEntries.map(entry => ({
+      id: `sub-${entry.id}`,
       slug: slugify(entry.projectName),
       title: entry.projectName,
-      tag: entry.arciumRole || 'ECOSYSTEM',
+      tag: entry.arciumRole || 'BUILDER',
       summary: entry.projectSummary,
       logo: entry.logoUrl || undefined,
       website: entry.website || undefined,
@@ -103,10 +105,32 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
       description: entry.additionalContext || undefined,
     } as EcosystemProjectRecord));
   } catch (err) {
-    console.error('[lib/content] Failed to fetch DB projects:', err);
+    console.error('[lib/content] Failed to fetch approved submissions:', err);
   }
 
-  const allProjects = [...mappedProjects, ...dbProjects];
+  // ── STAFF MANAGED PROJECTS (Postgres) ──────────
+  let managedProjects: EcosystemProjectRecord[] = [];
+  try {
+    const entries = await db
+      .select()
+      .from(ecosystemProjects);
+
+    managedProjects = entries.map(entry => ({
+      ...entry,
+      id: `db-${entry.id}`,
+      logo: entry.logoUrl || undefined,
+      bodySections: entry.bodySections as BodySection[],
+      metrics: entry.metrics as { label: string; value: string }[],
+      sources: entry.sources as ProjectSource[],
+      relationshipType: entry.relationshipType as 'unreviewed' | 'confirmed_integration' | 'ecosystem_project' | 'reference_project' | 'watchlist',
+      confidence: entry.confidence as 'unreviewed' | 'high' | 'medium' | 'low',
+      status: entry.status as 'sync_ok' | 'coming_soon' | 'maintenance' | 'deprecated' | 'testing',
+    } as EcosystemProjectRecord));
+  } catch (err) {
+    console.error('[lib/content] Failed to fetch staff managed projects:', err);
+  }
+
+  const allProjects = [...mappedProjects, ...dbSubmissions, ...managedProjects];
   const seenTitles = new Set<string>();
 
   return allProjects.filter((project) => {
