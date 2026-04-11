@@ -28,6 +28,7 @@ interface DiscoveryShellProps {
   children: ReactNode;
   items: DiscoveryItem[];
   ui: UIConfig;
+  headless?: boolean;
 }
 
 interface DiscoveryControlOptions {
@@ -371,7 +372,7 @@ export function useDiscovery() {
   return context;
 }
 
-export default function DiscoveryShell({ children, items, ui }: DiscoveryShellProps) {
+export default function DiscoveryShell({ children, items, ui, headless = false }: DiscoveryShellProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef<HTMLElement | null>(null);
@@ -448,22 +449,26 @@ export default function DiscoveryShell({ children, items, ui }: DiscoveryShellPr
   return (
     <DiscoveryContext.Provider value={value}>
       {children}
-      <button
-        type="button"
-        onClick={(event) => toggleDiscovery(event.currentTarget)}
-        aria-label={ui.discoveryOpen}
-        aria-haspopup="dialog"
-        aria-expanded={isOpen}
-        className="fixed bottom-6 right-6 z-[110] flex h-14 w-14 items-center justify-center border-4 border-black bg-primary shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:translate-x-1 active:translate-x-0 active:translate-y-0"
-      >
-        <span className="font-black text-xl text-black">&gt;_</span>
-      </button>
-      <DiscoveryPalette
-        isOpen={isOpen}
-        items={items}
-        onClose={closeDiscovery}
-        ui={ui}
-      />
+      {!headless && (
+        <>
+          <button
+            type="button"
+            onClick={(event) => toggleDiscovery(event.currentTarget)}
+            aria-label={ui.discoveryOpen}
+            aria-haspopup="dialog"
+            aria-expanded={isOpen}
+            className="fixed bottom-6 right-6 z-[110] flex h-14 w-14 items-center justify-center border-4 border-black bg-primary shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:translate-x-1 active:translate-x-0 active:translate-y-0"
+          >
+            <span className="font-black text-xl text-black">&gt;_</span>
+          </button>
+          <DiscoveryPalette
+            isOpen={isOpen}
+            items={items}
+            onClose={closeDiscovery}
+            ui={ui}
+          />
+        </>
+      )}
     </DiscoveryContext.Provider>
   );
 }

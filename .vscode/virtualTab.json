@@ -18,7 +18,10 @@
       "keystatic.config.ts",
       "scripts/fix-columns.js",
       "scripts/sync-db-helper.js",
-      "scripts/migrate-projects.ts"
+      "scripts/migrate-projects.ts",
+      "app/admin/submissions/AdminSubmissionsClient.tsx",
+      "app/globals.css",
+      "app/ShellSwitcher.tsx"
     ],
     "builtIn": true,
     "bookmarks": {}
