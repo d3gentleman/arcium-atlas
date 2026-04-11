@@ -8,34 +8,6 @@ interface RegistryPulseProps {
   categories: EcosystemCategoryRecord[];
 }
 
-/* ── Confidence helpers ── */
-const CONFIDENCE_WEIGHT: Record<string, number> = {
-  high: 3,
-  medium: 2,
-  low: 1,
-  unreviewed: 0,
-};
-
-const CONFIDENCE_LABELS: [number, string][] = [
-  [2.5, 'HIGH'],
-  [1.5, 'MEDIUM'],
-  [0.5, 'LOW'],
-  [0, 'MINIMAL'],
-];
-
-function computeConfidenceLabel(projects: EcosystemProjectRecord[]) {
-  if (projects.length === 0) return 'N/A';
-  const sum = projects.reduce(
-    (acc, p) => acc + (CONFIDENCE_WEIGHT[p.confidence ?? 'unreviewed'] ?? 0),
-    0,
-  );
-  const avg = sum / projects.length;
-  for (const [threshold, label] of CONFIDENCE_LABELS) {
-    if (avg >= threshold) return label;
-  }
-  return 'MINIMAL';
-}
-
 /* ── Animated counter hook ── */
 function useAnimatedCounter(target: number, duration = 1200) {
   const [value, setValue] = useState(0);
@@ -122,7 +94,6 @@ export default function RegistryPulse({ projects, categories }: RegistryPulsePro
   ).length;
   const coveragePercent =
     categories.length > 0 ? Math.round((coveredCategories / categories.length) * 100) : 0;
-  const confidenceLabel = computeConfidenceLabel(projects);
   const featuredCount = projects.filter((p) => p.isFeatured).length;
 
 
@@ -143,8 +114,8 @@ export default function RegistryPulse({ projects, categories }: RegistryPulsePro
           accentColor="#2fe6a6"
         />
         <StatModule
-          label="Mean_Confidence"
-          value={confidenceLabel}
+          label="Sector_Total"
+          value={categories.length}
           accentColor="#ffc857"
         />
         <StatModule

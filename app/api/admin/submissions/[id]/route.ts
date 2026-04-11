@@ -36,6 +36,9 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
           logoUrl: record.logoUrl,
           website: record.website,
           twitter: record.projectTwitter,
+          projectEmail: record.projectEmail,
+          discordInvite: record.discordInvite,
+          telegramInvite: record.telegramInvite,
           categoryId: record.category,
           status: 'sync_ok',
           isFeatured: false,
@@ -43,6 +46,9 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
           target: ecosystemProjects.slug,
           set: {
             title: record.projectName,
+            projectEmail: record.projectEmail,
+            discordInvite: record.discordInvite,
+            telegramInvite: record.telegramInvite,
             updatedAt: new Date(),
           }
         });

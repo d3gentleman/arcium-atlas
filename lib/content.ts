@@ -74,12 +74,6 @@ export async function getEcosystemCategoryBySlug(slug: string): Promise<Ecosyste
 }
 
 export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> {
-  const projects = await reader.collections.ecosystemProjects.all();
-  const mappedProjects = projects.map(p => ({
-    ...p.entry,
-    slug: p.slug,
-  })) as EcosystemProjectRecord[];
-
   // ── APPROVED DB PROJECTS (Legacy Submissions) ──
   let dbSubmissions: EcosystemProjectRecord[] = [];
   try {
@@ -97,11 +91,13 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
       logo: entry.logoUrl || undefined,
       website: entry.website || undefined,
       twitter: entry.projectTwitter || undefined,
+      email: entry.projectEmail || undefined,
+      discord: entry.discordInvite || undefined,
+      telegram: entry.telegramInvite || undefined,
       categoryId: entry.category,
       isFeatured: false,
       status: 'sync_ok',
       relationshipType: 'ecosystem_project',
-      confidence: 'medium',
       description: entry.additionalContext || undefined,
     } as EcosystemProjectRecord));
   } catch (err) {
@@ -118,19 +114,22 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
     managedProjects = entries.map(entry => ({
       ...entry,
       id: `db-${entry.id}`,
-      logo: entry.logoUrl || undefined,
+      twitter: entry.twitter || undefined,
+      github: entry.github || undefined,
+      email: entry.projectEmail || undefined,
+      discord: entry.discordInvite || undefined,
+      telegram: entry.telegramInvite || undefined,
       bodySections: entry.bodySections as BodySection[],
       metrics: entry.metrics as { label: string; value: string }[],
       sources: entry.sources as ProjectSource[],
       relationshipType: entry.relationshipType as 'unreviewed' | 'confirmed_integration' | 'ecosystem_project' | 'reference_project' | 'watchlist',
-      confidence: entry.confidence as 'unreviewed' | 'high' | 'medium' | 'low',
       status: entry.status as 'sync_ok' | 'coming_soon' | 'maintenance' | 'deprecated' | 'testing',
     } as EcosystemProjectRecord));
   } catch (err) {
     console.error('[lib/content] Failed to fetch staff managed projects:', err);
   }
 
-  const allProjects = [...mappedProjects, ...dbSubmissions, ...managedProjects];
+  const allProjects = [...dbSubmissions, ...managedProjects];
   const seenTitles = new Set<string>();
 
   return allProjects.filter((project) => {
@@ -146,13 +145,7 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
 }
 
 export async function getEcosystemProjectBySlug(slug: string): Promise<EcosystemProjectRecord | null> {
-  // 1. Try Keystatic first
-  const project = await reader.collections.ecosystemProjects.read(slug);
-  if (project) {
-    return { ...project, slug } as EcosystemProjectRecord;
-  }
-
-  // 2. Try DB if not found in Keystatic
+  // Try DB
   const allProjects = await getEcosystemProjects();
   return allProjects.find(p => p.slug === slug) || null;
 }

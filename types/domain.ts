@@ -56,8 +56,10 @@ export interface EcosystemProjectRecord {
   docs?: string;
   twitter?: string;
   github?: string;
+  email?: string;
+  discord?: string;
+  telegram?: string;
   relationshipType?: 'unreviewed' | 'confirmed_integration' | 'ecosystem_project' | 'reference_project' | 'watchlist';
-  confidence?: 'unreviewed' | 'high' | 'medium' | 'low';
   statusNote?: string;
   lastReviewed?: string;
   sources?: ProjectSource[];

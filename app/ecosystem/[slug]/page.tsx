@@ -8,10 +8,8 @@ import {
   BookOpenText,
   Calendar,
   ExternalLink,
-  Github,
   Link2,
   ShieldCheck,
-  Twitter,
 } from 'lucide-react';
 import KnowledgePageFrame from '@/components/KnowledgePageFrame';
 import ProjectRow from '@/components/ProjectRow';
@@ -38,16 +36,6 @@ const RELATIONSHIP_LABELS: Record<
   ecosystem_project: 'Ecosystem Project',
   reference_project: 'Reference Project',
   watchlist: 'Watchlist',
-};
-
-const CONFIDENCE_LABELS: Record<
-  NonNullable<EcosystemProjectRecord['confidence']>,
-  string
-> = {
-  unreviewed: 'Unreviewed',
-  high: 'High',
-  medium: 'Medium',
-  low: 'Low',
 };
 
 const SOURCE_TYPE_LABELS: Record<ProjectSource['type'], string> = {
@@ -107,12 +95,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     )
     .slice(0, 3);
 
-  const overview = project.description || project.summary;
   const detailSections = (project.bodySections ?? []).filter((section) => section.body?.trim());
   const projectSources = buildProjectSources(project);
   const coverageGaps = getCoverageGaps(project, projectSources);
   const relationshipLabel = RELATIONSHIP_LABELS[project.relationshipType ?? 'unreviewed'];
-  const confidenceLabel = CONFIDENCE_LABELS[project.confidence ?? 'unreviewed'];
   const normalizedWebsite = normalizeExternalUrl(project.website);
   const normalizedDocs = normalizeExternalUrl(project.docs);
 
@@ -132,9 +118,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <>
           <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
             RELATIONSHIP // {relationshipLabel}
-          </div>
-          <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
-            CONFIDENCE // {confidenceLabel}
           </div>
           <div className="rounded-[1rem] border border-outline-variant/25 bg-surface-container-lowest/70 px-4 py-3">
             REVIEWED // {formatReviewedDate(project.lastReviewed)}
@@ -178,11 +161,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     )}
                     <div>
                       <div className="mb-1 text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color }}>
-                        {'//'} IDENTITY_LOG
+                        {'//'} PROJECT_INFORMATION
                       </div>
-                      <h2 className="font-space text-3xl font-black uppercase tracking-tight text-white">
+                      <h2 className="font-space text-3xl font-black uppercase tracking-tight text-white mb-2">
                         {project.title}
                       </h2>
+                      <div className="text-sm font-jetbrains text-on-surface-variant font-bold max-w-2xl italic leading-relaxed">
+                        {project.summary}
+                      </div>
                     </div>
                   </div>
 
@@ -211,8 +197,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   </div>
                 </div>
 
-                <div className="max-w-4xl space-y-6 font-jetbrains text-sm leading-8 text-on-surface-variant/90">
-                  {renderParagraphs(overview)}
+                <div className="max-w-4xl space-y-6 font-jetbrains text-sm leading-8 text-on-surface-variant/90 border-t border-outline-variant/10 pt-8">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 mb-4">ENTITY_DESCRIPTION</div>
+                  {renderParagraphs(project.description || project.summary)}
                 </div>
                </div>
             </section>
@@ -266,10 +253,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   value={relationshipLabel}
                 />
                 <CoverageRow
-                  label="Confidence"
-                  value={confidenceLabel}
-                />
-                <CoverageRow
                   label="Sector"
                   value={category?.title ?? 'Unassigned'}
                   href={sectorHref}
@@ -295,7 +278,71 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
             <div className="border border-outline-variant/30 bg-surface-container-lowest/50 p-6 shadow-xl backdrop-blur-sm">
               <h2 className="mb-5 flex items-center gap-2 font-space text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60">
-                <Link2 size={14} className="text-primary" /> Source_Links
+                <Link2 size={14} className="text-primary" /> Socials_&_Engagement
+              </h2>
+
+              <div className="space-y-4">
+                 {normalizedWebsite && (
+                   <a
+                     href={normalizedWebsite}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex items-center justify-between group"
+                   >
+                     <span className="text-[11px] font-bold uppercase tracking-widest text-[#00ffa3] group-hover:underline">Website</span>
+                     <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-[#00ffa3]" />
+                   </a>
+                 )}
+                 {project.twitter && (
+                   <a
+                     href={project.twitter.startsWith('http') ? project.twitter : `https://x.com/${project.twitter.replace('@', '')}`}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex items-center justify-between group"
+                   >
+                     <span className="text-[11px] font-bold uppercase tracking-widest text-[#00ffa3] group-hover:underline">Twitter_X</span>
+                     <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-[#00ffa3]" />
+                   </a>
+                 )}
+                 {project.discord && (
+                   <a
+                     href={normalizeExternalUrl(project.discord) ?? '#'}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex items-center justify-between group"
+                   >
+                     <span className="text-[11px] font-bold uppercase tracking-widest text-[#00ffa3] group-hover:underline">Discord_Invite</span>
+                     <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-[#00ffa3]" />
+                   </a>
+                 )}
+                 {project.telegram && (
+                   <a
+                     href={normalizeExternalUrl(project.telegram) ?? '#'}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex items-center justify-between group"
+                   >
+                     <span className="text-[11px] font-bold uppercase tracking-widest text-[#00ffa3] group-hover:underline">Telegram_Invite</span>
+                     <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-[#00ffa3]" />
+                   </a>
+                 )}
+                 {project.github && (
+                   <a
+                     href={normalizeExternalUrl(project.github) ?? '#'}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex items-center justify-between group"
+                   >
+                     <span className="text-[11px] font-bold uppercase tracking-widest text-[#00ffa3] group-hover:underline">Github_Repo</span>
+                     <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-[#00ffa3]" />
+                   </a>
+                 )}
+              </div>
+            </div>
+
+            <div className="border border-outline-variant/30 bg-surface-container-lowest/50 p-6 shadow-xl backdrop-blur-sm">
+              <h2 className="mb-5 flex items-center gap-2 font-space text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60">
+                <ShieldCheck size={14} className="text-primary" /> Verified_Sources
               </h2>
 
               {projectSources.length > 0 ? (
@@ -365,30 +412,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             )}
             
-            <div className="flex items-center gap-4 px-2 text-on-surface-variant/40">
-                {project.twitter && (
-                  <a
-                    href={project.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-white"
-                    aria-label={`${project.title} on X`}
-                  >
-                    <Twitter size={16} />
-                  </a>
-                )}
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-white"
-                    aria-label={`${project.title} on GitHub`}
-                  >
-                    <Github size={16} />
-                  </a>
-                )}
-            </div>
           </aside>
         </div>
     </KnowledgePageFrame>
@@ -525,8 +548,8 @@ function getCoverageGaps(project: EcosystemProjectRecord, sources: ProjectSource
     gaps.push('Relationship type has not been reviewed.');
   }
 
-  if (!project.confidence || project.confidence === 'unreviewed') {
-    gaps.push('Editorial confidence has not been set.');
+  if (!project.relationshipType || project.relationshipType === 'unreviewed') {
+    gaps.push('Relationship type has not been reviewed.');
   }
 
   if (!project.lastReviewed) {

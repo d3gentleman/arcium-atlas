@@ -92,9 +92,9 @@ export default function FeaturedSpotlight({ projects }: FeaturedSpotlightProps) 
                         <div className="text-[11px] font-bold uppercase tracking-widest text-[#2fe6a6]">{project.status.replace('_', ' ')}</div>
                       </div>
                       <div>
-                        <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-on-surface-variant/40 mb-1">Confidence</div>
-                        <div className="text-[11px] font-mono text-on-surface-variant/50 uppercase">
-                          {project.confidence?.replace('_', ' ') || 'UNREVIEWED'}
+                        <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-on-surface-variant/40 mb-1">Sector</div>
+                        <div className="text-[11px] font-mono text-zinc-500 uppercase truncate">
+                          {project.categoryId.replace('_', ' ')}
                         </div>
                       </div>
                     </div>

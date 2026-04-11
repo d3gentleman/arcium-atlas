@@ -16,6 +16,12 @@ export interface SerializableProject {
   website: string | null;
   twitter: string | null;
   github: string | null;
+  projectEmail: string | null;
+  discordInvite: string | null;
+  telegramInvite: string | null;
+  relationshipType: string | null;
+  statusNote: string | null;
+  lastReviewed: string | null;
   status: string;
   categoryId: string;
   isFeatured: boolean;
@@ -74,7 +80,9 @@ export default function AdminProjectsClient({ initialProjects }: { initialProjec
               <div className="text-[10px] text-zinc-500 truncate mb-1">{project.tag}</div>
               <div className="flex justify-between items-center mt-3 pt-2 border-t border-white/5">
                  <span className="text-[9px] text-zinc-600">ID: {project.id}</span>
-                 <span className="text-[9px] text-zinc-600">{project.createdAt.split('T')[0]}</span>
+                 <span className="text-[9px] text-zinc-600">
+                    {project.createdAt?.includes('T') ? project.createdAt.split('T')[0] : 'N/A'}
+                 </span>
               </div>
             </button>
           ))}
@@ -181,6 +189,30 @@ export default function AdminProjectsClient({ initialProjects }: { initialProjec
                            <Github size={12} /> Github_Repo
                          </a>
                        )}
+                       {selectedProject.discordInvite && (
+                         <a href={selectedProject.discordInvite} target="_blank" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-[10px]">
+                           <BarChart2 size={12} className="rotate-90" /> Discord_Invite
+                         </a>
+                       )}
+                       {selectedProject.telegramInvite && (
+                         <a href={selectedProject.telegramInvite} target="_blank" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-[10px]">
+                           <BarChart2 size={12} /> Telegram_Invite
+                         </a>
+                       )}
+                    </div>
+                  </div>
+
+                  <div className="p-4 border border-white/5 bg-red-500/5 rounded-sm">
+                    <h3 className="text-[9px] font-bold uppercase tracking-widest text-[#ff0055] mb-4 block border-b border-[#ff0055]/20 pb-2">ADMIN_INTEL</h3>
+                    <div className="space-y-4 font-mono text-[10px] uppercase">
+                       <div>
+                          <span className="text-zinc-600 block mb-1">Contact Email</span>
+                          <span className="text-zinc-400">{selectedProject.projectEmail || 'NOT_SET'}</span>
+                       </div>
+                       <div>
+                          <span className="text-zinc-600 block mb-1">Relationship</span>
+                          <span className="text-zinc-400">{selectedProject.relationshipType}</span>
+                       </div>
                     </div>
                   </div>
                </div>

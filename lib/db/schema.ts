@@ -88,9 +88,13 @@ export const ecosystemProjects = pgTable('ecosystem_projects', {
   twitter: text('twitter'),
   github: text('github'),
   
+  // New social links from submissions
+  projectEmail: text('project_email'),
+  discordInvite: text('discord_invite'),
+  telegramInvite: text('telegram_invite'),
+  
   // Metadata
   relationshipType: text('relationship_type'),
-  confidence: text('confidence'),
   statusNote: text('status_note'),
   lastReviewed: text('last_reviewed'),
   

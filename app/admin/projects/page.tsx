@@ -14,8 +14,8 @@ export default async function AdminProjectsPage() {
   // Serialize dates for Client Component props
   const serializedList = list.map(project => ({
     ...project,
-    createdAt: project.createdAt.toISOString(),
-    updatedAt: project.updatedAt.toISOString(),
+    createdAt: project.createdAt ? project.createdAt.toISOString() : new Date().toISOString(),
+    updatedAt: project.updatedAt ? project.updatedAt.toISOString() : new Date().toISOString(),
   }));
 
   return (

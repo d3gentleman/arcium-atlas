@@ -21,6 +21,12 @@ interface ProjectFormData {
   status: string;
   categoryId: string;
   isFeatured: boolean;
+  projectEmail: string;
+  discordInvite: string;
+  telegramInvite: string;
+  relationshipType: string;
+  statusNote: string;
+  lastReviewed: string;
   [key: string]: string | boolean | undefined;
 }
 
@@ -43,6 +49,12 @@ export default function ProjectForm({ initialData, categories }: ProjectFormProp
     docs: (initialData?.docs as string) || '',
     twitter: (initialData?.twitter as string) || '',
     github: (initialData?.github as string) || '',
+    projectEmail: (initialData?.projectEmail as string) || '',
+    discordInvite: (initialData?.discordInvite as string) || '',
+    telegramInvite: (initialData?.telegramInvite as string) || '',
+    relationshipType: (initialData?.relationshipType as string) || 'unreviewed',
+    statusNote: (initialData?.statusNote as string) || '',
+    lastReviewed: (initialData?.lastReviewed as string) || '',
     status: (initialData?.status as string) || 'sync_ok',
     categoryId: (initialData?.categoryId as string) || (categories[0]?.slug || ''),
     isFeatured: (initialData?.isFeatured as boolean) || false,
@@ -306,6 +318,89 @@ export default function ProjectForm({ initialData, categories }: ProjectFormProp
                   onChange={handleChange}
                   className="w-full bg-zinc-900/50 border border-white/10 p-3 text-sm focus:border-primary outline-none"
                   placeholder="https://github.com/..."
+                />
+              </div>
+          </div>
+      </div>
+
+      <div className="space-y-6 pt-6 mb-10">
+          <h3 className="text-primary text-[10px] font-bold uppercase tracking-widest border-l-2 border-primary pl-3 mb-6">
+            Social_Intelligence_Parameters
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-zinc-500 text-[9px] uppercase tracking-widest mb-2 font-bold">Discord_Invite_Url</label>
+                <input
+                  name="discordInvite"
+                  value={formData.discordInvite}
+                  onChange={handleChange}
+                  className="w-full bg-zinc-900/50 border border-white/10 p-3 text-sm focus:border-primary outline-none"
+                  placeholder="https://discord.gg/..."
+                />
+              </div>
+              <div>
+                <label className="block text-zinc-500 text-[9px] uppercase tracking-widest mb-2 font-bold">Telegram_Invite_Url</label>
+                <input
+                  name="telegramInvite"
+                  value={formData.telegramInvite}
+                  onChange={handleChange}
+                  className="w-full bg-zinc-900/50 border border-white/10 p-3 text-sm focus:border-primary outline-none"
+                  placeholder="https://t.me/..."
+                />
+              </div>
+          </div>
+      </div>
+
+      <div className="space-y-6 pt-6 mb-20">
+          <h3 className="text-[#ff0055] text-[10px] font-bold uppercase tracking-widest border-l-2 border-[#ff0055] pl-3 mb-6">
+            Internal_Governance_Metadata
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-zinc-500 text-[9px] uppercase tracking-widest mb-2 font-bold">Project_Contact_Email (Private)</label>
+                <input
+                  name="projectEmail"
+                  value={formData.projectEmail}
+                  onChange={handleChange}
+                  className="w-full bg-zinc-900/50 border border-white/10 p-3 text-sm focus:border-primary outline-none"
+                  placeholder="contact@project.com"
+                />
+              </div>
+              <div>
+                <label className="block text-zinc-500 text-[9px] uppercase tracking-widest mb-2 font-bold">Relationship_Type</label>
+                <select
+                  name="relationshipType"
+                  value={formData.relationshipType}
+                  onChange={handleChange}
+                  className="w-full bg-zinc-800 border border-white/10 p-3 text-sm focus:border-primary outline-none text-white appearance-none cursor-pointer"
+                >
+                  <option value="unreviewed">UNREVIEWED</option>
+                  <option value="confirmed_integration">CONFIRMED_INTEGRATION</option>
+                  <option value="ecosystem_project">ECOSYSTEM_PROJECT</option>
+                  <option value="reference_project">REFERENCE_PROJECT</option>
+                  <option value="watchlist">WATCHLIST</option>
+                </select>
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-zinc-500 text-[9px] uppercase tracking-widest mb-2 font-bold">Status_Note</label>
+                <input
+                  name="statusNote"
+                  value={formData.statusNote}
+                  onChange={handleChange}
+                  className="w-full bg-zinc-900/50 border border-white/10 p-3 text-sm focus:border-primary outline-none"
+                  placeholder="Internal notes on project status..."
+                />
+              </div>
+              <div>
+                <label className="block text-zinc-500 text-[9px] uppercase tracking-widest mb-2 font-bold">Last_Reviewed_Date</label>
+                <input
+                  name="lastReviewed"
+                  value={formData.lastReviewed}
+                  onChange={handleChange}
+                  className="w-full bg-zinc-900/50 border border-white/10 p-3 text-sm focus:border-primary outline-none"
+                  placeholder="YYYY-MM-DD"
                 />
               </div>
           </div>
