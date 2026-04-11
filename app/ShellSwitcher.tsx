@@ -19,7 +19,12 @@ export default function ShellSwitcher({ children, discoveryItems, ui }: ShellSwi
   const pathname = usePathname();
   
   // Define paths that should NOT have the global DiscoveryShell
-  const isAdminPath = pathname.startsWith('/keystatic') || pathname.startsWith('/login');
+  const isAdminPath = 
+    pathname.startsWith('/keystatic') || 
+    pathname.startsWith('/login') || 
+    pathname.startsWith('/admin') ||
+    pathname.startsWith('/api/admin');
+  
   const isReadingPath = pathname.startsWith('/about');
 
   if (isAdminPath) {

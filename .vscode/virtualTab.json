@@ -13,7 +13,12 @@
       "app/api/admin/submissions/[id]/route.ts",
       "lib/actions/projects.ts",
       "types/domain.ts",
-      "lib/db/schema.ts"
+      "lib/db/schema.ts",
+      "app/admin/projects/page.tsx",
+      "keystatic.config.ts",
+      "scripts/fix-columns.js",
+      "scripts/sync-db-helper.js",
+      "scripts/migrate-projects.ts"
     ],
     "builtIn": true,
     "bookmarks": {}

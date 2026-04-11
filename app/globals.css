@@ -175,3 +175,34 @@
     display: none;
   }
 }
+
+/* Admin Dashboard Utilities */
+.admin-button {
+  cursor: pointer !important;
+  transition: all 0.2s ease;
+}
+
+.admin-button:hover {
+  filter: brightness(1.1);
+}
+
+.admin-button:active {
+  transform: translateY(1px);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 163, 0.2);
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 163, 0.4);
+}

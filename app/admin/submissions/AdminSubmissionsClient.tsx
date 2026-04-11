@@ -47,7 +47,7 @@ export default function AdminSubmissionsClient({ initialSubmissions }: { initial
             <button
               key={sub.id}
               onClick={() => setSelectedSub(sub)}
-              className={`w-full text-left p-3 border font-mono transition-colors ${
+              className={`w-full text-left p-3 border font-mono transition-colors admin-button ${
                 selectedSub?.id === sub.id 
                   ? 'border-primary bg-primary/10 shadow-[0_0_10px_rgba(0,255,163,0.1)]' 
                   : 'border-white/10 hover:border-white/30'
@@ -87,13 +87,13 @@ export default function AdminSubmissionsClient({ initialSubmissions }: { initial
                   <>
                     <button 
                       onClick={() => overrideStatus(selectedSub.id, 'approved')}
-                      className="px-4 py-2 border border-[#00ffa3] text-[#00ffa3] hover:bg-[#00ffa3]/10 font-mono text-sm transition-colors uppercase"
+                      className="px-4 py-2 border border-[#00ffa3] text-[#00ffa3] hover:bg-[#00ffa3]/10 font-mono text-sm transition-colors uppercase admin-button"
                     >
                       [Approve]
                     </button>
                     <button 
                       onClick={() => overrideStatus(selectedSub.id, 'rejected')}
-                      className="px-4 py-2 border border-red-500 text-red-500 hover:bg-red-500/10 font-mono text-sm transition-colors uppercase"
+                      className="px-4 py-2 border border-red-500 text-red-500 hover:bg-red-500/10 font-mono text-sm transition-colors uppercase admin-button"
                     >
                       [Reject]
                     </button>

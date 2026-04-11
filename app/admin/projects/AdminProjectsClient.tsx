@@ -65,7 +65,7 @@ export default function AdminProjectsClient({ initialProjects }: { initialProjec
             <button
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              className={`w-full text-left p-4 border font-mono transition-all duration-200 ${
+              className={`w-full text-left p-4 border font-mono transition-all duration-200 admin-button ${
                 selectedProject?.id === project.id 
                   ? 'border-primary bg-primary/10 shadow-[0_0_15px_rgba(0,255,163,0.05)]' 
                   : 'border-white/5 bg-white/0 hover:border-white/20 hover:bg-white/5'
@@ -122,13 +122,13 @@ export default function AdminProjectsClient({ initialProjects }: { initialProjec
               <div className="flex gap-2 w-full md:w-auto">
                 <Link
                   href={`/admin/projects/${selectedProject.id}/edit`}
-                  className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white/5 border border-white/20 text-white hover:bg-white/10 font-mono text-[10px] font-bold uppercase tracking-widest transition-all"
+                  className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white/5 border border-white/20 text-white hover:bg-white/10 font-mono text-[10px] font-bold uppercase tracking-widest transition-all admin-button"
                 >
                   <Pencil size={12} /> Edit
                 </Link>
                 <button 
                   onClick={() => handleDelete(selectedProject.id)}
-                  className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-red-500/5 border border-red-500/30 text-red-500 hover:bg-red-500/10 font-mono text-[10px] font-bold uppercase tracking-widest transition-all"
+                  className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-red-500/5 border border-red-500/30 text-red-500 hover:bg-red-500/10 font-mono text-[10px] font-bold uppercase tracking-widest transition-all admin-button"
                 >
                   <Trash2 size={12} /> Delete
                 </button>
