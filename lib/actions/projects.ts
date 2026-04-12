@@ -4,31 +4,38 @@ import { db } from '@/lib/db';
 import { ecosystemProjects } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
+import { checkAdmin } from '@/lib/adminCheck';
+import { ecosystemProjectSchema } from '@/lib/schemas/ecosystemProjectSchema';
 
 export async function createProject(data: Record<string, unknown>) {
+  const isAdmin = await checkAdmin();
+  if (!isAdmin) return { success: false, error: 'Unauthorized' };
+
   try {
+    const parsed = ecosystemProjectSchema.parse(data);
+
     const [record] = await db
       .insert(ecosystemProjects)
       .values({
-        slug: data.slug as string,
-        title: data.title as string,
-        tag: data.tag as string,
-        summary: data.summary as string,
-        description: data.description as string,
-        logoUrl: data.logoUrl as string,
-        website: data.website as string,
-        docs: data.docs as string,
-        twitter: data.twitter as string,
-        github: data.github as string,
-        projectEmail: data.projectEmail as string,
-        discordInvite: data.discordInvite as string,
-        telegramInvite: data.telegramInvite as string,
-        relationshipType: data.relationshipType as string,
-        statusNote: data.statusNote as string,
-        lastReviewed: data.lastReviewed as string,
-        status: data.status as string,
-        categoryId: data.categoryId as string,
-        isFeatured: data.isFeatured as boolean,
+        slug: parsed.slug,
+        title: parsed.title,
+        tag: parsed.tag,
+        summary: parsed.summary,
+        description: parsed.description,
+        logoUrl: parsed.logoUrl,
+        website: parsed.website,
+        docs: parsed.docs,
+        twitter: parsed.twitter,
+        github: parsed.github,
+        projectEmail: parsed.projectEmail,
+        discordInvite: parsed.discordInvite,
+        telegramInvite: parsed.telegramInvite,
+        relationshipType: parsed.relationshipType || 'ecosystem_project',
+        statusNote: parsed.statusNote,
+        lastReviewed: parsed.lastReviewed,
+        status: parsed.status || 'sync_ok',
+        categoryId: parsed.categoryId,
+        isFeatured: parsed.isFeatured,
         createdAt: new Date(),
         updatedAt: new Date(),
       })
@@ -46,28 +53,33 @@ export async function createProject(data: Record<string, unknown>) {
 }
 
 export async function updateProject(id: number, data: Record<string, unknown>) {
+  const isAdmin = await checkAdmin();
+  if (!isAdmin) return { success: false, error: 'Unauthorized' };
+
   try {
+    const parsed = ecosystemProjectSchema.parse(data);
+
     await db
       .update(ecosystemProjects)
       .set({
-        title: data.title as string,
-        tag: data.tag as string,
-        summary: data.summary as string,
-        description: data.description as string,
-        logoUrl: data.logoUrl as string,
-        website: data.website as string,
-        docs: data.docs as string,
-        twitter: data.twitter as string,
-        github: data.github as string,
-        projectEmail: data.projectEmail as string,
-        discordInvite: data.discordInvite as string,
-        telegramInvite: data.telegramInvite as string,
-        relationshipType: data.relationshipType as string,
-        statusNote: data.statusNote as string,
-        lastReviewed: data.lastReviewed as string,
-        status: data.status as string,
-        categoryId: data.categoryId as string,
-        isFeatured: data.isFeatured as boolean,
+        title: parsed.title,
+        tag: parsed.tag,
+        summary: parsed.summary,
+        description: parsed.description,
+        logoUrl: parsed.logoUrl,
+        website: parsed.website,
+        docs: parsed.docs,
+        twitter: parsed.twitter,
+        github: parsed.github,
+        projectEmail: parsed.projectEmail,
+        discordInvite: parsed.discordInvite,
+        telegramInvite: parsed.telegramInvite,
+        relationshipType: parsed.relationshipType || 'ecosystem_project',
+        statusNote: parsed.statusNote,
+        lastReviewed: parsed.lastReviewed,
+        status: parsed.status || 'sync_ok',
+        categoryId: parsed.categoryId,
+        isFeatured: parsed.isFeatured,
         updatedAt: new Date(),
       })
       .where(eq(ecosystemProjects.id, id));
@@ -83,6 +95,9 @@ export async function updateProject(id: number, data: Record<string, unknown>) {
 }
 
 export async function deleteProject(id: number) {
+  const isAdmin = await checkAdmin();
+  if (!isAdmin) return { success: false, error: 'Unauthorized' };
+
   try {
     await db.delete(ecosystemProjects).where(eq(ecosystemProjects.id, id));
     

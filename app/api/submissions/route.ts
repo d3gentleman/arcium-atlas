@@ -4,6 +4,8 @@ import { db } from '@/lib/db';
 import { submissions } from '@/lib/db/schema';
 import { z } from 'zod';
 
+import { sql } from 'drizzle-orm';
+
 /**
  * POST /api/submissions
  *
@@ -16,6 +18,20 @@ export async function POST(request: NextRequest) {
 
     // Validate
     const parsed = submissionSchema.parse(body);
+
+    // ── Simple Rate Limiting ──────────────────────
+    const oneHourAgo = new Date(Date.now() - 3600000);
+    const [recentCount] = await db
+      .select({ count: sql<number>`count(*)` })
+      .from(submissions)
+      .where(sql`${submissions.submitterEmail} = ${parsed.submitterEmail} AND ${submissions.createdAt} > ${oneHourAgo}`);
+
+    if (recentCount && Number(recentCount.count) >= 3) {
+      return NextResponse.json(
+        { error: 'Too many submissions from this email. Please try again later.' },
+        { status: 429 }
+      );
+    }
 
     // ── Persist to Postgres via Drizzle ──────────
     const [record] = await db

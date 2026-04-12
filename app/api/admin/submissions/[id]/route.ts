@@ -28,7 +28,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
     if (status === 'approved') {
       try {
         await db.insert(ecosystemProjects).values({
-          slug: slugify(record.projectName),
+          slug: `${slugify(record.projectName)}-${record.id}`,
           title: record.projectName,
           tag: record.arciumRole || 'BUILDER',
           summary: record.projectSummary,
@@ -61,14 +61,16 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
     }
 
     // ── Notify Builder ────────────────────────────
+    let emailFailed = false;
     try {
       const { sendBuilderStatusUpdate } = await import('@/lib/email');
       await sendBuilderStatusUpdate(record);
     } catch (emailErr) {
       console.error('[Admin PATCH] Status update email failed:', emailErr);
+      emailFailed = true;
     }
 
-    return NextResponse.json({ success: true, submission: record });
+    return NextResponse.json({ success: true, submission: record, emailFailed });
   } catch (error) {
     console.error('[Admin PATCH submission] error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
