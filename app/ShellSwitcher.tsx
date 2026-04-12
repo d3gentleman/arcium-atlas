@@ -33,7 +33,7 @@ export default function ShellSwitcher({ children, discoveryItems, ui }: ShellSwi
       {!isReadingPath && !isAdminPath ? (
         <div className="fixed inset-0 scanline-effect z-[100] pointer-events-none opacity-40 backdrop-blur-[0.5px]"></div>
       ) : null}
-      <div className={isAdminPath ? "" : "max-w-[1400px] mx-auto grid grid-cols-12 gap-4 relative z-10 w-full h-full"}>
+      <div className={isAdminPath ? "relative z-10" : "max-w-[1400px] mx-auto grid grid-cols-12 gap-4 relative z-10 w-full h-full"}>
         {children}
       </div>
     </DiscoveryShell>

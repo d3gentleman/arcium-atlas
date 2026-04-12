@@ -72,7 +72,7 @@ export default function AdminSubmissionsClient({ initialSubmissions }: { initial
       {/* Detail View */}
       <div className="lg:col-span-2">
         {selectedSub ? (
-          <div className="console-window p-6 scanline-effect min-h-[600px] bg-black/40 relative">
+          <div className="console-window p-6 min-h-[600px] bg-black/40 relative">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
             
             <div className="flex justify-between items-start mb-8 border-b border-white/10 pb-4">

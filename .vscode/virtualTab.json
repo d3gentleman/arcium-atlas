@@ -21,7 +21,8 @@
       "scripts/migrate-projects.ts",
       "app/admin/submissions/AdminSubmissionsClient.tsx",
       "app/globals.css",
-      "app/ShellSwitcher.tsx"
+      "app/ShellSwitcher.tsx",
+      "components/DiscoveryShell.tsx"
     ],
     "builtIn": true,
     "bookmarks": {}

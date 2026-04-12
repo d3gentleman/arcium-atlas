@@ -97,7 +97,7 @@ export default function AdminProjectsClient({ initialProjects }: { initialProjec
       {/* Detail View */}
       <div className="lg:col-span-2">
         {selectedProject ? (
-          <div className="console-window p-8 scanline-effect min-h-[700px] bg-black/40 relative border border-white/10">
+          <div className="console-window p-8 min-h-[700px] bg-black/40 relative border border-white/10">
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
             
             <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8 border-b border-white/10 pb-6">
