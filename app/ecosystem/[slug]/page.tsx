@@ -574,6 +574,7 @@ function formatReviewedDate(value?: string) {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
+    timeZone: 'UTC',
   }).format(date);
 }
 

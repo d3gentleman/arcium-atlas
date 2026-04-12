@@ -12,6 +12,7 @@ const LONG_DATE_FORMATTER = new Intl.DateTimeFormat('en-US', {
   month: 'short',
   day: 'numeric',
   year: 'numeric',
+  timeZone: 'UTC',
 });
 
 function getTimestamp(value?: string): number | null {
