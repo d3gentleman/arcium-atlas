@@ -104,16 +104,23 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h2 className="text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-primary mb-3">
-            System Scan Complete
-          </h2>
-          <div className="text-3xl font-space font-black uppercase tracking-widest text-white md:text-4xl">
-            Sector Overview
+        <div className="mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 text-center lg:text-left">
+          <div>
+            <h2 className="text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-primary mb-3">
+              System Scan Complete
+            </h2>
+            <div className="text-3xl font-space font-black uppercase tracking-widest text-white md:text-4xl">
+              Sector Overview
+            </div>
+            <p className="max-w-2xl lg:mx-0 mx-auto mt-4 text-sm leading-6 text-on-surface-variant/70 font-jetbrains">
+              Start with a sector, then jump straight into the newest Atlas records inside it.
+            </p>
           </div>
-          <p className="max-w-2xl mx-auto mt-4 text-sm leading-6 text-on-surface-variant/70 font-jetbrains">
-            Start with a sector, then jump straight into the newest Atlas records inside it.
-          </p>
+
+          <div className="inline-flex items-center justify-center gap-3 rounded-full border border-primary/20 bg-primary/5 px-5 py-2.5 text-[10px] font-mono uppercase tracking-[0.2em] text-primary lg:hidden shadow-[0_0_15px_rgba(0,255,163,0.1)]">
+            Swipe to Scan
+            <ArrowRight size={14} className="animate-pulse" />
+          </div>
         </div>
 
         <motion.div 
