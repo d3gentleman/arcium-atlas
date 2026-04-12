@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { getCategoryIcon } from '@/lib/categoryIcons';
 import type { EcosystemCategoryRecord, EcosystemProjectRecord } from '@/types/domain';
 import Link from 'next/link';
@@ -11,21 +12,78 @@ interface SectorRadarProps {
   categoryColors: Record<string, string>;
 }
 
+const SHORT_DATE_FORMATTER = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+});
+
+function getTimestamp(value?: string): number | null {
+  if (!value) {
+    return null;
+  }
+
+  const timestamp = Date.parse(value);
+  return Number.isNaN(timestamp) ? null : timestamp;
+}
+
+function getProjectActivityTimestamp(project: EcosystemProjectRecord): number {
+  return (
+    getTimestamp(project.updatedAt) ??
+    getTimestamp(project.createdAt) ??
+    getTimestamp(project.lastReviewed) ??
+    0
+  );
+}
+
+function getProjectActivityLabel(project: EcosystemProjectRecord): string {
+  const updatedAt = getTimestamp(project.updatedAt);
+  if (updatedAt) {
+    return `Updated ${SHORT_DATE_FORMATTER.format(updatedAt)}`;
+  }
+
+  const createdAt = getTimestamp(project.createdAt);
+  if (createdAt) {
+    return `Added ${SHORT_DATE_FORMATTER.format(createdAt)}`;
+  }
+
+  const lastReviewed = getTimestamp(project.lastReviewed);
+  if (lastReviewed) {
+    return `Reviewed ${SHORT_DATE_FORMATTER.format(lastReviewed)}`;
+  }
+
+  return 'Atlas record';
+}
+
 export default function SectorRadar({ categories, projects, categoryColors }: SectorRadarProps) {
-  // Sort categories by project count descending, then alphabetically
-  const sortedCategories = [...categories].sort((a, b) => {
-    const aCount = projects.filter(p => p.categoryId === a.id || p.categoryId === a.slug).length;
-    const bCount = projects.filter(p => p.categoryId === b.id || p.categoryId === b.slug).length;
-    if (aCount !== bCount) return bCount - aCount;
-    return a.title.localeCompare(b.title);
-  });
+  const rankedCategories = categories
+    .map((category) => {
+      const categoryProjects = projects
+        .filter((project) => project.categoryId === category.id || project.categoryId === category.slug)
+        .sort((left, right) => getProjectActivityTimestamp(right) - getProjectActivityTimestamp(left));
+
+      return {
+        category,
+        categoryProjects,
+        projectCount: categoryProjects.length,
+      };
+    })
+    .sort((left, right) => {
+      if (left.projectCount !== right.projectCount) {
+        return right.projectCount - left.projectCount;
+      }
+
+      return left.category.title.localeCompare(right.category.title);
+    });
+
+  const activeCategories = rankedCategories.filter((entry) => entry.projectCount > 0);
+  const watchlistCategories = rankedCategories.filter((entry) => entry.projectCount === 0).slice(0, 4);
 
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.08,
       },
     },
   };
@@ -59,89 +117,170 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
             Sector Overview
           </div>
           <p className="max-w-2xl mx-auto mt-4 text-sm leading-6 text-on-surface-variant/70 font-jetbrains">
-            Track what&apos;s being built in key sectors.
+            Start with a sector, then jump straight into the newest Atlas records inside it.
           </p>
         </div>
 
         <motion.div 
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+          className="flex snap-x snap-mandatory overflow-x-auto pb-8 lg:grid lg:grid-cols-2 lg:overflow-x-visible lg:pb-0 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-100px' }}
         >
-          {sortedCategories.map((category) => {
+          {activeCategories.map(({ category, categoryProjects, projectCount }) => {
             const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
-            const count = projects.filter(p => p.categoryId === category.id || p.categoryId === category.slug).length;
-            const isActive = count > 0;
+            const recentProjects = categoryProjects.slice(0, 2);
 
             return (
               <motion.div 
                 key={category.id} 
                 variants={itemVariants}
-                whileHover={isActive ? { scale: 1.02, zIndex: 20 } : {}}
+                whileHover={{ scale: 1.01, zIndex: 20 }}
               >
-                <Link
-                  href={`/ecosystem/categories/${category.slug}`}
-                  className={`group relative flex flex-col h-full p-5 border backdrop-blur-sm transition-colors duration-300 ${
-                    isActive 
-                      ? 'border-outline-variant/20 bg-black/40 hover:bg-black/60' 
-                      : 'border-dashed border-outline-variant/15 bg-black/20 hover:border-outline-variant/30 grayscale opacity-60 hover:opacity-100 hover:grayscale-0'
-                  }`}
-                  style={isActive ? { '--hover-color': color } as React.CSSProperties : {}}
-                >
-                  {/* Dynamic Hover Border Hack via pseudo-element to avoid direct style manipulation */}
-                  {isActive && (
-                    <div 
-                      className="absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none group-hover:opacity-100"
-                      style={{ boxShadow: `inset 0 0 0 1px ${color}, 0 0 20px ${color}15` }}
-                    />
-                  )}
+                <article className="min-w-[85vw] snap-center lg:min-w-0 group relative flex h-full flex-col border border-outline-variant/20 bg-black/45 pt-6 px-0 pb-0 backdrop-blur-sm transition-colors duration-300 hover:bg-black/60">
+                  <div
+                    className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    style={{ boxShadow: `inset 0 0 0 1px ${color}, 0 0 24px ${color}15` }}
+                  />
 
-                  <div className="flex items-start justify-between mb-6 relative z-10">
-                    <div className="flex bg-black/50 border h-10 w-10 items-center justify-center transition-colors duration-300 group-hover:bg-black/80" style={{ borderColor: `${color}40` }}>
-                      {getCategoryIcon(category.slug, color, 18)}
-                    </div>
-                    {isActive ? (
-                      <div className="text-[10px] font-mono leading-none tracking-widest text-primary px-2 py-1 bg-primary/10 border border-primary/20">
-                        ACTIVE
-                      </div>
-                    ) : (
-                      <div className="text-[10px] font-mono leading-none tracking-widest text-on-surface-variant/40 px-2 py-1 border border-dashed border-outline-variant/20">
-                        PENDING
-                      </div>
-                    )}
-                  </div>
-                  
-                  <h3 
-                    className="text-sm font-black uppercase tracking-wider text-white mb-1 transition-colors duration-300 relative z-10"
+                  <Link
+                    href={`/ecosystem/categories/${category.slug}`}
+                    className="relative z-10 rounded-[1.25rem] border px-5 py-5 mx-6 block transition-colors group-hover:border-primary/50 cursor-pointer"
+                    style={{
+                      borderColor: `${color}33`,
+                      background: `linear-gradient(135deg, ${color}14 0%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0.35) 100%)`,
+                    }}
                   >
-                    {category.title.replace(/\s+/g, '_')}
-                  </h3>
-                  
-                  <div className="text-[11px] font-mono text-on-surface-variant/50 mb-6 flex-1 relative z-10">
-                    {count} ENTITIES_MAPPED
-                  </div>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex min-w-0 items-start gap-4">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center border bg-black/50" style={{ borderColor: `${color}40` }}>
+                          {getCategoryIcon(category.slug, color, 18)}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="text-[11px] font-mono uppercase tracking-[0.22em]" style={{ color }}>
+                            {category.tag}
+                          </div>
+                          <div className="mt-2 block text-xl font-black uppercase tracking-wide text-white transition-colors group-hover:text-primary">
+                            {category.title}
+                          </div>
+                        </div>
+                      </div>
 
-                  {isActive && (
-                    <div className="flex gap-[2px] mt-auto relative z-10">
-                      {Array.from({ length: 12 }).map((_, i) => (
-                        <div 
-                          key={i} 
-                          className="h-1 flex-1 bg-white/10"
-                          style={{
-                            backgroundColor: i < Math.min(count, 12) ? color : 'rgba(255,255,255,0.05)',
-                            boxShadow: i < Math.min(count, 12) ? `0 0 8px ${color}80` : 'none',
-                          }}
-                        />
+                      <div className="shrink-0 border border-primary/20 bg-black/30 px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-primary">
+                        {projectCount} live
+                      </div>
+                    </div>
+                  </Link>
+
+                  <div className="relative z-10 mt-4 flex flex-1 flex-col px-6">
+                    <div className="mb-4 text-[11px] font-mono uppercase tracking-[0.22em] text-on-surface-variant/55">
+                      Recent project records
+                    </div>
+
+                    <div className="flex-1 space-y-0">
+                      {recentProjects.map((project) => (
+                        <Link
+                          key={project.id}
+                          href={`/ecosystem/${project.slug}`}
+                          className="group/item flex items-start justify-between gap-4 border-b border-outline-variant/10 py-4 last:border-b-0 transition-colors hover:bg-white/5"
+                        >
+                          <div className="min-w-0">
+                            <div className="truncate text-sm font-black uppercase tracking-wide text-white transition-colors group-hover/item:text-primary">
+                              {project.title}
+                            </div>
+                            <p className="mt-1 line-clamp-2 text-xs leading-6 text-on-surface-variant/70">
+                              {project.summary}
+                            </p>
+                          </div>
+                          <div className="shrink-0 text-right">
+                            <div className="text-[10px] font-mono uppercase tracking-[0.16em]" style={{ color }}>
+                              {getProjectActivityLabel(project)}
+                            </div>
+                            <div className="mt-4 text-[11px] font-bold uppercase tracking-widest text-primary opacity-0 transition-opacity group-hover/item:opacity-100">
+                              View
+                            </div>
+                          </div>
+                        </Link>
                       ))}
                     </div>
-                  )}
-                </Link>
+
+                    <div className="mt-6 -mx-6">
+                      <Link 
+                        href={`/ecosystem/categories/${category.slug}`}
+                        className="flex items-center justify-center w-full border-t border-outline-variant/20 bg-black/40 py-4 text-[11px] font-black uppercase tracking-[0.2em] text-outline transition-colors hover:bg-black hover:text-white"
+                      >
+                        Open Sector <ArrowRight size={14} className="ml-2" />
+                      </Link>
+                    </div>
+                  </div>
+                </article>
               </motion.div>
             );
           })}
         </motion.div>
+
+        {watchlistCategories.length > 0 && (
+          <div className="mt-14 border-t border-outline-variant/20 pt-10">
+            <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <div className="text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-primary">
+                  Emerging Coverage
+                </div>
+                <h3 className="mt-3 text-2xl font-space font-black uppercase tracking-widest text-white">
+                  Watchlist Sectors
+                </h3>
+                <p className="mt-3 max-w-2xl text-sm leading-7 text-on-surface-variant/72">
+                  These sector briefings are already live, but Atlas has not published builder records for them yet.
+                </p>
+              </div>
+
+              <Link
+                href="/ecosystem/categories"
+                className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-outline transition-colors hover:text-white"
+              >
+                View all sector briefings
+                <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {watchlistCategories.map(({ category }) => {
+                const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
+
+                return (
+                  <Link
+                    key={category.id}
+                    href={`/ecosystem/categories/${category.slug}`}
+                    className="group rounded-[1.1rem] border border-dashed border-outline-variant/20 bg-black/25 p-5 transition-colors hover:border-outline-variant/35 hover:bg-black/40"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="flex h-10 w-10 items-center justify-center border"
+                        style={{ borderColor: `${color}40`, backgroundColor: `${color}08` }}
+                      >
+                        {getCategoryIcon(category.slug, color, 18)}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="truncate text-base font-black uppercase tracking-wide text-white">
+                          {category.title}
+                        </div>
+                        <div className="text-[10px] font-mono uppercase tracking-[0.2em]" style={{ color }}>
+                          Watchlist briefing
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 border-t border-outline-variant/15 pt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-outline transition-colors group-hover:text-white">
+                      Open briefing
+                      <ArrowRight size={14} />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
