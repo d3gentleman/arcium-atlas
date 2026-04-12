@@ -57,6 +57,15 @@ function sortEcosystemCategories(records: EcosystemCategoryRecord[]): EcosystemC
   });
 }
 
+function toIsoString(value: Date | string | null | undefined): string | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  const parsed = value instanceof Date ? value : new Date(value);
+  return Number.isNaN(parsed.getTime()) ? undefined : parsed.toISOString();
+}
+
 // --- ECOSYSTEM ---
 
 export async function getEcosystemCategories(): Promise<EcosystemCategoryRecord[]> {
@@ -88,6 +97,8 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
       title: entry.projectName,
       tag: entry.arciumRole || 'BUILDER',
       summary: entry.projectSummary,
+      createdAt: toIsoString(entry.createdAt),
+      updatedAt: toIsoString(entry.createdAt),
       logo: entry.logoUrl || undefined,
       website: entry.website || undefined,
       twitter: entry.projectTwitter || undefined,
@@ -114,6 +125,8 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
     managedProjects = entries.map(entry => ({
       ...entry,
       id: `db-${entry.id}`,
+      createdAt: toIsoString(entry.createdAt),
+      updatedAt: toIsoString(entry.updatedAt),
       logo: entry.logoUrl || undefined,
       website: entry.website || undefined,
       docs: entry.docs || undefined,
@@ -132,7 +145,7 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
     console.error('[lib/content] Failed to fetch staff managed projects:', err);
   }
 
-  const allProjects = [...dbSubmissions, ...managedProjects];
+  const allProjects = [...managedProjects, ...dbSubmissions];
   const seenTitles = new Set<string>();
 
   return allProjects.filter((project) => {

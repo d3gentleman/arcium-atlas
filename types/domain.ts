@@ -49,6 +49,8 @@ export interface EcosystemProjectRecord {
   title: string;
   tag: string;
   summary: string;
+  createdAt?: string;
+  updatedAt?: string;
   description?: string;
   bodySections?: BodySection[];
   logo?: string;

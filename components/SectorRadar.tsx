@@ -183,21 +183,18 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
                         <Link
                           key={project.id}
                           href={`/ecosystem/${project.slug}`}
-                          className="group/item flex items-start justify-between gap-4 border-b border-outline-variant/10 py-4 last:border-b-0 transition-colors hover:bg-white/5"
+                          className="group/item flex items-start justify-between gap-4 border-b border-outline-variant/10 py-3 last:border-b-0 transition-colors hover:bg-white/5"
                         >
-                          <div className="min-w-0">
-                            <div className="truncate text-sm font-black uppercase tracking-wide text-white transition-colors group-hover/item:text-primary">
+                          <div className="min-w-0 flex items-center">
+                            <div className="truncate text-[13px] font-black uppercase tracking-wide text-white transition-colors group-hover/item:text-primary">
                               {project.title}
                             </div>
-                            <p className="mt-1 line-clamp-2 text-xs leading-6 text-on-surface-variant/70">
-                              {project.summary}
-                            </p>
                           </div>
-                          <div className="shrink-0 text-right">
+                          <div className="shrink-0 text-right flex items-center gap-4">
                             <div className="text-[10px] font-mono uppercase tracking-[0.16em]" style={{ color }}>
                               {getProjectActivityLabel(project)}
                             </div>
-                            <div className="mt-4 text-[11px] font-bold uppercase tracking-widest text-primary opacity-0 transition-opacity group-hover/item:opacity-100">
+                            <div className="text-[10px] font-bold uppercase tracking-widest text-primary opacity-0 transition-opacity group-hover/item:opacity-100">
                               View
                             </div>
                           </div>

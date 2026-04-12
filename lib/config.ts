@@ -130,49 +130,53 @@ export const CATEGORY_COLORS: Record<string, string> = {
 export const HOMEPAGE_CONFIG = {
   hero: {
     subtitle: "The Arcium Ecosystem",
-    titleLine1: "EXPLORE ARCIUM'S",
-    titleLine2: "ENCRYPTED ECOSYSTEM",
-    description: "Discover the projects, use cases, and tools harnessing the power of Arcium's encrypted supercomputer.",
+    titleLine1: "ENCRYPTED",
+    titleLine2: "ECOSYSTEM",
+    description: "Discover the builders, use cases, and tools harnessing the power of Arcium.",
     primaryCta: {
       type: "internal" as const,
-      label: "Browse Projects",
-      href: "/ecosystem"
+      label: "Browse Sectors",
+      href: "/ecosystem/categories"
     },
     secondaryCta: {
       type: "internal" as const,
-      href: "/about",
-      label: "What Is Arcium?"
+      href: "/ecosystem",
+      label: "Full Directory"
     }
   },
-  quickLinks: [
+  startHere: [
     {
-      type: "internal" as const,
-      label: "Browse Directory",
-      href: "/ecosystem"
+      prefix: "01",
+      tag: "DISCOVER",
+      title: "Explore Sectors",
+      description: "Dive into categorised coverage of builders shaping the ecosystem.",
+      action: {
+        type: "internal" as const,
+        label: "START BROWSING",
+        href: "/ecosystem/categories"
+      }
     },
     {
-      type: "command" as const,
-      command: "open-discovery",
-      label: "Search Builders"
+      prefix: "02",
+      tag: "CONTRIBUTE",
+      title: "Submit a Project",
+      description: "Add a missing builder record to the Atlas and help map the network.",
+      action: {
+        type: "internal" as const,
+        label: "SUBMIT PLATFORM",
+        href: "/submit"
+      }
     },
     {
-      type: "external" as const,
-      label: "Official Docs",
-      href: "https://docs.arcium.com"
-    }
-  ],
-  liveStatusFeed: [
-    {
-      status: "LIVE",
-      text: "Explore current builder records and sector coverage"
-    },
-    {
-      status: "SOURCE",
-      text: "Follow outbound links to official docs and project sites"
-    },
-    {
-      status: "SCOPE",
-      text: "Coverage expands as new public records are added"
+      prefix: "03",
+      tag: "LEARN",
+      title: "Read The Docs",
+      description: "Review protocol fundamentals in the official developer portal.",
+      action: {
+        type: "external" as const,
+        label: "VISIT DOCS",
+        href: "https://docs.arcium.com"
+      }
     }
   ]
 };

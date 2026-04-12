@@ -1,9 +1,9 @@
 import Hero from '@/components/Hero';
+import StartHereSection from '@/components/StartHereSection';
 import SectorRadar from '@/components/SectorRadar';
-import FeaturedSpotlight from '@/components/FeaturedSpotlight';
 import DirectoryLaunchCTA from '@/components/DirectoryLaunchCTA';
 import PublicPageShell from '@/components/PublicPageShell';
-import RegistryPulse from '@/components/RegistryPulse';
+import RecentProjectUpdates from '@/components/RecentProjectUpdates';
 import {
   getEcosystemProjects,
   getEcosystemCategories,
@@ -30,33 +30,15 @@ export default async function Home() {
     getCategoryColors(),
   ]);
 
-  const liveStatusFeed = [
-    {
-      status: 'LIVE',
-      text: `${projects.length} public builder records currently mapped`,
-    },
-    {
-      status: 'MAP',
-      text: `${categories.filter((category) => projects.some((project) => project.categoryId === category.id || project.categoryId === category.slug)).length} sectors with published builder coverage`,
-    },
-    {
-      status: 'WATCH',
-      text: `${categories.filter((category) => !projects.some((project) => project.categoryId === category.id || project.categoryId === category.slug)).length} sectors still filling in`,
-    },
-  ];
-
-  const featuredProjects = projects.filter(p => p.isFeatured);
-
   return (
     <PublicPageShell mainClassName="space-y-16 pb-16 md:pb-20">
         <Hero
           hero={homepage.hero}
-          quickLinks={homepage.quickLinks}
-          liveStatusFeed={liveStatusFeed}
         />
 
-        <section className="col-span-12 border-t border-outline-variant/30">
-          <RegistryPulse projects={projects} categories={categories} />
+        <section className="col-span-12 -mt-4 mb-4">
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+          <StartHereSection cards={homepage.startHere as any} />
         </section>
 
         <section className="col-span-12">
@@ -68,7 +50,11 @@ export default async function Home() {
         </section>
 
         <section className="col-span-12">
-          <FeaturedSpotlight projects={featuredProjects} />
+          <RecentProjectUpdates
+            projects={projects}
+            categories={categories}
+            categoryColors={categoryColors}
+          />
         </section>
 
         <section className="col-span-12">
