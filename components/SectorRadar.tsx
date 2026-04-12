@@ -100,12 +100,6 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
         <div className="w-[800px] h-[800px] rounded-full border border-primary/20 absolute" />
         <div className="w-[600px] h-[600px] rounded-full border border-primary/20 absolute" />
         <div className="w-[400px] h-[400px] rounded-full border border-primary/30 absolute" />
-        <motion.div 
-          className="absolute w-[800px] h-[800px] rounded-full"
-          style={{ background: 'conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(0, 240, 255, 0.25) 360deg)' }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
