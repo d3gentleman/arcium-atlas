@@ -125,58 +125,51 @@ export default async function SectorsPage() {
         </>
       }
     >
-          <section className="console-window col-span-12">
-            <div className="console-header">
-              <span>MODULE_11: SECTOR_INDEX</span>
-              <span className="text-primary">SCAN_COMPLETE</span>
+      <div className="space-y-10 p-4 lg:p-8">
+        <div>
+          <div className="mb-6 flex flex-col gap-4 border-b border-outline-variant/20 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
+            <div>
+              <h2 className="text-xl font-black uppercase tracking-widest text-white">
+                ACTIVE_SECTORS
+              </h2>
+              <p className="mt-2 max-w-3xl text-sm leading-7 text-on-surface-variant">
+                These sectors already have at least one published builder record in Atlas.
+              </p>
+            </div>
+            <div className="text-[11px] font-mono uppercase tracking-widest text-on-surface-variant/60">
+              {activeCategories.length} live
+            </div>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {activeCategories.map((category, index) => renderCategoryCard(category, index))}
+          </div>
+        </div>
+
+        {watchlistCategories.length > 0 && (
+          <div>
+            <div className="mb-6 flex flex-col gap-4 border-b border-outline-variant/20 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
+              <div>
+                <h2 className="text-xl font-black uppercase tracking-widest text-white">
+                  WATCHLIST_SECTORS
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm leading-7 text-on-surface-variant">
+                  These sectors already have briefings, but Atlas has not published builder records for them yet.
+                </p>
+              </div>
+              <div className="text-[11px] font-mono uppercase tracking-widest text-on-surface-variant/60">
+                {watchlistCategories.length} pending
+              </div>
             </div>
 
-            <div className="space-y-10 p-6 lg:p-12">
-              <div>
-                <div className="mb-4 flex flex-col gap-4 border-b border-outline-variant/20 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
-                  <div>
-                    <h2 className="text-lg font-black uppercase tracking-widest text-white">
-                      ACTIVE_SECTORS
-                    </h2>
-                    <p className="mt-2 max-w-3xl text-sm leading-7 text-on-surface-variant">
-                      These sectors already have at least one published builder record in Atlas.
-                    </p>
-                  </div>
-                    <div className="text-[11px] font-mono uppercase tracking-widest text-on-surface-variant/60">
-                      {activeCategories.length} live
-                    </div>
-                  </div>
-
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {activeCategories.map((category, index) => renderCategoryCard(category, index))}
-                </div>
-              </div>
-
-              {watchlistCategories.length > 0 && (
-                <div>
-                  <div className="mb-4 flex flex-col gap-4 border-b border-outline-variant/20 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
-                    <div>
-                      <h2 className="text-lg font-black uppercase tracking-widest text-white">
-                        WATCHLIST_SECTORS
-                      </h2>
-                      <p className="mt-2 max-w-3xl text-sm leading-7 text-on-surface-variant">
-                        These sectors already have briefings, but Atlas has not published builder records for them yet.
-                      </p>
-                    </div>
-                    <div className="text-[11px] font-mono uppercase tracking-widest text-on-surface-variant/60">
-                      {watchlistCategories.length} pending
-                    </div>
-                  </div>
-
-                  <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {watchlistCategories.map((category, index) =>
-                      renderCategoryCard(category, activeCategories.length + index, true),
-                    )}
-                  </div>
-                </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {watchlistCategories.map((category, index) =>
+                renderCategoryCard(category, activeCategories.length + index, true),
               )}
             </div>
-          </section>
+          </div>
+        )}
+      </div>
     </KnowledgePageFrame>
   );
 }

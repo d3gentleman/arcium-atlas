@@ -114,6 +114,9 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
     managedProjects = entries.map(entry => ({
       ...entry,
       id: `db-${entry.id}`,
+      logo: entry.logoUrl || undefined,
+      website: entry.website || undefined,
+      docs: entry.docs || undefined,
       twitter: entry.twitter || undefined,
       github: entry.github || undefined,
       email: entry.projectEmail || undefined,
@@ -122,8 +125,8 @@ export async function getEcosystemProjects(): Promise<EcosystemProjectRecord[]> 
       bodySections: entry.bodySections as BodySection[],
       metrics: entry.metrics as { label: string; value: string }[],
       sources: entry.sources as ProjectSource[],
-      relationshipType: entry.relationshipType as 'unreviewed' | 'confirmed_integration' | 'ecosystem_project' | 'reference_project' | 'watchlist',
-      status: entry.status as 'sync_ok' | 'coming_soon' | 'maintenance' | 'deprecated' | 'testing',
+      relationshipType: (entry.relationshipType as EcosystemProjectRecord['relationshipType']) || 'ecosystem_project',
+      status: (entry.status as EcosystemProjectRecord['status']) || 'sync_ok',
     } as EcosystemProjectRecord));
   } catch (err) {
     console.error('[lib/content] Failed to fetch staff managed projects:', err);
