@@ -117,23 +117,25 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
         </div>
 
         <motion.div 
-          className="flex snap-x snap-mandatory overflow-x-auto pb-8 lg:grid lg:grid-cols-2 lg:overflow-x-visible lg:pb-0 gap-6"
+          className="flex snap-x snap-mandatory overflow-x-auto pb-8 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 lg:grid lg:grid-cols-2 lg:overflow-x-visible lg:pb-0 gap-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-100px' }}
         >
-          {activeCategories.map(({ category, categoryProjects, projectCount }) => {
+          {activeCategories.map(({ category, categoryProjects, projectCount }, idx) => {
             const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
             const recentProjects = categoryProjects.slice(0, 2);
+            const isLast = idx === activeCategories.length - 1;
 
             return (
               <motion.div 
                 key={category.id} 
                 variants={itemVariants}
                 whileHover={{ scale: 1.01, zIndex: 20 }}
+                className={`shrink-0 snap-start ${isLast ? 'pr-4 sm:pr-6 lg:pr-0' : ''}`}
               >
-                <article className="min-w-[85vw] snap-center lg:min-w-0 group relative flex h-full flex-col border border-outline-variant/20 bg-black/45 pt-6 px-0 pb-0 backdrop-blur-sm transition-colors duration-300 hover:bg-black/60">
+                <article className="w-[85vw] sm:w-[50vw] lg:w-auto lg:min-w-0 group relative flex h-full flex-col border border-outline-variant/20 bg-black/45 pt-6 px-0 pb-0 backdrop-blur-sm transition-colors duration-300 hover:bg-black/60">
                   <div
                     className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     style={{ boxShadow: `inset 0 0 0 1px ${color}, 0 0 24px ${color}15` }}
