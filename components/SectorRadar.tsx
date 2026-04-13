@@ -129,7 +129,7 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
 
         <div className="overflow-hidden -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 w-full max-w-full">
           <motion.div 
-            className="flex snap-x snap-mandatory overflow-x-auto pb-8 gap-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-2 lg:overflow-x-visible lg:pb-0 touch-pan-y"
+            className="flex snap-x snap-mandatory overflow-x-auto pb-8 gap-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-2 lg:overflow-x-visible lg:pb-0"
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
