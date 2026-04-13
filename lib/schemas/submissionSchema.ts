@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 // --- Team Member Sub-Schema ---
-export const teamMemberSchema = z.object({
+const teamMemberSchema = z.object({
   role: z.string().min(1, 'Role is required'),
   name: z.string().min(1, 'Name or alias is required'),
   twitter: z
@@ -9,8 +9,6 @@ export const teamMemberSchema = z.object({
     .min(1, 'Twitter/X URL is required')
     .url('Must be a valid URL'),
 });
-
-export type TeamMember = z.infer<typeof teamMemberSchema>;
 
 // --- Main Submission Schema ---
 export const submissionSchema = z.object({

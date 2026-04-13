@@ -228,17 +228,6 @@ export async function getHomepageConfig() {
   return HOMEPAGE_CONFIG;
 }
 
-export async function getFeaturedProjects(count?: number): Promise<EcosystemProjectRecord[]> {
-  const projects = await getEcosystemProjects();
-  const featuredProjects = projects.filter((project) => project.isFeatured);
-
-  if (count) {
-    return featuredProjects.slice(0, count);
-  }
-
-  return featuredProjects;
-}
-
 // --- PATH HELPERS ---
 
 export function getEcosystemCategoryPath(slug: string): string {

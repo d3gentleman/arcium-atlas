@@ -3,10 +3,7 @@
     "id": "builtin_group_id",
     "name": "Currently Open Files",
     "files": [
-      "content/home.json",
-      "components/Hero.tsx",
-      "components/SectorRadar.tsx",
-      "lib/config.ts"
+      "scripts/debug-categories.ts"
     ],
     "builtIn": true,
     "bookmarks": {}

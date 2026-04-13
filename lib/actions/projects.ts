@@ -94,19 +94,4 @@ export async function updateProject(id: number, data: Record<string, unknown>) {
   }
 }
 
-export async function deleteProject(id: number) {
-  const isAdmin = await checkAdmin();
-  if (!isAdmin) return { success: false, error: 'Unauthorized' };
 
-  try {
-    await db.delete(ecosystemProjects).where(eq(ecosystemProjects.id, id));
-    
-    revalidatePath('/ecosystem');
-    revalidatePath('/admin/projects');
-    
-    return { success: true };
-  } catch (err: unknown) {
-    console.error('[deleteProject] Error:', err);
-    return { success: false, error: err instanceof Error ? err.message : 'Unknown error' };
-  }
-}
