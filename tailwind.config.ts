@@ -63,7 +63,8 @@ const config: Config = {
         body: ["var(--font-jetbrains-mono)", "monospace"],
         label: ["var(--font-jetbrains-mono)", "monospace"],
         space: ["var(--font-space-grotesk)", "sans-serif"],
-        jetbrains: ["var(--font-jetbrains-mono)", "monospace"]
+        jetbrains: ["var(--font-jetbrains-mono)", "monospace"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       borderRadius: { DEFAULT: "0px", lg: "0px", xl: "0px", full: "0px" },
     },

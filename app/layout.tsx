@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Space_Grotesk, JetBrains_Mono, Inter } from 'next/font/google';
 import ShellSwitcher from './ShellSwitcher';
 import { getDiscoveryIndex, getUIConfig } from '@/lib/content';
 import { buildMetadata } from '@/lib/seo';
@@ -14,6 +14,11 @@ const spaceGrotesk = Space_Grotesk({
 const jetbrainsMono = JetBrains_Mono({ 
   subsets: ['latin'],
   variable: '--font-jetbrains-mono'
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
@@ -33,7 +38,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} selection:bg-primary/30 selection:text-primary min-h-screen antialiased bg-black text-white font-body`}>
+      <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${inter.variable} selection:bg-primary/30 selection:text-primary min-h-screen antialiased bg-black text-white font-body`}>
         <Providers>
           <ShellSwitcher discoveryItems={discoveryItems} ui={ui}>
             {children}

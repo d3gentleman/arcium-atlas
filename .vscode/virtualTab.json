@@ -3,6 +3,10 @@
     "id": "builtin_group_id",
     "name": "Currently Open Files",
     "files": [
+      "lib/schemas/submissionSchema.ts",
+      "lib/actions/projects.ts",
+      "lib/content.ts",
+      "lib/site.ts",
       "scripts/debug-categories.ts"
     ],
     "builtIn": true,

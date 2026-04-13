@@ -140,8 +140,8 @@ export const HOMEPAGE_CONFIG = {
     },
     secondaryCta: {
       type: "internal" as const,
-      href: "/ecosystem",
-      label: "Full Directory"
+      href: "/submit",
+      label: "Submit a Project"
     }
   },
   startHere: [
