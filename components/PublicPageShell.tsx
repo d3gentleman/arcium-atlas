@@ -21,7 +21,7 @@ export default async function PublicPageShell({
 
   return (
     <div
-      className={`atlas-public-shell atlas-public-shell--${backgroundVariant} col-span-12 flex min-h-screen flex-col text-on-surface`}
+      className={`atlas-public-shell atlas-public-shell--${backgroundVariant} col-span-12 flex min-h-screen flex-col overflow-x-hidden w-full max-w-[100vw] text-on-surface`}
     >
       <NavBar links={navLinks} />
       <main className={`flex flex-col py-8 md:py-10 ${mainClassName}`.trim()}>

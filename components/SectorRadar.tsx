@@ -127,13 +127,14 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
           </div>
         </div>
 
-        <motion.div 
-          className="flex snap-x snap-mandatory overflow-x-auto pb-8 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 lg:grid lg:grid-cols-2 lg:overflow-x-visible lg:pb-0 gap-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-100px' }}
-        >
+        <div className="overflow-hidden -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 w-full max-w-full">
+          <motion.div 
+            className="flex snap-x snap-mandatory overflow-x-auto pb-8 gap-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-2 lg:overflow-x-visible lg:pb-0 touch-pan-y"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-100px' }}
+          >
           {activeCategories.map(({ category, categoryProjects, projectCount }, idx) => {
             const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
             const recentProjects = categoryProjects.slice(0, 2);
@@ -207,6 +208,7 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
             );
           })}
         </motion.div>
+      </div>
 
         {watchlistCategories.length > 0 && (
           <div className="mt-14 border-t border-outline-variant/10 pt-10">

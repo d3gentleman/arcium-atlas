@@ -13,7 +13,7 @@ export default function NavBar({ links }: { links: LinkAction[] }) {
           <div className="w-2 h-2 bg-primary"></div>
         </div>
       </div>
-      <div className="p-4 flex flex-wrap justify-between items-center gap-6">
+      <div className="p-4 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
         <Link 
           href="/" 
           className="group text-xl font-black tracking-tighter text-primary uppercase font-headline hover:text-white transition-colors duration-300"
@@ -22,7 +22,7 @@ export default function NavBar({ links }: { links: LinkAction[] }) {
           ARCIUM_ATLAS
           <span className="opacity-50 group-hover:opacity-100 transition-opacity">&gt;</span>
         </Link>
-        <nav className="flex flex-wrap gap-6 text-xs uppercase font-bold tracking-widest">
+        <nav className="flex flex-wrap justify-center px-4 gap-x-6 gap-y-3 text-[10px] md:text-xs uppercase font-bold tracking-widest max-w-full">
           {links.map((link, idx) => (
             <ActionLink
               key={idx}

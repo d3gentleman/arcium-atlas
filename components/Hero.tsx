@@ -52,7 +52,7 @@ export default function Hero({ hero, sectorCount, projectCount, lastUpdated }: H
         </div>
 
         {/* Quick links — merged from StartHereSection */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-[10px] font-mono uppercase tracking-[0.18em]">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-[10px] font-mono uppercase tracking-[0.18em] px-6 w-full max-w-full overflow-hidden leading-relaxed">
           <Link href="/ecosystem/categories" className="text-on-surface-variant/75 transition-colors hover:text-primary">
             ◆ Browse Sectors
           </Link>
