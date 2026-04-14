@@ -206,13 +206,12 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
                   className="pointer-events-none absolute inset-0 translate-x-2 translate-y-1 border border-white/[0.05] -z-10 lg:hidden"
                   aria-hidden="true"
                 />
-                <Link
-                  href={`/ecosystem/categories/${category.slug}`}
-                  className="group relative flex h-full w-[75vw] sm:w-[45vw] lg:w-auto lg:min-w-0 flex-col border bg-white/[0.03] pt-6 px-6 pb-0 transition-all duration-200 hover:bg-white/[0.05] hover:border-white/[0.12]"
+                <div
+                  className="group/card relative flex h-full w-[75vw] sm:w-[45vw] lg:w-auto lg:min-w-0 flex-col border bg-white/[0.03] pt-6 px-6 pb-0 transition-all duration-200 hover:bg-white/[0.05] hover:border-white/[0.12]"
                   style={{ borderColor: 'rgba(255,255,255,0.06)' }}
                 >
                   <div
-                    className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"
                     style={{ boxShadow: `inset 0 0 0 1px ${color}40, 0 0 16px ${color}08` }}
                   />
 
@@ -226,9 +225,12 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
                         <div className="text-[11px] font-mono uppercase tracking-[0.22em]" style={{ color }}>
                           {category.tag}
                         </div>
-                        <div className="mt-2 block text-xl font-black uppercase tracking-wide text-white transition-colors group-hover:text-primary">
+                        <Link
+                          href={`/ecosystem/categories/${category.slug}`}
+                          className="mt-2 block text-xl font-black uppercase tracking-wide text-white transition-colors hover:text-primary"
+                        >
                           {category.title}
-                        </div>
+                        </Link>
                       </div>
                     </div>
 
@@ -237,33 +239,37 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
                     </div>
                   </div>
 
-                  {/* Recent projects */}
+                  {/* Recent projects — each row is its own link */}
                   <div className="relative z-10 mt-5 flex flex-1 flex-col border-t border-white/[0.06] pt-4">
                     <div className="flex-1 space-y-0">
                       {recentProjects.map((project) => (
-                        <div
+                        <Link
                           key={project.id}
-                          className="flex items-start justify-between gap-4 border-b border-white/[0.04] py-3 last:border-b-0"
+                          href={`/ecosystem/${project.slug}`}
+                          className="group/row flex items-start justify-between gap-4 border-b border-white/[0.04] py-3 last:border-b-0 transition-colors hover:bg-white/[0.03]"
                         >
                           <div className="min-w-0 flex items-center gap-2">
-                            <span className="inline-block h-1 w-1 shrink-0 bg-primary/50" />
-                            <div className="truncate text-[13px] font-black uppercase tracking-wide text-white/90">
+                            <span className="inline-block h-1 w-1 shrink-0 bg-primary/50 transition-colors group-hover/row:bg-primary" />
+                            <div className="truncate text-[13px] font-black uppercase tracking-wide text-white/90 transition-colors group-hover/row:text-white">
                               {project.title}
                             </div>
                           </div>
                           <div className="shrink-0 text-[10px] font-mono uppercase tracking-[0.16em] text-on-surface-variant/75">
                             {getProjectActivityLabel(project)}
                           </div>
-                        </div>
+                        </Link>
                       ))}
                     </div>
                   </div>
 
-                  {/* Card footer */}
-                  <div className="relative z-10 mt-auto -mx-6 border-t border-white/[0.06] bg-white/[0.02] py-4 text-center text-[11px] font-black uppercase tracking-[0.2em] text-outline transition-colors group-hover:text-white">
+                  {/* Card footer — explicit link to category */}
+                  <Link
+                    href={`/ecosystem/categories/${category.slug}`}
+                    className="relative z-10 mt-auto -mx-6 border-t border-white/[0.06] bg-white/[0.02] py-4 text-center text-[11px] font-black uppercase tracking-[0.2em] text-outline transition-colors hover:text-white block"
+                  >
                     Open Sector <ArrowRight size={14} className="inline ml-1" />
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               </motion.div>
             );
           })}
