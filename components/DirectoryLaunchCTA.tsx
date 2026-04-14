@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function DirectoryLaunchCTA() {
   return (
-    <section aria-label="Take action" className="border-t border-outline-variant/10 py-16 lg:py-20">
+    <section aria-label="Take action" className="border-t border-outline-variant/10 py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Explorer panel — secondary emphasis */}

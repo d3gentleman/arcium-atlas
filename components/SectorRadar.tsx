@@ -85,6 +85,13 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
   const activeCategories = rankedCategories.filter((entry) => entry.projectCount > 0);
   const watchlistCategories = rankedCategories.filter((entry) => entry.projectCount === 0).slice(0, 4);
 
+  const entranceVariants = shouldReduceMotion
+    ? { hidden: {}, show: {} }
+    : {
+        hidden: { opacity: 0, y: 12 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+      };
+
   const containerVariants = shouldReduceMotion
     ? { hidden: {}, show: {} }
     : {
@@ -158,7 +165,13 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="section-entrance mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 text-center lg:text-left">
+        <motion.div
+          className="mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 text-center lg:text-left"
+          variants={entranceVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-80px' }}
+        >
           <div>
             <h2 className="text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-primary mb-3">
               System Scan Complete
@@ -180,7 +193,7 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
             <span className="mx-1 text-outline-variant/30">/</span>
             {String(activeCategories.length).padStart(2, '0')}
           </div>
-        </div>
+        </motion.div>
 
         <div className="overflow-hidden -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 w-full max-w-full">
           <motion.div
@@ -312,7 +325,13 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
 
         {watchlistCategories.length > 0 && (
           <div className="mt-14 border-t border-outline-variant/10 pt-10">
-            <div className="section-entrance mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <motion.div
+              className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"
+              variants={entranceVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-80px' }}
+            >
               <div>
                 <div className="text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-primary">
                   Emerging Coverage
@@ -332,43 +351,50 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
                 View all sector briefings
                 <ArrowRight size={14} />
               </Link>
-            </div>
+            </motion.div>
 
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <motion.div
+              className="grid gap-4 md:grid-cols-2 xl:grid-cols-4"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-80px' }}
+            >
               {watchlistCategories.map(({ category }) => {
                 const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
 
                 return (
-                  <Link
-                    key={category.id}
-                    href={`/ecosystem/categories/${category.slug}`}
-                    className="group border border-dashed border-outline-variant/20 bg-white/[0.02] p-5 transition-colors hover:border-white/[0.12] hover:bg-white/[0.05]"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className="flex h-10 w-10 items-center justify-center border"
-                        style={{ borderColor: `${color}40`, backgroundColor: `${color}08` }}
-                      >
-                        {getCategoryIcon(category.slug, color, 18)}
-                      </div>
-                      <div className="min-w-0">
-                        <div className="truncate text-base font-black uppercase tracking-wide text-white">
-                          {category.title}
+                  <motion.div key={category.id} variants={itemVariants}>
+                    <Link
+                      href={`/ecosystem/categories/${category.slug}`}
+                      className="group flex flex-col h-full border border-dashed border-outline-variant/20 bg-white/[0.02] p-5 transition-colors hover:border-white/[0.12] hover:bg-white/[0.05]"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="flex h-10 w-10 items-center justify-center border"
+                          style={{ borderColor: `${color}40`, backgroundColor: `${color}08` }}
+                        >
+                          {getCategoryIcon(category.slug, color, 18)}
                         </div>
-                        <div className="text-[10px] font-mono uppercase tracking-[0.2em]" style={{ color }}>
-                          Watchlist briefing
+                        <div className="min-w-0">
+                          <div className="truncate text-base font-black uppercase tracking-wide text-white">
+                            {category.title}
+                          </div>
+                          <div className="text-[10px] font-mono uppercase tracking-[0.2em]" style={{ color }}>
+                            Watchlist briefing
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="mt-4 border-t border-outline-variant/10 pt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-outline transition-colors group-hover:text-white">
-                      Open briefing
-                      <ArrowRight size={14} />
-                    </div>
-                  </Link>
+                      <div className="mt-4 border-t border-outline-variant/10 pt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-outline transition-colors group-hover:text-white">
+                        Open briefing
+                        <ArrowRight size={14} />
+                      </div>
+                    </Link>
+                  </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
         )}
       </div>
