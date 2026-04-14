@@ -69,15 +69,15 @@ export default function EcosystemDirectory({
           <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
             <div className="flex items-center gap-3">
               {getCategoryIcon(category.slug, color)}
-              <h2 className="font-space text-xl font-black uppercase tracking-widest text-white md:text-2xl">
+              <h2 className="font-space text-xl font-black tracking-tight text-white md:text-2xl">
                 {category.title}
-                <span className="ml-3 sm:ml-4 text-xs font-mono lowercase tracking-normal opacity-60" style={{ color }}>
+                <span className="ml-3 sm:ml-4 text-xs font-mono lowercase tracking-normal opacity-60 uppercase" style={{ color }}>
                   {'//'} {category.tag}
                 </span>
               </h2>
             </div>
             <div className="text-xs font-mono uppercase text-on-surface-variant/60">
-              {categoryProjects.length} Projects_Detected
+              {categoryProjects.length} Projects
             </div>
           </div>
           <p className="max-w-3xl text-sm leading-7 text-on-surface-variant">
@@ -118,13 +118,13 @@ export default function EcosystemDirectory({
               href={getCategoryPath(selectedCategory.slug)}
               className="border border-outline-variant/40 px-6 py-2 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-surface-container"
             >
-              Open_Sector_Briefing
+              Open Sector Briefing
             </Link>
             <button
               onClick={() => setSelectedCategoryId(null)}
               className="border border-primary/50 px-6 py-2 text-xs font-bold uppercase tracking-widest text-primary shadow-[0_0_15px_rgba(47,230,166,0.15)] transition-colors hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(47,230,166,0.3)]"
             >
-              Reset_Query
+              Reset Query
             </button>
           </div>
         </>
@@ -137,7 +137,7 @@ export default function EcosystemDirectory({
             onClick={() => setSelectedCategoryId(null)}
             className="mx-auto border border-primary/50 px-6 py-2 text-xs font-bold uppercase tracking-widest text-primary shadow-[0_0_15px_rgba(47,230,166,0.15)] transition-colors hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(47,230,166,0.3)]"
           >
-            Reset_Query
+            Reset Query
           </button>
         </>
       )}
@@ -157,18 +157,18 @@ export default function EcosystemDirectory({
     <div className="space-y-12">
       <div className="flex flex-nowrap items-center gap-3 overflow-x-auto border-b border-outline-variant/20 pb-6 scrollbar-hide md:flex-wrap">
         <div className="mr-2 shrink-0 text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant/40">
-          Filter_By_Sector:
+          Filter by sector:
         </div>
 
         <button
           onClick={() => setSelectedCategoryId(null)}
-          className={`shrink-0 border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.1em] transition-all duration-300 ${
+          className={`shrink-0 rounded-full border px-5 py-2 text-xs font-bold uppercase tracking-[0.1em] transition-all duration-300 ${
             selectedCategoryId === null
               ? 'border-primary bg-primary/10 text-primary shadow-[0_0_15px_rgba(47,230,166,0.2)]'
-              : 'border-outline-variant/30 text-on-surface-variant/60 hover:border-outline-variant/60'
+              : 'border-outline-variant/30 text-on-surface-variant/60 hover:border-outline-variant/60 hover:bg-white/[0.02]'
           }`}
         >
-          All_Sectors
+          All Sectors
         </button>
 
         {categories.map((category) => {
@@ -180,15 +180,15 @@ export default function EcosystemDirectory({
             <button
               key={category.id}
               onClick={() => setSelectedCategoryId(category.id)}
-              className="shrink-0 border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.1em] transition-all duration-300"
+              className="shrink-0 rounded-full border px-5 py-2 text-xs font-bold uppercase tracking-[0.1em] transition-all duration-300 hover:brightness-125"
               style={{
-                borderColor: isActive ? color : 'rgba(255,255,255,0.1)',
+                borderColor: isActive ? color : 'rgba(255,255,255,0.15)',
                 backgroundColor: isActive ? `${color}1A` : 'transparent',
                 boxShadow: isActive ? `0 0 15px ${color}33` : 'none',
-                color: isActive ? color : projectCount > 0 ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.28)',
+                color: isActive ? color : projectCount > 0 ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.3)',
               }}
             >
-              {category.title.replace(/\s+/g, '_')} [{projectCount}]
+              {category.title} <span className="opacity-50 font-mono ml-1">({projectCount})</span>
             </button>
           );
         })}
@@ -202,10 +202,10 @@ export default function EcosystemDirectory({
                 <div className="flex flex-col justify-between gap-4 border-b border-outline-variant/30 pb-4 text-primary sm:flex-row sm:items-baseline">
                   <div className="flex items-center gap-3">
                     <div className="h-2 w-2 bg-primary text-primary shadow-[0_0_8px_currentColor]" />
-                    <h2 className="font-space text-xl font-black uppercase tracking-widest text-white md:text-2xl">
-                      FEATURED_BUILDERS
-                      <span className="ml-3 sm:ml-4 text-xs font-mono lowercase tracking-normal opacity-60 text-primary">
-                        {'//'} highest_signal_examples
+                    <h2 className="font-space text-xl font-black tracking-tight text-white md:text-2xl">
+                      Featured Builders
+                      <span className="ml-3 sm:ml-4 text-xs font-mono lowercase tracking-normal opacity-60 text-primary uppercase">
+                        {'//'} HIGHEST_SIGNAL
                       </span>
                     </h2>
                   </div>
@@ -241,15 +241,15 @@ export default function EcosystemDirectory({
               <section className="space-y-8">
                 <div className="flex flex-col gap-4 border-b border-outline-variant/20 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
                   <div>
-                    <h2 className="font-space text-xl font-black uppercase tracking-widest text-white md:text-2xl">
-                      WATCHLIST_SECTORS
+                    <h2 className="font-space text-xl font-black tracking-tight text-white md:text-2xl">
+                      Watchlist Sectors
                     </h2>
                     <p className="mt-3 max-w-3xl text-sm leading-7 text-on-surface-variant">
                       These sector briefings are live, but Atlas does not yet have published builder records for them.
                     </p>
                   </div>
                   <div className="text-xs font-mono uppercase text-on-surface-variant/60">
-                    {watchlistCategories.length} Pending_Coverage
+                    {watchlistCategories.length} Pending
                   </div>
                 </div>
 

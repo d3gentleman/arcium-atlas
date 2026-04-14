@@ -147,9 +147,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             )}
 
             <section className="console-window overflow-hidden">
-               <div className="console-header">
-                 <span>MODULE_12: PROJECT_OVERVIEW</span>
-                 <span style={{ color }}>SCAN_SUCCESS</span>
+               <div className="console-header flex items-center justify-between">
+                 <span>Module_12: Project Overview</span>
+                 <span className="uppercase tracking-widest text-[11px] font-bold" style={{ color }}>{project.status === 'sync_ok' ? 'ONLINE_STATUS' : 'SCAN_COMPLETE'}</span>
                </div>
                <div className="p-6 lg:p-10 space-y-8">
                 <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between border-b border-outline-variant/20 pb-8">
@@ -220,7 +220,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {relatedProjects.length > 0 && (
               <section className="console-window overflow-hidden">
                 <div className="console-header">
-                  <span>MODULE_14: RELATED_ENTITIES</span>
+                  <span>Module_14: Related Entities</span>
                 </div>
                 <div className="flex flex-col border border-outline-variant/30 bg-[#06080a]/50 m-6 lg:m-10">
                   <div className="hidden gap-4 border-b border-outline-variant/30 bg-surface-container/30 px-4 py-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/50 md:grid md:grid-cols-12">
@@ -276,12 +276,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               )}
             </div>
 
-            <div className="border border-outline-variant/30 bg-surface-container-lowest/50 p-6 shadow-xl backdrop-blur-sm">
-              <h2 className="mb-5 flex items-center gap-2 font-space text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60">
-                <Link2 size={14} className="text-primary" /> Socials_&_Engagement
-              </h2>
+            <details className="group border border-outline-variant/30 bg-surface-container-lowest/50 p-6 shadow-xl backdrop-blur-sm [&_summary::-webkit-details-marker]:hidden">
+              <summary className="cursor-pointer flex items-center justify-between font-space text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60 outline-none hover:text-primary transition-colors">
+                <span className="flex items-center gap-2"><Link2 size={14} className="text-primary" /> Socials_&_Engagement</span>
+                <span className="text-primary group-open:rotate-180 transition-transform">▼</span>
+              </summary>
 
-              <div className="space-y-4">
+              <div className="mt-5 space-y-4">
                  {normalizedWebsite && (
                    <a
                      href={normalizedWebsite}
@@ -338,12 +339,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                    </a>
                  )}
               </div>
-            </div>
+            </details>
 
-            <div className="border border-outline-variant/30 bg-surface-container-lowest/50 p-6 shadow-xl backdrop-blur-sm">
-              <h2 className="mb-5 flex items-center gap-2 font-space text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60">
-                <ShieldCheck size={14} className="text-primary" /> Verified_Sources
-              </h2>
+            <details className="group border border-outline-variant/30 bg-surface-container-lowest/50 p-6 shadow-xl backdrop-blur-sm [&_summary::-webkit-details-marker]:hidden">
+              <summary className="cursor-pointer flex items-center justify-between font-space text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60 outline-none hover:text-primary transition-colors">
+                <span className="flex items-center gap-2"><ShieldCheck size={14} className="text-primary" /> Verified_Sources</span>
+                <span className="text-primary group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="mt-5">
 
               {projectSources.length > 0 ? (
                 <div className="space-y-3">
@@ -381,14 +384,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   No reviewed source links have been added yet.
                 </p>
               )}
-            </div>
+              </div>
+            </details>
 
             {project.metrics && project.metrics.length > 0 ? (
-              <div className="border border-outline-variant/30 bg-surface-container-lowest/50 p-6 shadow-xl backdrop-blur-sm">
-                <h2 className="mb-6 flex items-center gap-2 font-space text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60">
-                  <BarChart2 size={14} className="text-primary" /> Key_Metrics
-                </h2>
-                <div className="grid gap-6">
+              <details className="group border border-outline-variant/30 bg-surface-container-lowest/50 p-6 shadow-xl backdrop-blur-sm [&_summary::-webkit-details-marker]:hidden">
+                <summary className="cursor-pointer flex items-center justify-between font-space text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60 outline-none hover:text-primary transition-colors">
+                  <span className="flex items-center gap-2"><BarChart2 size={14} className="text-primary" /> Key_Metrics</span>
+                  <span className="text-primary group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div className="mt-6 grid gap-6">
                   {project.metrics.map((metric) => (
                     <div key={`${metric.label}-${metric.value}`} className="flex flex-col gap-1 border-l-2 border-primary/20 pl-4 py-1">
                       <div className="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/50">
@@ -400,7 +405,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </div>
                   ))}
                 </div>
-              </div>
+              </details>
             ) : (
               <div className="border border-dashed border-outline-variant/25 bg-surface-container-lowest/40 p-6">
                 <h2 className="mb-3 flex items-center gap-2 font-space text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60">
@@ -542,10 +547,6 @@ function getCoverageGaps(project: EcosystemProjectRecord, sources: ProjectSource
 
   if (sources.length === 0) {
     gaps.push('Reviewed source links have not been added yet.');
-  }
-
-  if (!project.relationshipType || project.relationshipType === 'unreviewed') {
-    gaps.push('Relationship type has not been reviewed.');
   }
 
   if (!project.relationshipType || project.relationshipType === 'unreviewed') {

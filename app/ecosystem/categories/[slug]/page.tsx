@@ -97,9 +97,9 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
             <div className="console-header">
               <span className="flex items-center gap-2">
                 {getCategoryIcon(category.slug, color, 14)}
-                MODULE_09: SECTOR_BRIEFING
+                Module_09: Sector Briefing
               </span>
-              <span style={{ color }}>{(category.prefix || 'TER').toUpperCase()}_ACTIVE</span>
+              <span className="uppercase tracking-widest text-[11px] font-bold" style={{ color }}>{(category.prefix || 'TER').toUpperCase()}_ACTIVE</span>
             </div>
             <div className="grid gap-8 p-6 lg:p-12 lg:grid-cols-[minmax(0,1fr)_18rem]">
               <div className="space-y-12 max-w-4xl w-full mx-auto md:mx-0">
@@ -182,9 +182,9 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
 
           {projects.length > 0 ? (
             <section className="console-window col-span-12">
-              <div className="console-header">
-                <span>MODULE_10: SECTOR_PROJECTS</span>
-                <span style={{ color }}>{projects.length} ENTITIES_DETECTED</span>
+              <div className="console-header flex items-center justify-between">
+                <span>Module_10: Sector Projects</span>
+                <span className="uppercase tracking-widest text-[11px] font-bold" style={{ color }}>{projects.length} ENTITIES_DETECTED</span>
               </div>
               <div className="flex flex-col border border-outline-variant/30 bg-[#06080a]/50 m-6 lg:m-12">
                 <div className="hidden md:grid md:grid-cols-12 gap-4 px-4 py-3 border-b border-outline-variant/30 bg-surface-container/30 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/50">
@@ -204,9 +204,9 @@ export default async function EcosystemCategoryPage({ params }: EcosystemCategor
             </section>
           ) : (
             <section className="console-window col-span-12">
-              <div className="console-header">
-                <span>MODULE_10: SECTOR_PROJECTS</span>
-                <span style={{ color }}>WATCHLIST_ONLY</span>
+              <div className="console-header flex items-center justify-between">
+                <span>Module_10: Sector Projects</span>
+                <span className="uppercase tracking-widest text-[11px] font-bold" style={{ color }}>WATCHLIST_ONLY</span>
               </div>
               <div className="p-6 lg:p-12">
                 <div className="rounded-[1.4rem] border border-dashed border-outline-variant/25 bg-surface-container-lowest/50 p-6">

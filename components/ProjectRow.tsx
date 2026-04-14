@@ -14,7 +14,7 @@ export default function ProjectRow({ project, color = '#00FFA3' }: ProjectRowPro
   return (
     <Link
       href={website}
-      className="group relative flex items-center justify-between md:grid md:grid-cols-12 border-b border-outline-variant/20 last:border-b-0 bg-transparent px-4 py-5 transition-all duration-300 hover:bg-surface-container-low/30 overflow-hidden"
+      className="group relative flex flex-col gap-4 md:grid md:grid-cols-12 md:gap-0 items-start md:items-center border-b border-outline-variant/20 last:border-b-0 bg-transparent p-5 md:px-4 md:py-5 transition-all duration-300 hover:bg-surface-container-low/30 overflow-hidden"
     >
       {/* Background glow on hover */}
       <div 
@@ -29,7 +29,7 @@ export default function ProjectRow({ project, color = '#00FFA3' }: ProjectRowPro
       />
 
       {/* 1. Project Title & Logo */}
-      <div className="flex items-center gap-5 md:col-span-4 relative z-10 w-2/3 md:w-auto">
+      <div className="flex items-center gap-5 md:col-span-4 relative z-10 w-full md:w-auto">
         <div className="relative h-12 w-12 shrink-0 bg-black/50 border border-outline-variant/30 p-2 transition-transform duration-500 group-hover:scale-110 shadow-inner">
           {project.logo ? (
             <Image
@@ -53,13 +53,32 @@ export default function ProjectRow({ project, color = '#00FFA3' }: ProjectRowPro
       </div>
 
       {/* 2. Overview */}
-      <div className="hidden md:block md:col-span-5 pr-8 relative z-10">
-        <p className="font-jetbrains text-sm leading-relaxed text-on-surface-variant/70 line-clamp-2">
+      <div className="block md:col-span-5 md:pr-8 relative z-10 w-full">
+        <p className="font-jetbrains text-sm leading-relaxed text-on-surface-variant/70 line-clamp-3 md:line-clamp-2">
           {project.summary}
         </p>
       </div>
 
-      {/* 3. Status */}
+      {/* 3. Mobile Footer (Status & Action) */}
+      <div className="flex items-center justify-between md:hidden relative z-10 w-full pt-3 border-t border-outline-variant/10">
+        <div className="flex items-center gap-2">
+          <div 
+            className={`h-2 w-2 rounded-full ${project.status === 'sync_ok' ? '' : 'bg-on-surface-variant/30 animate-pulse'}`} 
+            style={project.status === 'sync_ok' ? { backgroundColor: color, boxShadow: `0 0 10px ${color}99` } : {}}
+          />
+          <span className="text-[11px] font-mono text-on-surface-variant/60 uppercase tracking-widest whitespace-nowrap group-hover:text-white transition-colors">
+            {project.status === 'sync_ok' ? 'ONLINE' : project.status.replace('_', ' ').toUpperCase()}
+          </span>
+        </div>
+        <div 
+          className="flex h-8 w-8 items-center justify-center border border-outline-variant/30 text-outline-variant/50 transition-all duration-300 group-hover:border-primary group-hover:bg-primary/10 group-hover:text-primary rounded-full group-hover:scale-110"
+          style={{ borderColor: `rgba(255,255,255,0.1)` }}
+        >
+          <ArrowRight size={14} className="transition-transform duration-300 group-hover:-rotate-45" />
+        </div>
+      </div>
+
+      {/* 4. Status Desktop */}
       <div className="hidden md:flex md:col-span-2 items-center gap-2 relative z-10">
         <div 
           className={`h-2 w-2 rounded-full ${project.status === 'sync_ok' ? '' : 'bg-on-surface-variant/30 animate-pulse'}`} 
@@ -70,8 +89,8 @@ export default function ProjectRow({ project, color = '#00FFA3' }: ProjectRowPro
         </span>
       </div>
 
-      {/* 4. Action / Arrow */}
-      <div className="flex items-center justify-end md:col-span-1 relative z-10 shrink-0">
+      {/* 5. Action / Arrow Desktop */}
+      <div className="hidden md:flex items-center justify-end md:col-span-1 relative z-10 shrink-0">
         <div 
           className="flex h-10 w-10 items-center justify-center border border-outline-variant/30 text-outline-variant/50 transition-all duration-300 group-hover:border-primary group-hover:bg-primary/10 group-hover:text-primary"
           style={{ borderColor: `rgba(255,255,255,0.1)` }}

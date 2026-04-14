@@ -130,7 +130,7 @@ export default async function SectorsPage() {
           <div className="mb-6 flex flex-col gap-4 border-b border-outline-variant/20 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
             <div>
               <h2 className="text-xl font-black uppercase tracking-widest text-white">
-                ACTIVE_SECTORS
+                Active Sectors
               </h2>
               <p className="mt-2 max-w-3xl text-sm leading-7 text-on-surface-variant">
                 These sectors already have at least one published builder record in Atlas.
@@ -151,7 +151,7 @@ export default async function SectorsPage() {
             <div className="mb-6 flex flex-col gap-4 border-b border-outline-variant/20 pb-4 sm:flex-row sm:items-baseline sm:justify-between">
               <div>
                 <h2 className="text-xl font-black uppercase tracking-widest text-white">
-                  WATCHLIST_SECTORS
+                  Watchlist Sectors
                 </h2>
                 <p className="mt-2 max-w-3xl text-sm leading-7 text-on-surface-variant">
                   These sectors already have briefings, but Atlas has not published builder records for them yet.
