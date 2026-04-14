@@ -1,7 +1,8 @@
 'use client';
 
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getCategoryIcon } from '@/lib/categoryIcons';
 import type { EcosystemCategoryRecord, EcosystemProjectRecord } from '@/types/domain';
 import Link from 'next/link';
@@ -57,6 +58,9 @@ function getProjectActivityLabel(project: EcosystemProjectRecord): string {
 
 export default function SectorRadar({ categories, projects, categoryColors }: SectorRadarProps) {
   const shouldReduceMotion = useReducedMotion();
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const ratioMap = useRef(new Map<Element, number>());
 
   const rankedCategories = categories
     .map((category) => {
@@ -98,6 +102,52 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
         show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] } },
       };
 
+  // Track active carousel card via IntersectionObserver
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container || activeCategories.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          ratioMap.current.set(entry.target, entry.intersectionRatio);
+        });
+
+        let bestIndex = 0;
+        let bestRatio = 0;
+        Array.from(container.children).forEach((child, i) => {
+          const ratio = ratioMap.current.get(child) ?? 0;
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestIndex = i;
+          }
+        });
+        setActiveIndex(bestIndex);
+      },
+      {
+        root: container,
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      }
+    );
+
+    Array.from(container.children).forEach((child) => observer.observe(child));
+
+    return () => {
+      observer.disconnect();
+      ratioMap.current.clear();
+    };
+  }, [activeCategories.length]);
+
+  const scrollToCard = useCallback((index: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const clamped = Math.max(0, Math.min(index, activeCategories.length - 1));
+    const target = container.children[clamped] as HTMLElement | undefined;
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    }
+  }, [activeCategories.length]);
+
   return (
     <div className="relative border-t border-outline-variant/10 py-20 lg:py-24">
       {/* Background Radar Effect */}
@@ -121,34 +171,44 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
             </p>
           </div>
 
-          <div className="inline-flex items-center justify-center gap-3 rounded-full border border-primary/20 bg-primary/5 px-5 py-2.5 text-[10px] font-mono uppercase tracking-[0.2em] text-primary lg:hidden shadow-[0_0_15px_rgba(0,255,163,0.1)]">
-            Swipe to Scan
-            <ArrowRight size={14} className="swipe-indicator-arrow" />
+          <div
+            className="text-[10px] font-mono uppercase tracking-[0.2em] text-on-surface-variant/60 tabular-nums lg:hidden"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {String(activeIndex + 1).padStart(2, '0')}
+            <span className="mx-1 text-outline-variant/30">/</span>
+            {String(activeCategories.length).padStart(2, '0')}
           </div>
         </div>
 
         <div className="overflow-hidden -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 w-full max-w-full">
-          <motion.div 
+          <motion.div
+            ref={scrollRef}
             className="flex snap-x snap-mandatory overflow-x-auto pb-8 gap-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-2 lg:overflow-x-visible lg:pb-0"
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-100px' }}
           >
-          {activeCategories.map(({ category, categoryProjects, projectCount }, idx) => {
+          {activeCategories.map(({ category, categoryProjects, projectCount }) => {
             const color = categoryColors[category.id] || categoryColors[category.slug] || '#00FFA3';
             const recentProjects = categoryProjects.slice(0, 2);
-            const isLast = idx === activeCategories.length - 1;
 
             return (
               <motion.div 
                 key={category.id} 
                 variants={itemVariants}
-                className={`shrink-0 snap-start ${isLast ? 'pr-4 sm:pr-6 lg:pr-0' : ''}`}
+                className="relative shrink-0 snap-start"
               >
+                {/* Stacked deck hint — mobile only */}
+                <div
+                  className="pointer-events-none absolute inset-0 translate-x-2 translate-y-1 border border-white/[0.05] -z-10 lg:hidden"
+                  aria-hidden="true"
+                />
                 <Link
                   href={`/ecosystem/categories/${category.slug}`}
-                  className="group relative flex h-full w-[80vw] sm:w-[45vw] lg:w-auto lg:min-w-0 flex-col border bg-white/[0.03] pt-6 px-6 pb-0 transition-all duration-200 hover:bg-white/[0.05] hover:border-white/[0.12]"
+                  className="group relative flex h-full w-[75vw] sm:w-[45vw] lg:w-auto lg:min-w-0 flex-col border bg-white/[0.03] pt-6 px-6 pb-0 transition-all duration-200 hover:bg-white/[0.05] hover:border-white/[0.12]"
                   style={{ borderColor: 'rgba(255,255,255,0.06)' }}
                 >
                   <div
@@ -209,6 +269,40 @@ export default function SectorRadar({ categories, projects, categoryColors }: Se
           })}
         </motion.div>
       </div>
+
+        {/* Carousel navigation — mobile only */}
+        <div className="flex items-center justify-center gap-4 mt-6 lg:hidden">
+          <button
+            onClick={() => scrollToCard(activeIndex - 1)}
+            disabled={activeIndex === 0}
+            className="flex h-8 w-8 items-center justify-center border border-outline-variant/20 bg-white/[0.03] text-on-surface-variant/60 transition-colors hover:border-primary/30 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Previous sector"
+          >
+            <ChevronLeft size={16} />
+          </button>
+
+          <div className="flex items-center gap-1.5" aria-hidden="true">
+            {activeCategories.map((_, i) => (
+              <div
+                key={i}
+                className={`h-1.5 rounded-full transition-all duration-200 ${
+                  i === activeIndex
+                    ? 'w-4 bg-primary'
+                    : 'w-1.5 bg-white/10'
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={() => scrollToCard(activeIndex + 1)}
+            disabled={activeIndex === activeCategories.length - 1}
+            className="flex h-8 w-8 items-center justify-center border border-outline-variant/20 bg-white/[0.03] text-on-surface-variant/60 transition-colors hover:border-primary/30 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Next sector"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
 
         {watchlistCategories.length > 0 && (
           <div className="mt-14 border-t border-outline-variant/10 pt-10">
