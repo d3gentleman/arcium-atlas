@@ -175,6 +175,17 @@
 }
 
 
+/* === LESSON SCENE VISIBILITY === */
+/* Default: fallback visible, animated scene hidden */
+[data-lesson-fallback] { display: block; }
+[data-lesson-scene] { display: none; }
+
+/* Desktop without reduced motion: swap */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  [data-lesson-fallback] { display: none !important; }
+  [data-lesson-scene] { display: block !important; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -25,7 +25,7 @@ export default function ShellSwitcher({ children, discoveryItems, ui }: ShellSwi
     pathname.startsWith('/admin') ||
     pathname.startsWith('/api/admin');
   
-  const isReadingPath = pathname.startsWith('/about');
+  const isReadingPath = pathname.startsWith('/about') || pathname.startsWith('/rtg');
 
 
   return (

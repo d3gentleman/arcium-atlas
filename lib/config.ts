@@ -18,6 +18,11 @@ export const NAVIGATION_CONFIG: LinkAction[] = [
   },
   {
     type: "internal" as const,
+    label: "RTGs",
+    href: "/rtg"
+  },
+  {
+    type: "internal" as const,
     label: "About",
     href: "/about"
   },

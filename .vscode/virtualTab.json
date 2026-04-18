@@ -3,11 +3,16 @@
     "id": "builtin_group_id",
     "name": "Currently Open Files",
     "files": [
-      "lib/schemas/submissionSchema.ts",
-      "lib/actions/projects.ts",
-      "lib/content.ts",
-      "lib/site.ts",
-      "scripts/debug-categories.ts"
+      "components/KnowledgePageFrame.tsx",
+      "app/ShellSwitcher.tsx",
+      "app/globals.css",
+      "app/rtg/mcps-mxes/page.tsx",
+      "components/lessons/LessonScrollScene.tsx",
+      "components/lessons/beats.ts",
+      "app/rtg/understanding-mpcs-and-mxes/page.tsx",
+      "app/rtg/page.tsx",
+      "lib/config.ts",
+      "app/ecosystem/[slug]/page.tsx"
     ],
     "builtIn": true,
     "bookmarks": {}
